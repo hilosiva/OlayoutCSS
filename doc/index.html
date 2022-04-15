@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initiaol-scale=1.0" />
+    <title>Olayout CSS</title>
+    <link rel="stylesheet" href="../css/olayout.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ol-content-width: 1280;
+        --ol-space-xxsmall: 16;
+        --ol-space-xsmall: 32;
+        --ol-space-small: 48;
+        --ol-space-medium: 64;
+        --ol-space-large: 88;
+        --ol-space-xlarge: 136;
+        --ol-space-xxlarge: 160;
+        --ol-space-xxxlarge: 260;
+
+        /* --ol-base-color: #ecebe3; */
+        --ol-base-color: #1c1c1c;
+        --ol-main-color: #efefef;
+        --ol-accent-color: #e9e1c8;
+        --ol-light-color: #ecebe3;
+        --ol-dark-color: #1c1c1c;
+        --ol-primary-text-color: #ecebe3;
+        --ol-light-text-color: #fff;
+        --ol-primary-font-set: "Zen Kaku Gothic New", sans-serif;
+        --ol-en-font-set: "Marcellus", serif;
+      }
+
+      body {
+        line-height: 2;
+      }
+      .box {
+        padding: 1rem;
+        background-color: #101010;
+      }
+
+      .hero {
+        font-size: 5rem;
+        /* color: var(--ol-base-color); */
+      }
+
+      .full {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: var(--ol-accent-color);
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        color: var(--ol-accent-color);
+      }
+      h3 {
+        font-size: 2rem;
+        color: var(--ol-accent-color);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="ol-spacer" data-y="min:xxsmall lg:xsmall">
+      <div class="ol-container">
+        <h1 lang="en">Olayout CSS</h1>
+      </div>
+    </header>
+    <main>
+      <div class="ol-spacer" data-y="min:medium lg:xlarge">
+        <div class="ol-container">
+          <p class="hero" lang="en">Ore no Layout CSS Framework</p>
+        </div>
+      </div>
+
+      <section class="ol-spacer" data-y="min:small lg:medium">
+        <div class="ol-container" data-set="xxs:true">
+          <h2 lang="en">Wellcome</h2>
+          <div class="ol-spacer" data-y="min:xxsmallTop">
+            <p>
+              Olayaout CSSはWebページのレイアウトが効率コーディングできる俺流のレイアウト用CSSフレームワークです。<br />
+              正直「Olayout」というネーミングは変えたいと思ってますよ。そりゃ。<br />
+              このOlayaout CSSに主に以下の機能があります。
+            </p>
+          </div>
+          <div class="ol-spacer" data-y="min:xxsmallTop lg:largeTop">
+            <div class="ol-grid" data-gutter="xxs:small lg:medium">
+              <section class="ol-grid__item" data-cols="xxs:12 lg:4">
+                <h3 lang="en">Reset</h3>
+                <div class="ol-spacer" data-y="min:xxsmallTop">
+                  <p>ブラウザのデフォルトスタイルで設定されている要素のリセットを行います。フォントサイズなどはリセットされません。</p>
+                </div>
+              </section>
+              <section class="ol-grid__item" data-cols="xxs:12 lg:4">
+                <h3 lang="en">Container &amp; Spacer</h3>
+                <div class="ol-spacer" data-y="min:xxsmallTop">
+                  <p>ボックスのセンタリングや、各ブロック間の上下の余白、ブロック内の余白をデザインに合わせて自由に設定することができます。</p>
+                </div>
+              </section>
+              <section class="ol-grid__item" data-cols="xxs:12 lg:4">
+                <h3 lang="en">Grid System</h3>
+                <div class="ol-spacer" data-y="min:xxsmallTop">
+                  <p>各ブロック間の上下の余白や、ブロック内の余白を予めデザインに合わせて自由に設定することができます。</p>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="ol-spacer" data-y="min:small lg:medium">
+        <div class="ol-container" data-set="xxs:true">
+          <h2 lang="en">Spacer</h2>
+          <div class="ol-spacer" data-y="min:xxsmallTop">
+            <p>上下のスペースや左右のスペースの自由に対応</p>
+          </div>
+        </div>
+      </section>
+      <section class="ol-spacer" data-y="min:small lg:medium">
+        <div class="ol-container" data-set="xxs:true">
+          <h2>グリッドもできる</h2>
+          <div class="ol-spacer" data-y="min:xxsmallTop lg:xsmallTop">
+            <div class="ol-grid" data-gutter="min:xxsmall lg:small">
+              <div class="ol-grid__item" data-cols="min:6">
+                <div class="box bg-white">
+                  <p>テスト</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:6">
+                <div class="box bg-white">
+                  <p>テスト</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:4">
+                <div class="box bg-white">
+                  <p>テスト</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:4">
+                <div class="box bg-white">
+                  <p>テスト</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:4">
+                <div class="box bg-white">
+                  <p>テスト</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <section class="ol-spacer" data-y="min:mediumTop lg:xlargeTop">
+            <div class="ol-grid" data-gutter="min:xxsmall lg:small">
+              <div class="ol-grid__item" data-cols="min:12 lg:6" data-order="min:1">
+                <h3>グリッドもできる</h3>
+                <p class="ol-spacer" data-y="min:xxsmall">
+                  これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。
+                </p>
+              </div>
+              <div class="ol-grid__item" data-cols="min:12 lg:6" data-over="min:left min:right lg:clearRight">
+                <figure>
+                  <img src="https://placehold.jp/800x480.png" alt="" class="full" />
+                </figure>
+              </div>
+            </div>
+          </section>
+          <section class="ol-spacer" data-y="min:mediumTop lg:largeTop">
+            <div class="ol-grid" data-gutter="min:xxsmall lg:small">
+              <div class="ol-grid__item" data-cols="min:12 lg:6" data-order="min:1 lg:0">
+                <h3>グリッドもできる</h3>
+                <p class="ol-spacer" data-y="min:xxsmall">
+                  これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。
+                </p>
+              </div>
+              <div class="ol-grid__item" data-cols="min:12 lg:6" data-over="min:left min:right lg:clearLeft">
+                <figure>
+                  <img src="https://placehold.jp/800x480.png" alt="" class="full" />
+                </figure>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <footer class="ol-spacer" data-y="min:xxsmall lg:xsmall" data-bg="accent">
+      <div class="ol-container" data-set="xxs:true">
+        <p>
+          <small>&copy; 2022 Shibata Hironori</small>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,206 @@
+@charset "UTF-8";
+@use "sass:math";
+@use "../global" as *;
+//====================================
+//  Grid
+//====================================
+
+.#{$prefix}-grid {
+  $this: &;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+
+  // Direction
+  // ----------------------------
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      &[data-dir="#{$device}:normal"] {
+        flex-direction: row;
+      }
+      &[data-dir="#{$device}:reverse"] {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  // Alignment
+  // ----------------------------
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      &[data-align~="#{$device}:start"] {
+        justify-content: flex-start;
+      }
+
+      &[data-align~="#{$device}:center"] {
+        justify-content: center;
+      }
+
+      &[data-align~="#{$device}:end"] {
+        justify-content: flex-end;
+      }
+
+      &[data-align~="#{$device}:justify"] {
+        justify-content: space-between;
+      }
+
+      &[data-align~="#{$device}:top"] {
+        align-items: flex-start;
+      }
+
+      &[data-align~="#{$device}:middle"] {
+        align-items: center;
+      }
+
+      &[data-align~="#{$device}:bottom"] {
+        align-items: flex-end;
+      }
+    }
+  }
+
+  // Wrap
+  // ----------------------------
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      &[data-wrap~="#{$device}:wrap"] {
+        flex-wrap: wrap;
+      }
+
+      &[data-wrap~="#{$device}:nowrap"] {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 0;
+    flex: 0 0 auto;
+
+    // Alignment
+    // ----------------------------
+    @each $device, $breakpoint in $breakpoints {
+      @media screen and (min-width: $breakpoint) {
+        &[data-align~="#{$device}:start"] {
+          align-items: flex-start;
+        }
+
+        &[data-align~="#{$device}:center"] {
+          align-items: center;
+        }
+
+        &[data-align~="#{$device}:end"] {
+          align-items: flex-end;
+        }
+
+        &[data-align~="#{$device}:top"] {
+          justify-content: flex-start;
+        }
+
+        &[data-align~="#{$device}:middle"] {
+          justify-content: center;
+        }
+
+        &[data-align~="#{$device}:bottom"] {
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+
+  // Grid
+  // ----------------------------
+  &[data-gutter] {
+    width: auto;
+
+    & > #{$this}__item {
+      border: solid transparent;
+      background-clip: padding-box;
+    }
+  }
+
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      @each $size, $val in $spaces {
+        $base: $breakpoint;
+
+        @if $breakpoint < 1px {
+          $base: 320px;
+        }
+
+        &[data-gutter~="#{$device}:#{$size}"] {
+          --gap: calc(var(--#{$prefix}-space-#{$size}) / 16 / 2 * 1rem);
+          margin: calc(#{var(--gap)} * -1);
+
+          & > #{$this}__item {
+            border-width: var(--gap);
+          }
+        }
+      }
+
+      &__item {
+        @for $i from 1 through $column {
+          &[data-cols~="#{$device}:#{$i}"] {
+            width: percentage(math.div($i, $column));
+          }
+        }
+
+        &[data-cols~="#{$device}:five"] {
+          width: 20%;
+        }
+
+        &[data-cols~="#{$device}:auto"] {
+          width: auto;
+        }
+
+        @for $i from 0 through 3 {
+          &[data-order~="#{$device}:#{$i}"] {
+            order: $i;
+          }
+          &[data-grow~="#{$device}:#{$i}"] {
+            flex-grow: $i;
+          }
+        }
+
+        // Over Container
+        // ----------------------------
+        &[data-over~="#{$device}:left"] {
+          margin-left: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
+          flex-grow: 1;
+
+          #{$this}[data-gutter] & {
+            border-left-width: 0;
+          }
+        }
+        &[data-over~="#{$device}:right"] {
+          margin-right: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
+          flex-grow: 1;
+
+          #{$this}[data-gutter] & {
+            border-right-width: 0;
+          }
+        }
+        &[data-over~="#{$device}:clearLeft"] {
+          margin-left: 0;
+
+          #{$this}[data-gutter] & {
+            border-left-width: var(--gap);
+          }
+        }
+        &[data-over~="#{$device}:clearRight"] {
+          margin-right: 0;
+
+          #{$this}[data-gutter] & {
+            border-right-width: var(--gap);
+          }
+        }
+        &[data-over~="#{$device}:clearLeft"][data-over~="#{$device}:clearRight"] {
+          flex-grow: 0;
+        }
+      }
+    }
+  }
+}

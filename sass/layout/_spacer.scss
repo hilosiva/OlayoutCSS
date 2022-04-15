@@ -1,0 +1,88 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+/*
+  Spacer
+-----------------------------------------------------*/
+.#{$prefix}-spacer {
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      @each $size, $val in $spaces {
+        &[data-y~="#{$device}:#{$size}"] {
+          padding-top: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+          padding-bottom: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+        }
+
+        &[data-y~="#{$device}:#{$size}Top"] {
+          padding-top: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+        }
+
+        &[data-y~="#{$device}:#{$size}Bottom"] {
+          padding-bottom: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+        }
+
+        &[data-x~="#{$device}:#{$size}"] {
+          padding-left: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+          padding-right: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+        }
+
+        &[data-x~="#{$device}:#{$size}Left"] {
+          padding-left: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+        }
+
+        &[data-x~="#{$device}:#{$size}Right"] {
+          padding-right: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+        }
+      }
+
+      &[data-y~="#{$device}:reset"] {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      &[data-y~="#{$device}:resetTop"] {
+        padding-top: 0;
+      }
+
+      &[data-y~="#{$device}:resetBottom"] {
+        padding-bottom: 0;
+      }
+
+      &[data-x~="#{$device}:reset"] {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      &[data-x~="#{$device}:reseLeft"] {
+        padding-left: 0;
+      }
+
+      &[data-x~="#{$device}:resetRight"] {
+        padding-right: 0;
+      }
+    }
+  }
+
+  // Background-color
+  &[data-bg="base"] {
+    background-color: var(--#{$prefix}-base-color);
+  }
+  &[data-bg="main"] {
+    background-color: var(--#{$prefix}-main-color);
+  }
+  &[data-bg="accent"] {
+    background-color: var(--#{$prefix}-accent-color);
+  }
+  &[data-bg="light"] {
+    background-color: var(--#{$prefix}-light-color);
+  }
+  &[data-bg="dark"] {
+    background-color: var(--#{$prefix}-dark-color);
+  }
+  &[data-bg="white"] {
+    background-color: #fff;
+  }
+  &[data-bg="block"] {
+    background-color: #000;
+  }
+}
