@@ -410,10 +410,6 @@ template,
   outline: none;
 }
 
-[lang="en"] {
-  font-family: var(--#{$prefix}-en-font-set, "sans-serif");
-}
-
 /**
  * Prettier ignore
  */
@@ -435,7 +431,11 @@ template,
  * Checker
  */
 button:not([type]):after {
-  content: "警告： このbuttonにはtype属性がありません";
+  content: "【警告】このbuttonにはtype属性がありません";
   background-color: red;
   color: #fff;
+}
+
+[lang="en"] {
+  font-family: var(--#{$prefix}-en-font-set, "sans-serif");
 }

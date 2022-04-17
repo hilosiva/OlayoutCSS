@@ -8,15 +8,13 @@
     <link rel="stylesheet" href="../css/olayout.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Zen+Kaku+Gothic+New:wght@500;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --ol-content-width: 1280;
-        --ol-space-xxsmall: 16;
+        --ol-content-width: 1440;
         --ol-space-xsmall: 32;
         --ol-space-small: 48;
-        --ol-space-medium: 64;
-        --ol-space-large: 88;
         --ol-space-xlarge: 136;
         --ol-space-xxlarge: 160;
         --ol-space-xxxlarge: 260;
@@ -26,7 +24,7 @@
         --ol-main-color: #efefef;
         --ol-accent-color: #e9e1c8;
         --ol-light-color: #ecebe3;
-        --ol-dark-color: #1c1c1c;
+        --ol-dark-color: #161616;
         --ol-primary-text-color: #ecebe3;
         --ol-light-text-color: #fff;
         --ol-primary-font-set: "Zen Kaku Gothic New", sans-serif;
@@ -43,6 +41,9 @@
 
       .hero {
         font-size: 5rem;
+        line-height: 1.25;
+        letter-spacing: 0.01em;
+        color: var(--ol-accent-color);
         /* color: var(--ol-base-color); */
       }
 
@@ -51,35 +52,74 @@
       }
 
       h1 {
-        font-size: 2.5rem;
-        color: var(--ol-accent-color);
+        font-size: 1.25rem;
+        letter-spacing: 0.05em;
+        /* color: var(--ol-accent-color); */
       }
 
       h2 {
         font-size: 2.5rem;
-        color: var(--ol-accent-color);
+        letter-spacing: 0.05em;
+        /* color: var(--ol-accent-color); */
       }
       h3 {
-        font-size: 2rem;
-        color: var(--ol-accent-color);
+        font-size: 1.5rem;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid currentColor;
+        /* color: var(--ol-accent-color); */
+      }
+
+      pre {
+        overflow: auto;
+      }
+
+      pre::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      pre::-webkit-scrollbar-track {
+        background-color: #101010;
+      }
+      pre::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.16);
+        border-radius: 1rem;
+      }
+      code {
+        font-family: "Source Code Pro", monospace;
+      }
+
+      @media screen and (min-width: 992px) {
+        .hero {
+          font-size: 10rem;
+        }
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h2 {
+          font-size: 4rem;
+        }
+        h3 {
+          font-size: 1.5rem;
+        }
       }
     </style>
   </head>
   <body>
-    <header class="ol-spacer" data-y="min:xxsmall lg:xsmall">
+    <header class="ol-spacer" data-y="min:xxsmallTop lg:smallTop ">
       <div class="ol-container">
         <h1 lang="en">Olayout CSS</h1>
       </div>
     </header>
     <main>
-      <div class="ol-spacer" data-y="min:medium lg:xlarge">
+      <div class="ol-spacer" data-y="min:medium lg:medium">
         <div class="ol-container">
           <p class="hero" lang="en">Ore no Layout CSS Framework</p>
         </div>
       </div>
 
       <section class="ol-spacer" data-y="min:small lg:medium">
-        <div class="ol-container" data-set="xxs:true">
+        <div class="ol-container">
           <h2 lang="en">Wellcome</h2>
           <div class="ol-spacer" data-y="min:xxsmallTop">
             <p>
@@ -88,7 +128,7 @@
               このOlayaout CSSに主に以下の機能があります。
             </p>
           </div>
-          <div class="ol-spacer" data-y="min:xxsmallTop lg:largeTop">
+          <div class="ol-spacer" data-y="min:smallTop lg:largeTop">
             <div class="ol-grid" data-gutter="xxs:small lg:medium">
               <section class="ol-grid__item" data-cols="xxs:12 lg:4">
                 <h3 lang="en">Reset</h3>
@@ -113,71 +153,182 @@
         </div>
       </section>
       <section class="ol-spacer" data-y="min:small lg:medium">
-        <div class="ol-container" data-set="xxs:true">
-          <h2 lang="en">Spacer</h2>
+        <div class="ol-container">
+          <h2 lang="en">Install</h2>
+          <div class="ol-spacer" data-y="min:xxsmall">
+            <p>「olayout.min.css」を読み込む。</p>
+          </div>
+          <figure class="ol-spacer" data-y="min:xsmall" data-x="min:xsmall" data-bg="dark">
+            <pre><code>&lt;link rel="stylesheet" href="olayout.min.css"&gt;</code></pre>
+          </figure>
+        </div>
+      </section>
+      <section class="ol-spacer" data-y="min:small lg:medium">
+        <div class="ol-container">
+          <h2 lang="en">Settings</h2>
+          <div class="ol-spacer" data-y="min:xxsmall">
+            <p>カスタムプロパティで余白量や配色、書体を設定を上書きできる</p>
+          </div>
+          <figure class="ol-spacer" data-y="min:xsmall" data-x="min:xsmall" data-bg="dark">
+            <pre><code>:root {
+  /* コンテンツ幅 */
+  --ol-content-width: 1200;
+
+  /* スペース量 */
+  --ol-space-large: 80;
+  --ol-space-max: 160;
+
+  /* 色 */
+  --ol-main-color: #116ec5;
+
+  /* 書体 */
+  --ol-primary-font-set: "Noto Sans JP", "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", sans-serif;
+  --en-primary-font-set: "Inter", sans-serif;
+}</code></pre>
+          </figure>
+        </div>
+      </section>
+      <section class="ol-spacer" data-y="min:small lg:medium">
+        <div class="ol-container">
+          <h2 lang="en">Reset</h2>
           <div class="ol-spacer" data-y="min:xxsmallTop">
-            <p>上下のスペースや左右のスペースの自由に対応</p>
+            <div class="ol-grid" data-gutter="min:xsmall lg:small">
+              <div class="ol-grid__item" data-cols="min:12 lg6">
+                <p>ブラウザのデフォルトスタイルを調整するReset用のCSSが入っています。</p>
+              </div>
+              <div class="ol-grid__item" data-cols="min:12 lg6">
+                <ul>
+                  <li>- 全ての要素は <code>box-sizing: border-box</code> をデフォルトで継承する</li>
+                  <li>- 不必要な margin 、 padding、 border を排除</li>
+                  <li>- 文字サイズのリセットは行わない</li>
+                  <li>- <code>font-feature-settings</code> による文字詰め</li>
+                  <li>- 不必要な <code>margin</code> 、 <code>padding</code>、 <code>border</code> を排除</li>
+                  <li>- <code>line-heigh</code> は 1.5 　をデフォルトにする</li>
+                  <li>- <code>html</code> 要素に <code>scroll-behavior: smooth</code> を指定</li>
+                  <li>- アクセシビリティに考慮</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
       <section class="ol-spacer" data-y="min:small lg:medium">
-        <div class="ol-container" data-set="xxs:true">
-          <h2>グリッドもできる</h2>
+        <div class="ol-container">
+          <h2 lang="en">Container &amp; Spacer</h2>
+          <div class="ol-spacer" data-y="min:xxsmallTop">
+            <p>ボックスのセンタリングは <code>.ol-container</code> を ブロック間の余白には <code>.ol-spacer</code> を使う。</p>
+          </div>
+        </div>
+      </section>
+      <section class="ol-spacer" data-y="min:small lg:mediumTop lg:xlargeBottom">
+        <div class="ol-container">
+          <h2 lang="en">Grid System</h2>
           <div class="ol-spacer" data-y="min:xxsmallTop lg:xsmallTop">
             <div class="ol-grid" data-gutter="min:xxsmall lg:small">
               <div class="ol-grid__item" data-cols="min:6">
                 <div class="box bg-white">
-                  <p>テスト</p>
+                  <p>Grid Item</p>
                 </div>
               </div>
               <div class="ol-grid__item" data-cols="min:6">
                 <div class="box bg-white">
-                  <p>テスト</p>
+                  <p>Grid Item</p>
                 </div>
               </div>
               <div class="ol-grid__item" data-cols="min:4">
                 <div class="box bg-white">
-                  <p>テスト</p>
+                  <p>Grid Item</p>
                 </div>
               </div>
               <div class="ol-grid__item" data-cols="min:4">
                 <div class="box bg-white">
-                  <p>テスト</p>
+                  <p>Grid Item</p>
                 </div>
               </div>
               <div class="ol-grid__item" data-cols="min:4">
                 <div class="box bg-white">
-                  <p>テスト</p>
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:8">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:4">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:3">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:3">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:3">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:3">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:five">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:five">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:five">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:five">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
+                </div>
+              </div>
+              <div class="ol-grid__item" data-cols="min:five">
+                <div class="box bg-white">
+                  <p>Grid Item</p>
                 </div>
               </div>
             </div>
           </div>
           <section class="ol-spacer" data-y="min:mediumTop lg:xlargeTop">
             <div class="ol-grid" data-gutter="min:xxsmall lg:small">
-              <div class="ol-grid__item" data-cols="min:12 lg:6" data-order="min:1">
-                <h3>グリッドもできる</h3>
-                <p class="ol-spacer" data-y="min:xxsmall">
-                  これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。
-                </p>
+              <div class="ol-grid__item" data-cols="min:12 lg:6" data-align="lg:middle" data-order="min:1">
+                <h3 lang="en">Over The Container</h3>
+                <p class="ol-spacer" data-y="min:xxsmall">コンテンツ幅を飛び越えて画像を表示するなども簡単に実装可能。スマホでは左右両方飛び越して、PCでは片側だけ飛び越すなどといったことも可能。</p>
               </div>
               <div class="ol-grid__item" data-cols="min:12 lg:6" data-over="min:left min:right lg:clearRight">
                 <figure>
-                  <img src="https://placehold.jp/800x480.png" alt="" class="full" />
+                  <img src="img/photo-01.jpg" srcset="img/photo-01.jpg, img/photo-01@2x.jpg 2x" alt="" class="full" />
                 </figure>
               </div>
             </div>
           </section>
           <section class="ol-spacer" data-y="min:mediumTop lg:largeTop">
             <div class="ol-grid" data-gutter="min:xxsmall lg:small">
-              <div class="ol-grid__item" data-cols="min:12 lg:6" data-order="min:1 lg:0">
-                <h3>グリッドもできる</h3>
-                <p class="ol-spacer" data-y="min:xxsmall">
-                  これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。これはサンプルのテキスト。
-                </p>
+              <div class="ol-grid__item" data-cols="min:12 lg:6" data-align="lg:middle" data-order="min:1 lg:0">
+                <h3 lang="en">Over The Container</h3>
+                <p class="ol-spacer" data-y="min:xxsmall">コンテンツ幅を飛び越えて画像を表示するなども簡単に実装可能。スマホでは左右両方飛び越して、PCでは片側だけ飛び越すなどといったことも可能。</p>
               </div>
               <div class="ol-grid__item" data-cols="min:12 lg:6" data-over="min:left min:right lg:clearLeft">
                 <figure>
-                  <img src="https://placehold.jp/800x480.png" alt="" class="full" />
+                  <img src="img/photo-02.jpg" srcset="img/photo-02.jpg, img/photo-02@2x.jpg 2x" alt="" class="full" />
                 </figure>
               </div>
             </div>
@@ -185,8 +336,8 @@
         </div>
       </section>
     </main>
-    <footer class="ol-spacer" data-y="min:xxsmall lg:xsmall" data-bg="accent">
-      <div class="ol-container" data-set="xxs:true">
+    <footer class="ol-spacer" data-y="min:xxsmall lg:xsmall" data-bg="dark">
+      <div class="ol-container">
         <p>
           <small>&copy; 2022 Shibata Hironori</small>
         </p>

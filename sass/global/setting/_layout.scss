@@ -25,14 +25,15 @@ $breakpoints: (
 
 // 余白
 $spaces: (
+  min: 8,
   xxsmall: 16,
-  xsmall: 32,
-  small: 48,
+  xsmall: 24,
+  small: 40,
   medium: 64,
   large: 88,
-  xlarge: 136,
-  xxlarge: 160,
-  xxxlarge: 260,
+  xlarge: 96,
+  xxlarge: 112,
+  max: 120,
 ) !default;
 
 // Grid Column
@@ -41,4 +42,5 @@ $column: 12;
 // スクロールバー
 $scroll-bar: 8;
 
+// プレフィックス
 $prefix: "ol";
