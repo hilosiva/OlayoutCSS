@@ -63,6 +63,17 @@
     }
   }
 
+  // overflow
+  &[data-overflow="hidden"] {
+    overflow: hidden;
+  }
+  &[data-overflow="auto"] {
+    overflow: auto;
+  }
+  &[data-overflow="visible"] {
+    overflow: visible;
+  }
+
   // Background-color
   &[data-bg="base"] {
     background-color: var(--#{$prefix}-base-color);
