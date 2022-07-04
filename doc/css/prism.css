@@ -1,0 +1,283 @@
+.token.lf::before {
+  display: none;
+}
+
+.codeWrap {
+  position: relative;
+}
+
+.codeWrap > figcaption {
+  position: absolute;
+  top: 1em;
+  z-index: 1;
+  color: #abb2bf;
+  left: 2rem;
+  right: 2rem;
+  /* text-align: center; */
+  font-size: 0.75em;
+}
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #abb2bf;
+  background: none;
+  font-family: "Source Code Pro", "Noto Sans JP", monospace;
+  font-weight: 500;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  font-size: 1em;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  letter-spacing: 0.02em;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #383e49;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #9aa2b1;
+}
+
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none;
+  }
+}
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 3em 1em 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.5em;
+  /* box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16); */
+}
+
+pre[class*="language-"]::-webkit-scrollbar {
+  height: 8px;
+}
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  /* border-radius: 0.5em; */
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #282c34;
+  /* background: #161616; */
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #5c6370;
+}
+
+.token.punctuation {
+  color: #abb2bf;
+}
+
+.token.selector,
+.token.tag,
+.token .doctype-tag {
+  color: #e06c75;
+}
+
+.token.property,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.attr-name,
+.token.deleted,
+.token.name {
+  color: #d19a66;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.builtin,
+.token.inserted {
+  color: #98c379;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #56b6c2;
+}
+
+.token.atrule,
+.token.keyword {
+  color: #c678dd;
+}
+
+.token.function {
+  color: #61afef;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #c678dd;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+  position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em; /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
+  border-right: 0;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.line-numbers-rows > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #5c6370;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+
+div.code-toolbar > .toolbar {
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+  line-height: 1.25;
+  display: flex;
+}
+div.code-toolbar > .toolbar > .toolbar-item {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+div.code-toolbar > .toolbar > .toolbar-item > a,
+div.code-toolbar > .toolbar > .toolbar-item > button,
+div.code-toolbar > .toolbar > .toolbar-item > span {
+  /* background: #f5f2f0; */
+  background: var(--ol-dark-color);
+  border-radius: 0;
+  box-shadow: none;
+  color: #abb2bf;
+  font-size: 0.75em;
+  padding: 0.5em 1em;
+  font-weight: 900;
+  display: inline-block;
+  flex: 1 0 auto;
+  appearance: none;
+  border: 0;
+}
+@media screen and (min-width: 992px) {
+  div.code-toolbar > .toolbar > .toolbar-item > a,
+  div.code-toolbar > .toolbar > .toolbar-item > button,
+  div.code-toolbar > .toolbar > .toolbar-item > span {
+    font-size: 0.8em;
+    padding: 0.75em 1em;
+  }
+}
+div.code-toolbar > .toolbar > .toolbar-item > a:focus,
+div.code-toolbar > .toolbar > .toolbar-item > a:hover,
+div.code-toolbar > .toolbar > .toolbar-item > button:focus,
+div.code-toolbar > .toolbar > .toolbar-item > button:hover,
+div.code-toolbar > .toolbar > .toolbar-item > span:focus,
+div.code-toolbar > .toolbar > .toolbar-item > span:hover {
+  color: #fff;
+  text-decoration: none;
+}
+div.code-toolbar > .toolbar > .toolbar-item > span:hover {
+  color: #fff;
+  text-decoration: none;
+}
+div.code-toolbar > pre[class*="language-"] + .toolbar > .toolbar-item > span {
+  color: #fff;
+}
+div.code-toolbar > pre[class~="language-html"] + .toolbar > .toolbar-item > span {
+  background-color: #e4964e;
+}
+div.code-toolbar > pre[class~="language-css"] + .toolbar > .toolbar-item > span {
+  background-color: #2ba8d0;
+}
+div.code-toolbar > pre[class~="language-javascript"] + .toolbar > .toolbar-item > span {
+  background-color: #e3ca47;
+  color: var(--ol-dark-color);
+}
+div.code-toolbar > pre[class~="language-scss"] + .toolbar > .toolbar-item > span {
+  background-color: var(--ol-pink-color);
+}
+div.code-toolbar > pre[class~="language-sass"] + .toolbar > .toolbar-item > span {
+  background-color: #ee9ab8;
+}
+div.code-toolbar > pre[class~="language-php"] + .toolbar > .toolbar-item > span {
+  background-color: #a48fe0;
+}
+div.code-toolbar > pre[class~="language-sql"] + .toolbar > .toolbar-item > span {
+  background-color: var(--ol-gray-color);
+  color: var(--ol-dark-color);
+}
