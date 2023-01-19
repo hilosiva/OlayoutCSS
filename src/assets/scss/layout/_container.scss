@@ -1,0 +1,46 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Container
+-----------------------------------------------------*/
+.#{$prefix}-container {
+  margin: 0 auto;
+
+  &:not([data-enabled]) {
+    width: 90%;
+    max-width: calc(var(--#{$prefix}-content-width) * 1px);
+  }
+
+  &:not([data-align]) {
+    margin: 0 auto;
+  }
+
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      &[data-enabled~="#{$device}"] {
+        width: 90%;
+        max-width: calc(var(--#{$prefix}-content-width) * 1px);
+      }
+
+      &[data-disabled~="#{$device}"] {
+        width: auto;
+        max-width: none;
+      }
+
+      &[data-align~="#{$device}:left"] {
+        margin-left: 0;
+        margin-right: auto;
+      }
+      &[data-align~="#{$device}:right"] {
+        margin-left: auto;
+        margin-right: 0;
+      }
+      &[data-align~="#{$device}:center"] {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}

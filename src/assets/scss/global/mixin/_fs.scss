@@ -1,0 +1,11 @@
+@charset 'UTF-8';
+@use "../setting" as *;
+@use "../function" as *;
+@use "sass:map";
+
+//  Font Size
+//--------------------------------------------
+@mixin fs($min, $fontSize, $max, $view-size: $sm-comp-width) {
+  font-size: pxToRem($fontSize);
+  font-size: clamp(pxToRem($min), pxToVw($fontSize, $view-size), pxToRem($max));
+}

@@ -1,0 +1,74 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Text
+-----------------------------------------------------*/
+.#{$prefix}-text {
+  @each $device, $breakpoint in $breakpoints {
+    @include mq($device) {
+      // Align
+      // ----------------------------
+      &[data-align~="#{$device}:left"] {
+        text-align: left;
+      }
+      &[data-align~="#{$device}:center"] {
+        text-align: center;
+      }
+      &[data-align~="#{$device}:right"] {
+        text-align: right;
+      }
+      &[data-align~="#{$device}:justify"] {
+        text-align: justify;
+        text-justify: inter-character;
+      }
+
+      // case
+      // ----------------------------
+      &[data-case~="#{$device}:uppercase"] {
+        text-transform: uppercase;
+      }
+      &[data-case~="#{$device}:normal"] {
+        text-transform: initial;
+      }
+
+      // Word Break
+      // ----------------------------
+      &[data-word~="#{$device}:keep"] {
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      &[data-word~="#{$device}:auto"] {
+        word-break: initial;
+        overflow-wrap: initial;
+      }
+
+      // kerning
+      // ----------------------------
+      &[data-kerning~="#{$device}:palt"] {
+        font-feature-settings: "palt";
+      }
+      &[data-kerning~="#{$device}:pkna"] {
+        font-feature-settings: "pkna";
+      }
+
+      // family
+      // ----------------------------
+      &[data-family~="#{$device}:primary"] {
+        font-family: var(--#{$prefix}-primary-font-set, "sans-serif");
+      }
+      &[data-family~="#{$device}:en"] {
+        font-family: var(--#{$prefix}-en-font-set, "sans-serif");
+      }
+
+      // Weight
+      // ----------------------------
+      @for $i from 1 through 9 {
+        &[data-weight~="#{$device}:#{$i * 100}"] {
+          font-weight: $i * 100;
+        }
+      }
+    }
+  }
+}

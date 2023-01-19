@@ -1,0 +1,31 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Checkbox
+*/
+.#{$prefix}-checkbox {
+  $this: &;
+  width: pxToRem(25px);
+  height: pxToRem(25px);
+  margin: pxToRem(4px) pxToRem(8px);
+  border: 0;
+  outline: 0;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2215.858%22%20height%3D%2211.825%22%20viewBox%3D%220%200%2015.858%2011.825%22%3E%20%3Cpath%20id%3D%22Icon_awesome-check%22%20data-name%3D%22Icon%20awesome-check%22%20d%3D%22M5.386%2C16.17.232%2C11.016a.793.793%2C0%2C0%2C1%2C0-1.121L1.354%2C8.774a.793.793%2C0%2C0%2C1%2C1.121%2C0l3.472%2C3.472%2C7.436-7.436a.793.793%2C0%2C0%2C1%2C1.121%2C0l1.121%2C1.121a.793.793%2C0%2C0%2C1%2C0%2C1.121L6.507%2C16.17A.793.793%2C0%2C0%2C1%2C5.386%2C16.17Z%22%20transform%3D%22translate(0%20-4.577)%22%20fill%3D%22%23333%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  appearance: none;
+
+  &:checked {
+    background-size: 60% 60%;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.16);
+  }
+}
