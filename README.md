@@ -27,10 +27,12 @@ Olayout は 俺流の「これさえあればだいたいのレイアウトが�
 
 ## インストール
 
-`head` 要素内に `olayout.min.css` をリンクするだけでインストールは完了です。
+`head` 要素内に `olayout.css` をリンクするだけでインストールは完了です。
+
+CDN を利用する場合は、下記のようにしてください。
 
 ```html
-<link rel="stylesheet" href="olayout.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hilosiva/OlayoutCSS/dist/olayout.css" />
 ```
 
 ## 初期設定
