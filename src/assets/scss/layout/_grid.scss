@@ -129,7 +129,7 @@
     @media screen and (min-width: $breakpoint) {
       @each $size, $val in $spaces {
         &[data-gutter~="#{$device}:#{$size}"] {
-          --gap: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+          --gap: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
           gap: var(--gap);
         }
       }

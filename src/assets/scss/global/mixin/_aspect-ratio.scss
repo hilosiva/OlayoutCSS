@@ -2,8 +2,6 @@
 @use "../setting" as *;
 @use "../function" as *;
 
-@use "sass:map";
-
 //  aspect ratio
 //--------------------------------------------
 @mixin ar($width, $height) {

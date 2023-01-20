@@ -47,27 +47,17 @@
           border-bottom: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem) solid transparent;
         }
 
-        $viewarea: var(--#{$prefix}-sm-design-width);
-
-        @if $breakpoint >= 768px {
-          $viewarea: var(--#{$prefix}-md-design-width);
-        }
-
-        @if $breakpoint >= 992px {
-          $viewarea: var(--#{$prefix}-lg-design-width);
-        }
-
         &[data-x~="#{$device}:#{$size}"] {
-          padding-left: calc(var(--#{$prefix}-space-#{$size}) / #{$viewarea} * 100vw);
-          padding-right: calc(var(--#{$prefix}-space-#{$size}) / #{$viewarea} * 100vw);
+          padding-left: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
+          padding-right: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
         }
 
         &[data-x~="#{$device}:#{$size}Left"] {
-          padding-left: calc(var(--#{$prefix}-space-#{$size}) / #{$viewarea} * 100vw);
+          padding-left: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
         }
 
         &[data-x~="#{$device}:#{$size}Right"] {
-          padding-right: calc(var(--#{$prefix}-space-#{$size}) / #{$viewarea} * 100vw);
+          padding-right: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
         }
       }
 

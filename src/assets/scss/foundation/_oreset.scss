@@ -31,6 +31,14 @@
   --#{$prefix}-scroll-behavior: smooth;
   --#{$prefix}-ease-out-expo: #{$ease-out-expo};
   --#{$prefix}-duration: #{$duration};
+
+  --#{$prefix}-view-point: var(--#{$prefix}-sm-design-width);
+  @include mq(md) {
+    --#{$prefix}-view-point: var(--#{$prefix}-md-design-width);
+  }
+  @include mq(lg) {
+    --#{$prefix}-view-point: var(--#{$prefix}-lg-design-width);
+  }
 }
 
 /**
@@ -442,4 +450,10 @@ button:not([type]):after {
   content: "【警告】このbuttonにはtype属性がありません";
   background-color: red;
   color: #fff;
+
+  form & {
+    content: none;
+    background-color: transparent;
+    color: inherit;
+  }
 }
