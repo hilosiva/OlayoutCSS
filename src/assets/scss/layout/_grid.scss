@@ -18,9 +18,20 @@
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
       @for $i from 1 through $column {
-        &[data-columns~="#{$device}:#{$i}"] {
+        &[data-cols~="#{$device}:#{$i}"] {
           --ol-grid-columns: #{$i};
           grid-template-columns: repeat(var(--ol-grid-columns), minmax(0, 1fr));
+        }
+      }
+    }
+  }
+  // Rows
+  // ----------------------------
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      @for $i from 1 through 6 {
+        &[data-rows~="#{$device}:#{$i}"] {
+          grid-template-rows: repeat(#{$i}, minmax(0, 1fr));
         }
       }
     }
@@ -89,6 +100,7 @@
 
   &__item {
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
     margin: 0;
 
@@ -125,10 +137,12 @@
 
   // Grid
   // ----------------------------
+
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
       @each $size, $val in $spaces {
         &[data-gutter~="#{$device}:#{$size}"] {
+          grid-template-columns: repeat(var(--ol-grid-columns), minmax(0, 1fr));
           --gap: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
           gap: var(--gap);
         }
@@ -136,15 +150,39 @@
 
       &__item {
         @for $i from 1 through $column {
-          &[data-cols~="#{$device}:#{$i}"] {
+          &[data-col~="#{$device}:#{$i}"] {
             grid-column: span $i / span $i;
           }
         }
 
-        &[data-cols~="#{$device}:auto"] {
+        &[data-col~="#{$device}:five"] {
+          width: 20%;
+        }
+
+        &[data-col~="#{$device}:full"] {
+          grid-column: 1 / -1;
+        }
+
+        &[data-col~="#{$device}:auto"] {
           grid-column: auto;
         }
 
+        @for $i from 1 through 6 {
+          &[data-row~="#{$device}:#{$i}"] {
+            grid-row: span $i / span $i;
+          }
+        }
+
+        &[data-row~="#{$device}:full"] {
+          grid-row: 1 / -1;
+        }
+
+        &[data-row~="#{$device}:auto"] {
+          grid-row: auto;
+        }
+        &[data-order~="#{$device}:-1"] {
+          order: -1;
+        }
         @for $i from 0 through 3 {
           &[data-order~="#{$device}:#{$i}"] {
             order: $i;
