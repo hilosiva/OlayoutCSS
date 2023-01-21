@@ -43,6 +43,9 @@ CDN を利用する場合は、下記のようにしてください。
 | カスタムプロパティ名  | 説明                                       | 初期値       |
 | --------------------- | ------------------------------------------ | ------------ |
 | --ol-content-width    | コンテンツ幅                               | `1280`       |
+| --ol-sm-design-width  | スマホのデザインカンプの幅                 | `375`        |
+| --ol-md-design-width  | タブレットのデザインカンプの幅             | `768`        |
+| --ol-lg-design-width  | PC のデザインカンプの幅                    | `1440`       |
 | --ol-space-min        | 最小の余白量                               | `8`          |
 | --ol-space-xxsmall    | xxsmall サイズの余白量                     | `16`         |
 | --ol-space-xsmall     | xsmall サイズの余白量                      | `24`         |
@@ -68,6 +71,11 @@ CDN を利用する場合は、下記のようにしてください。
   /* コンテンツ幅 */
   --ol-content-width: 1200;
 
+  /* カンプサイズ */
+  --ol-sm-design-width: 375;
+  --ol-md-design-width: 768;
+  --ol-lg-design-width: 1440;
+
   /* スペース量 */
   --ol-space-large: 80;
   --ol-space-max: 160;
@@ -77,7 +85,7 @@ CDN を利用する場合は、下記のようにしてください。
 
   /* 書体 */
   --ol-primary-font-set: "Noto Sans JP", "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", sans-serif;
-  --en-primary-font-set: "Inter", sans-serif;
+  --en-font-set: "Inter", sans-serif;
 }
 ```
 
@@ -171,7 +179,7 @@ CDN を利用する場合は、下記のようにしてください。
 ## Grid System
 
 横並びのレイアウトに便利なグリッドシステムが使えます。
-基本的には俺流のフレキシブルレイアウト CSS である「[OlexCSS](https://github.com/hilosiva/Olexcss)」がベースになっています。
+`display: grid` を活用したレイアウト手法です。
 
 ### Grid Container と Grid Item
 
@@ -193,11 +201,11 @@ Grid Item に `data-caols` 属性を使ってブレイクポイント名とグ�
 
 | カスタムデータ属性 | 説明             | 属性値                                                                  |
 | ------------------ | ---------------- | ----------------------------------------------------------------------- |
-| data-cols          | グリッド数の指定 | `ブレイクポイント名:グリッド数`<br>（半角スペース区切りで複数指定可能） |
+| data-col           | グリッド数の指定 | `ブレイクポイント名:グリッド数`<br>（半角スペース区切りで複数指定可能） |
 
 グリッド数は、例えばどの画面幅でもピッタリ半分半分の 2 段組みにしたかったら、12 分割のグリッドシステムなので、1 段につき 6 グリッド（列）ずつ使えばちょうど半分になるわけです。（12 分割 ÷ 2 段 = 6 グリッド）
 
-つまり `data-cols` 属性に `min:6` と指定すると、どのデバイスでも 2 つのボックスをちょうど半分ずつにわけることができます。
+つまり `data-col` 属性に `min:6` と指定すると、どのデバイスでも 2 つのボックスをちょうど半分ずつにわけることができます。
 
 このように１行の合計が 12 グリッドになるように調整するように、グリッド数を指定すれば OK です。
 
@@ -207,9 +215,9 @@ Grid Item に `data-caols` 属性を使ってブレイクポイント名とグ�
 
 ```html
 <div class="ol-grid">
-  <div class="ol-grid__item" data-cols="min:12 md:4 lg:6">A</div>
-  <div class="ol-grid__item" data-cols="min:6 md:4 lg:3">B</div>
-  <div class="ol-grid__item" data-cols="min:6 md:4 lg:3">C</div>
+  <div class="ol-grid__item" data-col="min:12 md:4 lg:6">A</div>
+  <div class="ol-grid__item" data-col="min:6 md:4 lg:3">B</div>
+  <div class="ol-grid__item" data-col="min:6 md:4 lg:3">C</div>
 </div>
 ```
 
@@ -223,9 +231,9 @@ Grid Item Grid Container に `data-gutter` 属性を使ってブレイクポイ�
 
 ```html
 <div class="ol-grid" data-gutter="min:small md:medium lg:large">
-  <div class="ol-grid__item" data-cols="min:12 md:4 lg:6">A</div>
-  <div class="ol-grid__item" data-cols="min:6 md:4 lg:3">B</div>
-  <div class="ol-grid__item" data-cols="min:6 md:4 lg:3">C</div>
+  <div class="ol-grid__item" data-col="min:12 md:4 lg:6">A</div>
+  <div class="ol-grid__item" data-col="min:6 md:4 lg:3">B</div>
+  <div class="ol-grid__item" data-col="min:6 md:4 lg:3">C</div>
 </div>
 ```
 
