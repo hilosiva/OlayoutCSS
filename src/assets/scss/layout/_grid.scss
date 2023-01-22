@@ -13,87 +13,39 @@
   margin: 0;
   padding: 0;
 
-  // Columns
-  // ----------------------------
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
+      // Columns
+      // ----------------------------
       @for $i from 1 through $column {
         &[data-cols~="#{$device}:#{$i}"] {
           --ol-grid-columns: #{$i};
           grid-template-columns: repeat(var(--ol-grid-columns), minmax(0, 1fr));
         }
       }
-    }
-  }
-  // Rows
-  // ----------------------------
-  @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+
+      // Rows
+      // ----------------------------
       @for $i from 1 through 6 {
         &[data-rows~="#{$device}:#{$i}"] {
           grid-template-rows: repeat(#{$i}, minmax(0, 1fr));
         }
       }
-    }
-  }
 
-  // Direction
-  // ----------------------------
-  @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
-      &[data-dir="#{$device}:normal"] {
-        flex-direction: row;
-      }
-      &[data-dir="#{$device}:reverse"] {
-        flex-direction: row-reverse;
-      }
-    }
-  }
+      // gap
+      // ----------------------------
+      @each $size, $val in $spaces {
+        &[data-gap~="#{$device}:#{$size}"] {
+          gap: max(calc((var(--#{$prefix}-space-#{$size}) * 0.75) / 16 * 1rem), calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw));
+        }
 
-  // Alignment
-  // ----------------------------
-  @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
-      &[data-align~="#{$device}:start"] {
-        justify-content: start;
-      }
+        &[data-gap-x~="#{$device}:#{$size}"] {
+          column-gap: max(calc((var(--#{$prefix}-space-#{$size}) * 0.75) / 16 * 1rem), calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw));
+        }
 
-      &[data-align~="#{$device}:center"] {
-        justify-content: center;
-      }
-
-      &[data-align~="#{$device}:end"] {
-        justify-content: end;
-      }
-
-      &[data-align~="#{$device}:justify"] {
-        justify-content: space-between;
-      }
-
-      &[data-align~="#{$device}:top"] {
-        align-items: start;
-      }
-
-      &[data-align~="#{$device}:middle"] {
-        align-items: center;
-      }
-
-      &[data-align~="#{$device}:bottom"] {
-        align-items: end;
-      }
-    }
-  }
-
-  // Wrap
-  // ----------------------------
-  @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
-      &[data-wrap~="#{$device}:wrap"] {
-        flex-wrap: wrap;
-      }
-
-      &[data-wrap~="#{$device}:nowrap"] {
-        flex-wrap: nowrap;
+        &[data-gap-y~="#{$device}:#{$size}"] {
+          row-gap: max(calc((var(--#{$prefix}-space-#{$size}) * 0.75) / 16 * 1rem), calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw));
+        }
       }
     }
   }
@@ -104,10 +56,10 @@
     flex-direction: column;
     margin: 0;
 
-    // Alignment
-    // ----------------------------
     @each $device, $breakpoint in $breakpoints {
       @media screen and (min-width: $breakpoint) {
+        // Alignment
+        // ----------------------------
         &[data-align~="#{$device}:start"] {
           align-items: flex-start;
         }
@@ -131,32 +83,13 @@
         &[data-align~="#{$device}:bottom"] {
           justify-content: flex-end;
         }
-      }
-    }
-  }
 
-  // Grid
-  // ----------------------------
-
-  @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
-      @each $size, $val in $spaces {
-        &[data-gutter~="#{$device}:#{$size}"] {
-          grid-template-columns: repeat(var(--ol-grid-columns), minmax(0, 1fr));
-          --gap: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
-          gap: var(--gap);
-        }
-      }
-
-      &__item {
+        // Column
+        // ----------------------------
         @for $i from 1 through $column {
           &[data-col~="#{$device}:#{$i}"] {
             grid-column: span $i / span $i;
           }
-        }
-
-        &[data-col~="#{$device}:five"] {
-          width: 20%;
         }
 
         &[data-col~="#{$device}:full"] {
@@ -167,6 +100,8 @@
           grid-column: auto;
         }
 
+        // Row
+        // ----------------------------
         @for $i from 1 through 6 {
           &[data-row~="#{$device}:#{$i}"] {
             grid-row: span $i / span $i;
@@ -180,15 +115,16 @@
         &[data-row~="#{$device}:auto"] {
           grid-row: auto;
         }
-        &[data-order~="#{$device}:-1"] {
-          order: -1;
-        }
+
+        // Order
+        // ----------------------------
         @for $i from 0 through 3 {
+          &[data-order~="#{$device}:-#{$i}"] {
+            order: calc($i * -1);
+          }
+
           &[data-order~="#{$device}:#{$i}"] {
             order: $i;
-          }
-          &[data-grow~="#{$device}:#{$i}"] {
-            flex-grow: $i;
           }
         }
 
@@ -196,36 +132,15 @@
         // ----------------------------
         &[data-over~="#{$device}:left"] {
           margin-left: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
-          flex-grow: 1;
-
-          #{$this}[data-gutter] & {
-            border-left-width: 0;
-          }
         }
         &[data-over~="#{$device}:right"] {
           margin-right: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
-          flex-grow: 1;
-
-          #{$this}[data-gutter] & {
-            border-right-width: 0;
-          }
         }
         &[data-over~="#{$device}:clearLeft"] {
           margin-left: 0;
-
-          #{$this}[data-gutter] & {
-            border-left-width: var(--gap);
-          }
         }
         &[data-over~="#{$device}:clearRight"] {
           margin-right: 0;
-
-          #{$this}[data-gutter] & {
-            border-right-width: var(--gap);
-          }
-        }
-        &[data-over~="#{$device}:clearLeft"][data-over~="#{$device}:clearRight"] {
-          flex-grow: 0;
         }
       }
     }
