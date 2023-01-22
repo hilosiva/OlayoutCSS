@@ -21,6 +21,19 @@
           padding-bottom: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
         }
 
+        &[data-y~="#{$device}:#{$size}2x"] {
+          padding-top: calc((var(--#{$prefix}-space-#{$size}) * 2) / 16 * 1rem);
+          padding-bottom: calc((var(--#{$prefix}-space-#{$size}) * 2) / 16 * 1rem);
+        }
+
+        &[data-y~="#{$device}:#{$size}2xTop"] {
+          padding-top: calc((var(--#{$prefix}-space-#{$size}) * 2) / 16 * 1rem);
+        }
+
+        &[data-y~="#{$device}:#{$size}2xBottom"] {
+          padding-bottom: calc((var(--#{$prefix}-space-#{$size}) * 2) / 16 * 1rem);
+        }
+
         &[data-my~="#{$device}:#{$size}"] {
           margin-top: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
           margin-bottom: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
@@ -34,17 +47,17 @@
           margin-bottom: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
         }
 
-        &[data-by~="#{$device}:#{$size}"] {
-          border-top: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem) solid transparent;
-          border-bottom: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem) solid transparent;
+        &[data-my~="#{$device}:#{$size}2x"] {
+          margin-top: calc((var(--#{$prefix}-space-#{$size}) * 2) / 16 * 1rem);
+          margin-bottom: calc((var(--#{$prefix}-space-#{$size}) * 2) / 16 * 1rem);
         }
 
-        &[data-by~="#{$device}:#{$size}Top"] {
-          border-top: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem) solid transparent;
+        &[data-my~="#{$device}:#{$size}2xTop"] {
+          margin-top: calc((var(--#{$prefix}-space-#{$size}) * 2) / 16 * 1rem);
         }
 
-        &[data-by~="#{$device}:#{$size}Bottom"] {
-          border-bottom: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem) solid transparent;
+        &[data-my~="#{$device}:#{$size}2xBottom"] {
+          margin-bottom: calc((var(--#{$prefix}-space-#{$size}) * 2) / 16 * 1rem);
         }
 
         &[data-x~="#{$device}:#{$size}"] {
@@ -58,6 +71,45 @@
 
         &[data-x~="#{$device}:#{$size}Right"] {
           padding-right: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
+        }
+
+        &[data-x~="#{$device}:#{$size}2x"] {
+          padding-left: calc((var(--#{$prefix}-space-#{$size}) * 2) / var(--#{$prefix}-view-point) * 100vw);
+          padding-right: calc((var(--#{$prefix}-space-#{$size}) * 2) / var(--#{$prefix}-view-point) * 100vw);
+        }
+
+        &[data-x~="#{$device}:#{$size}2xLeft"] {
+          padding-left: calc((var(--#{$prefix}-space-#{$size}) * 2) / var(--#{$prefix}-view-point) * 100vw);
+        }
+
+        &[data-x~="#{$device}:#{$size}2xRight"] {
+          padding-right: calc((var(--#{$prefix}-space-#{$size}) * 2) / var(--#{$prefix}-view-point) * 100vw);
+        }
+
+        &[data-mx~="#{$device}:#{$size}"] {
+          margin-left: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
+          margin-right: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
+        }
+
+        &[data-mx~="#{$device}:#{$size}Left"] {
+          margin-left: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
+        }
+
+        &[data-mx~="#{$device}:#{$size}Right"] {
+          margin-right: calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw);
+        }
+
+        &[data-mx~="#{$device}:#{$size}2x"] {
+          margin-left: calc((var(--#{$prefix}-space-#{$size}) * 2) / var(--#{$prefix}-view-point) * 100vw);
+          margin-right: calc((var(--#{$prefix}-space-#{$size}) * 2) / var(--#{$prefix}-view-point) * 100vw);
+        }
+
+        &[data-mx~="#{$device}:#{$size}2xLeft"] {
+          margin-left: calc((var(--#{$prefix}-space-#{$size}) * 2) / var(--#{$prefix}-view-point) * 100vw);
+        }
+
+        &[data-mx~="#{$device}:#{$size}2xRight"] {
+          margin-right: calc((var(--#{$prefix}-space-#{$size}) * 2) / var(--#{$prefix}-view-point) * 100vw);
         }
       }
 
@@ -111,6 +163,19 @@
 
       &[data-x~="#{$device}:resetRight"] {
         padding-right: 0;
+      }
+
+      &[data-mx~="#{$device}:reset"] {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      &[data-mx~="#{$device}:reseLeft"] {
+        margin-left: 0;
+      }
+
+      &[data-mx~="#{$device}:resetRight"] {
+        margin-right: 0;
       }
     }
   }

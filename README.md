@@ -221,16 +221,16 @@ Grid Item に `data-caols` 属性を使ってブレイクポイント名とグ�
 </div>
 ```
 
-### ガーター
+### ギャップ
 
-Grid Item Grid Container に `data-gutter` 属性を使ってブレイクポイント名とスペース量のサイズを指定する。
+Grid Item Grid Container に `data-gap` 属性を使ってブレイクポイント名とスペース量のサイズを指定する。
 
 | カスタムデータ属性 | 説明             | 属性値                                                                      |
 | ------------------ | ---------------- | --------------------------------------------------------------------------- |
-| data-gutter        | グリッド間の余白 | `ブレイクポイント名:スペースサイズ`<br>（半角スペース区切りで複数指定可能） |
+| data-gap           | グリッド間の余白 | `ブレイクポイント名:スペースサイズ`<br>（半角スペース区切りで複数指定可能） |
 
 ```html
-<div class="ol-grid" data-gutter="min:small md:medium lg:large">
+<div class="ol-grid" data-gap="min:small md:medium lg:large">
   <div class="ol-grid__item" data-col="min:12 md:4 lg:6">A</div>
   <div class="ol-grid__item" data-col="min:6 md:4 lg:3">B</div>
   <div class="ol-grid__item" data-col="min:6 md:4 lg:3">C</div>
@@ -249,7 +249,7 @@ Grid Item 全体の位置揃えをするには、Grid Container に data-align �
 | data-align         | 位置 | `ブレイクポイント名:start` ・・・ 左揃え<br> `ブレイクポイント名:center` ・・・ 中央揃え<br> `ブレイクポイント名:end` ・・・ 右揃え<br>`ブレイクポイント名:justify` ・・・ 両端揃え<br>`ブレイクポイント名:top` ・・・ 上揃え<br>`ブレイクポイント名:middle` ・・・ 中央揃え<br>`ブレイクポイント名:bottom` ・・・ 下揃え<br><br>（半角スペース区切りで複数指定可能） |
 
 ```html
-<div class="ol-grid" data-gutter="min:small md:medium lg:large" data-align="xxs:center">
+<div class="ol-grid" data-gap="min:small md:medium lg:large" data-align="xxs:center">
   <div class="ol-grid__item">A</div>
   <div class="ol-grid__item">B</div>
   <div class="ol-grid__item">C</div>
@@ -265,7 +265,7 @@ Grid Item に個別で位置を指定することもできます。
 | data-align         | 位置 | `ブレイクポイント名:start` ・・・ 左揃え<br> `ブレイクポイント名:center` ・・・ 中央揃え<br> `ブレイクポイント名:end` ・・・ 右揃え<br>`ブレイクポイント名:top` ・・・ 上揃え<br>`ブレイクポイント名:middle` ・・・ 中央揃え<br>`ブレイクポイント名:bottom` ・・・ 下揃え<br><br>（半角スペース区切りで複数指定可能） |
 
 ```html
-<div class="ol-grid" data-gutter="min:small md:medium lg:large">
+<div class="ol-grid" data-gap="min:small md:medium lg:large">
   <div class="ol-grid__item">A</div>
   <div class="ol-grid__item" data-align="xxs:right xxs:middle">B</div>
   <div class="ol-grid__item">C</div>
