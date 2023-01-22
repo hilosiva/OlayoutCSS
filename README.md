@@ -32,7 +32,7 @@ Olayout は 俺流の「これさえあればだいたいのレイアウトが�
 CDN を利用する場合は、下記のようにしてください。
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hilosiva/OlayoutCSS/dist/olayout.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hilosiva/OlayoutCSS@beta/dist/olayout.css" />
 ```
 
 ## 初期設定
@@ -52,9 +52,9 @@ CDN を利用する場合は、下記のようにしてください。
 | --ol-space-small      | small サイズの余白量                       | `40`         |
 | --ol-space-medium     | medium サイズの余白量                      | `64`         |
 | --ol-space-large      | large サイズの余白量                       | `88`         |
-| --ol-space-xlarge     | xlarge サイズの余白量                      | `96`         |
-| --ol-space-xxlarge    | xxlarge サイズの余白量                     | `112`        |
-| --ol-space-max        | 最大の余白量                               | `120`        |
+| --ol-space-xlarge     | xlarge サイズの余白量                      | `104`        |
+| --ol-space-xxlarge    | xxlarge サイズの余白量                     | `120`        |
+| --ol-space-max        | 最大の余白量                               | `160`        |
 | --ol-base-color       | ベースカラー（削除するかも）               | `#fff`       |
 | --ol-main-color       | メインカラー（削除するかも）               | `#116ec5`    |
 | --ol-accent-color     | アクセントカラー（削除するかも）           | `#e4d558`    |
@@ -72,13 +72,12 @@ CDN を利用する場合は、下記のようにしてください。
   --ol-content-width: 1200;
 
   /* カンプサイズ */
-  --ol-sm-design-width: 375;
-  --ol-md-design-width: 768;
-  --ol-lg-design-width: 1440;
+  --ol-sm-design-width: 320;
+  --ol-lg-design-width: 1920;
 
   /* スペース量 */
   --ol-space-large: 80;
-  --ol-space-max: 160;
+  --ol-space-max: 200;
 
   /* 色 */
   --ol-main-color: #116ec5;
