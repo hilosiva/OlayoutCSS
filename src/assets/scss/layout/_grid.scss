@@ -118,7 +118,11 @@
 
         // Order
         // ----------------------------
-        @for $i from 0 through 3 {
+        &[data-order~="#{$device}:0"] {
+          order: 0;
+        }
+
+        @for $i from 1 through 3 {
           &[data-order~="#{$device}:-#{$i}"] {
             order: calc($i * -1);
           }
