@@ -76,9 +76,15 @@
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
-      @each $size, $val in $spaces {
-        &[data-gap~="#{$device}:#{$size}"] {
-          gap: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+      @for $i from 0 through $space-range {
+        &[data-gap~="#{$device}:#{$i}"] {
+          gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+        }
+        &[data-gap-x~="#{$device}:#{$i}"] {
+          column-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+        }
+        &[data-gap-y~="#{$device}:#{$i}"] {
+          row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
         }
       }
     }
@@ -126,12 +132,28 @@
 
         // Order
         // ----------------------------
-        @for $i from 0 through 3 {
+        &[data-order~="#{$device}:0"] {
+          order: 0;
+        }
+
+        @for $i from 1 through 3 {
+          &[data-order~="#{$device}:-#{$i}"] {
+            order: calc($i * -1);
+          }
+
           &[data-order~="#{$device}:#{$i}"] {
             order: $i;
           }
+        }
+
+        // Grow & Shrink
+        // ----------------------------
+        @for $i from 0 through 3 {
           &[data-grow~="#{$device}:#{$i}"] {
             flex-grow: $i;
+          }
+          &[data-grow~="#{$device}:#{$i}"] {
+            flex-shrink: $i;
           }
         }
 

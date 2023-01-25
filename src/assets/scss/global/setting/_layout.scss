@@ -24,20 +24,29 @@ $breakpoints: (
 ) !default;
 
 // 余白
+$space: 8;
+
+$space-range: 30;
+
 $spaces: (
-  min: 8,
-  xxsmall: 16,
-  xsmall: 24,
-  small: 40,
-  medium: 64,
-  large: 88,
-  xlarge: 104,
-  xxlarge: 120,
-  max: 160,
+  0: 0,
+  1: 8,
+  2: 16,
+  3: 24,
+  4: 40,
+  5: 64,
+  6: 88,
+  7: 104,
+  8: 120,
+  9: 160,
+  10: 200,
 ) !default;
 
 // Grid Column
 $column: 12;
+
+// Grid Row
+$row: 6;
 
 // スクロールバー
 $scroll-bar: 0;

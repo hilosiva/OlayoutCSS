@@ -26,7 +26,7 @@
 
       // Rows
       // ----------------------------
-      @for $i from 1 through 6 {
+      @for $i from 1 through $row {
         &[data-rows~="#{$device}:#{$i}"] {
           grid-template-rows: repeat(#{$i}, minmax(0, 1fr));
         }
@@ -34,17 +34,15 @@
 
       // gap
       // ----------------------------
-      @each $size, $val in $spaces {
-        &[data-gap~="#{$device}:#{$size}"] {
-          gap: max(calc((var(--#{$prefix}-space-#{$size}) * 0.75) / 16 * 1rem), calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw));
+      @for $i from 0 through $space-range {
+        &[data-gap~="#{$device}:#{$i}"] {
+          gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
         }
-
-        &[data-gap-x~="#{$device}:#{$size}"] {
-          column-gap: max(calc((var(--#{$prefix}-space-#{$size}) * 0.75) / 16 * 1rem), calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw));
+        &[data-gap-x~="#{$device}:#{$i}"] {
+          column-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
         }
-
-        &[data-gap-y~="#{$device}:#{$size}"] {
-          row-gap: max(calc((var(--#{$prefix}-space-#{$size}) * 0.75) / 16 * 1rem), calc(var(--#{$prefix}-space-#{$size}) / var(--#{$prefix}-view-point) * 100vw));
+        &[data-gap-y~="#{$device}:#{$i}"] {
+          row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
         }
       }
     }
@@ -90,6 +88,10 @@
           &[data-col~="#{$device}:#{$i}"] {
             grid-column: span $i / span $i;
           }
+
+          &[data-col-start~="#{$device}:#{$i}"] {
+            grid-column-start: $i;
+          }
         }
 
         &[data-col~="#{$device}:full"] {
@@ -102,9 +104,13 @@
 
         // Row
         // ----------------------------
-        @for $i from 1 through 6 {
+        @for $i from 1 through $row {
           &[data-row~="#{$device}:#{$i}"] {
             grid-row: span $i / span $i;
+          }
+
+          &[data-row-start~="#{$device}:#{$i}"] {
+            grid-row-start: $i;
           }
         }
 
