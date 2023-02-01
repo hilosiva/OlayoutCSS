@@ -75,45 +75,4 @@
       }
     }
   }
-  // overflow
-  &[data-overflow="hidden"] {
-    overflow: hidden;
-  }
-  &[data-overflow="auto"] {
-    overflow: auto;
-  }
-  &[data-overflow="visible"] {
-    overflow: visible;
-  }
-
-  // Background-color
-  &[data-bg="base"] {
-    background-color: var(--#{$prefix}-base-color);
-  }
-  &[data-bg="main"] {
-    background-color: var(--#{$prefix}-main-color);
-  }
-  &[data-bg="accent"] {
-    background-color: var(--#{$prefix}-accent-color);
-  }
-  &[data-bg="light"] {
-    background-color: var(--#{$prefix}-light-color);
-  }
-  &[data-bg="dark"] {
-    background-color: var(--#{$prefix}-dark-color);
-  }
-  &[data-bg="white"] {
-    background-color: #fff;
-  }
-  &[data-bg="block"] {
-    background-color: #000;
-  }
-
-  // border-color
-  &[data-border~="top"] {
-    border-top: 1px solid var(--#{$prefix}-light-color);
-  }
-  &[data-border~="bottom"] {
-    border-bottom: 1px solid var(--#{$prefix}-light-color);
-  }
 }

@@ -92,6 +92,10 @@
           &[data-col-start~="#{$device}:#{$i}"] {
             grid-column-start: $i;
           }
+
+          &[data-col-end~="#{$device}:#{$i}"] {
+            grid-column-end: $i;
+          }
         }
 
         &[data-col~="#{$device}:full"] {
@@ -100,6 +104,14 @@
 
         &[data-col~="#{$device}:auto"] {
           grid-column: auto;
+        }
+
+        &[data-col-start~="#{$device}:auto"] {
+          grid-column-start: auto;
+        }
+
+        &[data-col-end~="#{$device}:auto"] {
+          grid-column-end: auto;
         }
 
         // Row
@@ -112,6 +124,10 @@
           &[data-row-start~="#{$device}:#{$i}"] {
             grid-row-start: $i;
           }
+
+          &[data-row-end~="#{$device}:#{$i}"] {
+            grid-row-end: $i;
+          }
         }
 
         &[data-row~="#{$device}:full"] {
@@ -120,6 +136,14 @@
 
         &[data-row~="#{$device}:auto"] {
           grid-row: auto;
+        }
+
+        &[data-row-start~="#{$device}:auto"] {
+          grid-row-start: auto;
+        }
+
+        &[data-row-end~="#{$device}:auto"] {
+          grid-row-end: auto;
         }
 
         // Order

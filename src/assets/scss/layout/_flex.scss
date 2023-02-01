@@ -13,10 +13,10 @@
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
-      &[data-wrap="#{$device}:nowrap"] {
+      &[data-wrap~="#{$device}:nowrap"] {
         flex-wrap: nowrap;
       }
-      &[data-wrap="#{$device}:wrap"] {
+      &[data-wrap~="#{$device}:wrap"] {
         flex-wrap: wrap;
       }
     }
@@ -26,13 +26,13 @@
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
-      &[data-dir="#{$device}:normal"] {
+      &[data-dir~="#{$device}:row"] {
         flex-direction: row;
       }
-      &[data-dir="#{$device}:reverse"] {
+      &[data-dir~="#{$device}:reverse"] {
         flex-direction: row-reverse;
       }
-      &[data-dir="#{$device}:column"] {
+      &[data-dir~="#{$device}:column"] {
         flex-direction: column;
       }
     }
@@ -96,10 +96,10 @@
 
     @each $device, $breakpoint in $breakpoints {
       @media screen and (min-width: $breakpoint) {
-        // Cols
+        // Col
         // ----------------------------
         @for $i from 1 through $column {
-          &[data-cols~="#{$device}:#{$i}"] {
+          &[data-col~="#{$device}:#{$i}"] {
             width: percentage(math.div($i, $column));
           }
         }
@@ -152,7 +152,7 @@
           &[data-grow~="#{$device}:#{$i}"] {
             flex-grow: $i;
           }
-          &[data-grow~="#{$device}:#{$i}"] {
+          &[data-shrink~="#{$device}:#{$i}"] {
             flex-shrink: $i;
           }
         }
