@@ -44,6 +44,21 @@
         overflow-wrap: initial;
       }
 
+      // White Space
+      // ----------------------------
+      &[data-space~="#{$device}:nowrap"] {
+        white-space: nowrap;
+      }
+      &[data-space~="#{$device}:wrap"] {
+        white-space: normal;
+      }
+      &[data-space~="#{$device}:pre"] {
+        white-space: pre;
+      }
+      &[data-space~="#{$device}:preWrap"] {
+        white-space: pre-wrap;
+      }
+
       // Line Height
       // ----------------------------
       &[data-line~="#{$device}:-2"] {
