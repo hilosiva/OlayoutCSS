@@ -4,7 +4,7 @@ module.exports = {
       xs: "475px",
     },
     layout: {
-      space: 18,
+      space: 8,
     },
   },
 };
