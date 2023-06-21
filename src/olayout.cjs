@@ -19,6 +19,13 @@ module.exports = postcss.plugin("olayout", () => {
       const insertNode = postcss.parse(css, { from: cssPath });
 
       try {
+        insertNode.walkAtRules("media", (atrule) => {
+          const screenKey = atrule.params.trim();
+
+          if (configFile.theme.screens[screenKey]) {
+            atrule.params = `screen and (min-width: ${configFile.theme.screens[screenKey]})`;
+          }
+        });
         insertNode.walkRules(":root", (rule) => {
           if (rule.parent.type !== "atrule" || rule.parent.name !== "media") {
             rule.walkDecls(/^--/, (decl) => {

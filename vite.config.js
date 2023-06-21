@@ -14,6 +14,7 @@ const dir = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // root: import.meta.env.MODE === "development" ? "" : "example",
   root: "example",
   publicDir: dir.publicDir,
 
@@ -42,6 +43,7 @@ export default defineConfig({
       output: {
         assetFileNames: "olayout.[ext]",
       },
+      // manualChunks: () => "ignored", // チャンクの出力を無視する
     },
   },
 });

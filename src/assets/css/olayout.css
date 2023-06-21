@@ -550,7 +550,7 @@ form button:not([type]):after {
   white-space: nowrap;
   clip-path: inset(50%);
 }
-@media screen and (min-width: 0) {
+@media min {
   .ol-container[data-width~="min:xsmall"] {
     width: 70%;
   }
@@ -3371,7 +3371,7 @@ form button:not([type]):after {
     display: unset;
   }
 }
-@media screen and (min-width: 375px) {
+@media xxs {
   .ol-container[data-width~="xxs:xsmall"] {
     width: 70%;
   }
@@ -6192,7 +6192,7 @@ form button:not([type]):after {
     display: unset;
   }
 }
-@media screen and (min-width: 414px) {
+@media xs {
   .ol-container[data-width~="xs:xsmall"] {
     width: 70%;
   }
@@ -9013,7 +9013,7 @@ form button:not([type]):after {
     display: unset;
   }
 }
-@media screen and (min-width: 576px) {
+@media sm {
   .ol-container[data-width~="sm:xsmall"] {
     width: 70%;
   }
@@ -11834,7 +11834,7 @@ form button:not([type]):after {
     display: unset;
   }
 }
-@media screen and (min-width: 768px) {
+@media md {
   :root {
     --ol-view-point: var(--ol-md-design-width);
   }
@@ -14658,7 +14658,7 @@ form button:not([type]):after {
     display: unset;
   }
 }
-@media screen and (min-width: 1024px) {
+@media lg {
   :root {
     --ol-view-point: var(--ol-lg-design-width);
   }
@@ -17494,7 +17494,7 @@ form button:not([type]):after {
     display: unset;
   }
 }
-@media screen and (min-width: 1280px) {
+@media xl {
   .ol-container[data-width~="xl:xsmall"] {
     width: 70%;
   }
@@ -20315,7 +20315,7 @@ form button:not([type]):after {
     display: unset;
   }
 }
-@media screen and (min-width: 1480px) {
+@media xxl {
   .ol-container[data-width~="xxl:xsmall"] {
     width: 70%;
   }
