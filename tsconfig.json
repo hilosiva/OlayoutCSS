@@ -5,9 +5,9 @@
     "module": "commonjs",
     // "lib": ["es2021", "webworker"], // 追加する行
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "./lib",
     "declarationMap": true,
-    "declarationDir": "./dist",
+    "declarationDir": "./lib",
     "emitDeclarationOnly": true,
     "strict": true,
 
