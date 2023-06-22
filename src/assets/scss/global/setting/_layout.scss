@@ -4,12 +4,20 @@
 //============================================
 
 // Contentの幅
-$content-width: 1280 !default;
+$content-widths: (
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  xxl: 1440,
+) !default;
 
 // デザインカンプのアートボードサイズ
-$sm-comp-width: 375;
-$md-comp-width: 768;
-$lg-comp-width: 1440;
+$comps: (
+  sm: 375,
+  md: 768,
+  lg: 1440,
+) !default;
 
 // ブレークポイント
 $breakpoints: (
@@ -18,26 +26,21 @@ $breakpoints: (
   xs: 414px,
   sm: 576px,
   md: 768px,
-  lg: 992px,
-  xl: 1200px,
+  lg: 1024px,
+  xl: 1280px,
   xxl: 1480px,
 ) !default;
 
 // 余白
-$spaces: (
-  min: 8,
-  xxsmall: 16,
-  xsmall: 24,
-  small: 40,
-  medium: 64,
-  large: 88,
-  xlarge: 134,
-  xxlarge: 160,
-  max: 192,
-) !default;
+$space: 8;
+
+$space-range: 30;
 
 // Grid Column
 $column: 12;
+
+// Grid Row
+$row: 6;
 
 // スクロールバー
 $scroll-bar: 0;

@@ -1,11 +1,12 @@
 @charset 'UTF-8';
 @use "../setting" as *;
 @use "../function" as *;
+@use "sass:math";
 
 //  aspect ratio
 //--------------------------------------------
 @mixin ar($width, $height) {
-  aspect-ratio: aspect($width, $height);
+  aspect-ratio: #{$width} / #{$height};
 
   width: 100%;
   @supports not (aspect-ratio: 1 / 1) {
@@ -40,6 +41,5 @@
 
   > img {
     object-fit: cover;
-    font-family: "object-fit: cover;", sans-serif;
   }
 }

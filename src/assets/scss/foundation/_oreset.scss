@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 @use "sass:math";
 @use "../global" as *;
-
+/*! Olayout CSS v1.0.0 | MIT License | https://github.com/hirosiva/Olayout */
 /*
   # Global
 ---------------------------------------------- */
@@ -9,14 +9,15 @@
  * Settings
  */
 :root {
-  --#{$prefix}-content-width: #{$content-width};
-  @each $size, $val in $spaces {
-    --#{$prefix}-space-#{$size}: #{$val};
+  @each $size, $val in $content-widths {
+    --#{$prefix}-#{$size}-content-width: #{$val};
+  }
+  @each $size, $val in $comps {
+    --#{$prefix}-#{$size}-design-width: #{$val};
   }
 
-  --#{$prefix}-sm-design-width: #{$sm-comp-width};
-  --#{$prefix}-md-design-width: #{$md-comp-width};
-  --#{$prefix}-lg-design-width: #{$lg-comp-width};
+  --#{$prefix}-space: #{$space};
+
   --#{$prefix}-scrollbar-width: #{$scroll-bar};
   --#{$prefix}-base-color: #fff;
   --#{$prefix}-main-color: #116ec5;
@@ -25,9 +26,11 @@
   --#{$prefix}-dark-color: #1c1c1c;
   --#{$prefix}-primary-text-color: #101010;
   --#{$prefix}-light-text-color: #fff;
-  --#{$prefix}-primary-font-set: sans-serif;
-  --#{$prefix}-en-font-set: sans-serif;
+  --#{$prefix}-primary-font-set: -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif;
+  --#{$prefix}-en-font-set: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   --#{$prefix}-base-line-height: 1.5;
+  --#{$prefix}-base-feature-settings: "pkna";
+  --#{$prefix}-base-letter-spacing: 0.05em;
   --#{$prefix}-scroll-behavior: smooth;
   --#{$prefix}-ease-out-expo: #{$ease-out-expo};
   --#{$prefix}-duration: #{$duration};
@@ -164,21 +167,20 @@ section {
 html {
   box-sizing: border-box;
   min-height: 100%;
-  overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: var(--#{$prefix}-scroll-behavior, initial);
 }
 
 body {
   min-height: 100%;
-  background-color: var(--#{$prefix}-base-color, #fff);
-  color: var(--#{$prefix}-primary-text-color, #101010);
-  font-family: var(--#{$prefix}-primary-font-set, "sans-serif");
-  line-height: var(--#{$prefix}-base-line-height, 1.5);
-  letter-spacing: 0.05em;
+  background-color: var(--#{$prefix}-base-color);
+  color: var(--#{$prefix}-primary-text-color);
+  font-family: var(--#{$prefix}-primary-font-set);
+  line-height: var(--#{$prefix}-base-line-height);
+  letter-spacing: var(--#{$prefix}-base-letter-spacing);
   text-rendering: optimizeLegibility;
   -webkit-overflow-scrolling: touch;
-  font-feature-settings: "pkna";
+  font-feature-settings: var(--#{$prefix}-base-feature-settings);
 }
 
 /*

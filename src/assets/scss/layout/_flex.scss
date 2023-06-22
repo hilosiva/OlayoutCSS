@@ -12,11 +12,11 @@
   // Wrap
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
-      &[data-wrap="#{$device}:nowrap"] {
+    @include mq($device) {
+      &[data-wrap~="#{$device}:nowrap"] {
         flex-wrap: nowrap;
       }
-      &[data-wrap="#{$device}:wrap"] {
+      &[data-wrap~="#{$device}:wrap"] {
         flex-wrap: wrap;
       }
     }
@@ -25,14 +25,14 @@
   // Direction
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
-      &[data-dir="#{$device}:normal"] {
+    @include mq($device) {
+      &[data-dir~="#{$device}:row"] {
         flex-direction: row;
       }
-      &[data-dir="#{$device}:reverse"] {
+      &[data-dir~="#{$device}:reverse"] {
         flex-direction: row-reverse;
       }
-      &[data-dir="#{$device}:column"] {
+      &[data-dir~="#{$device}:column"] {
         flex-direction: column;
       }
     }
@@ -41,7 +41,7 @@
   // Alignment
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+    @include mq($device) {
       &[data-align~="#{$device}:start"] {
         justify-content: flex-start;
       }
@@ -75,10 +75,16 @@
   // Gap
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
-      @each $size, $val in $spaces {
-        &[data-gap~="#{$device}:#{$size}"] {
-          gap: calc(var(--#{$prefix}-space-#{$size}) / 16 * 1rem);
+    @include mq($device) {
+      @for $i from 0 through $space-range {
+        &[data-gap~="#{$device}:#{$i}"] {
+          gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+        }
+        &[data-gap-x~="#{$device}:#{$i}"] {
+          column-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+        }
+        &[data-gap-y~="#{$device}:#{$i}"] {
+          row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
         }
       }
     }
@@ -89,11 +95,11 @@
     flex-direction: column;
 
     @each $device, $breakpoint in $breakpoints {
-      @media screen and (min-width: $breakpoint) {
-        // Cols
+      @include mq($device) {
+        // Col
         // ----------------------------
         @for $i from 1 through $column {
-          &[data-cols~="#{$device}:#{$i}"] {
+          &[data-col~="#{$device}:#{$i}"] {
             width: percentage(math.div($i, $column));
           }
         }
@@ -126,12 +132,28 @@
 
         // Order
         // ----------------------------
-        @for $i from 0 through 3 {
+        &[data-order~="#{$device}:0"] {
+          order: 0;
+        }
+
+        @for $i from 1 through 3 {
+          &[data-order~="#{$device}:-#{$i}"] {
+            order: calc($i * -1);
+          }
+
           &[data-order~="#{$device}:#{$i}"] {
             order: $i;
           }
+        }
+
+        // Grow & Shrink
+        // ----------------------------
+        @for $i from 0 through 3 {
           &[data-grow~="#{$device}:#{$i}"] {
             flex-grow: $i;
+          }
+          &[data-shrink~="#{$device}:#{$i}"] {
+            flex-shrink: $i;
           }
         }
 

@@ -4,22 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Olayout CSS</title>
-    <link rel="stylesheet" href="/assets/scss/olayout.scss" />
+    <!-- <link rel="stylesheet" href="/assets/scss/olayout.scss" /> -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
+    <link rel="stylesheet" href="assets/css/index.css" />
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Zen+Kaku+Gothic+New:wght@500;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css" />
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js" 　defer></script>
     <style>
       :root {
         --ol-content-width: 1440;
-        --ol-space-xsmall: 32;
-        --ol-space-small: 48;
-        --ol-space-xlarge: 136;
-        --ol-space-xxlarge: 160;
-        --ol-space-xxxlarge: 260;
 
         /* --ol-base-color: #ecebe3; */
         --ol-base-color: #1c1c1c;
@@ -31,6 +26,8 @@
         --ol-light-text-color: #fff;
         --ol-primary-font-set: "Zen Kaku Gothic New", sans-serif;
         --ol-en-font-set: "Marcellus", serif;
+        /* --ol-base-feature-settings: "palt"; */
+        /* --ol-base-letter-spacing: 1em; */
       }
 
       [lang="en"] {
@@ -93,44 +90,44 @@
   </head>
   <body>
     <div data-scroll-container>
-      <header class="ol-spacer" data-y="min:xxsmallTop lg:smallTop ">
+      <header class="ol-spacer" data-pt="min:2 lg:3">
         <div class="ol-container">
           <h1 lang="en">Olayout CSS</h1>
         </div>
       </header>
       <main>
-        <div class="ol-spacer" data-y="min:medium lg:medium">
+        <div class="ol-spacer" data-py="min:6 lg:6">
           <div class="ol-container">
             <p class="hero" lang="en">Ore no Layout CSS Framework</p>
           </div>
         </div>
-        <section class="ol-spacer" data-y="min:small lg:medium">
+        <section class="ol-spacer" data-py="min:2 lg:6">
           <div class="ol-container">
             <h2 lang="en">Wellcome</h2>
-            <div class="ol-spacer" data-y="min:xxsmallTop">
+            <div class="ol-spacer" data-pt="min:2">
               <p class="ol-text" data-word="min:keep">
                 Olayaout CSSはWebページのレイアウトが<wbr />効率コーディングできる<wbr />俺流のレイアウト用CSSフレームワークです。<br />
                 正直「Olayout」というネーミングは変えたいと思ってますよ。そりゃ。<br />
                 このOlayaout CSSに主に以下の機能があります。
               </p>
             </div>
-            <div class="ol-spacer" data-y="min:smallTop lg:largeTop">
-              <div class="ol-grid" data-cols="min:1 lg:3" data-gap="min:xxsmall lg:medium" data-align="lg:center">
+            <div class="ol-spacer" data-pt="min:4 lg:8">
+              <div class="ol-grid" data-cols="min:1 lg:3" data-gap="min:1 lg:6" data-align="lg:center">
                 <section class="ol-grid__item">
                   <h3 lang="en">Reset</h3>
-                  <div class="ol-spacer" data-y="min:xxsmallTop">
+                  <div class="ol-spacer" data-pt="min:2">
                     <p>ブラウザのデフォルトスタイルで設定されている要素のリセットを行います。フォントサイズなどはリセットされません。</p>
                   </div>
                 </section>
                 <section class="ol-grid__item">
                   <h3 lang="en">Container &amp; Spacer</h3>
-                  <div class="ol-spacer" data-y="min:xxsmallTop">
+                  <div class="ol-spacer" data-pt="min:2">
                     <p>ボックスのセンタリングや、各ブロック間の上下の余白、ブロック内の余白をデザインに合わせて自由に設定することができます。</p>
                   </div>
                 </section>
                 <section class="ol-grid__item">
                   <h3 lang="en">Grid System</h3>
-                  <div class="ol-spacer" data-y="min:xxsmallTop">
+                  <div class="ol-spacer" data-pt="min:2">
                     <p>各ブロック間の上下の余白や、ブロック内の余白を予めデザインに合わせて自由に設定することができます。</p>
                   </div>
                 </section>
@@ -138,13 +135,13 @@
             </div>
           </div>
         </section>
-        <section class="ol-spacer" data-y="min:small lg:medium">
+        <section class="ol-spacer" data-py="min:4 lg:6">
           <div class="ol-container">
             <h2 lang="en">Install</h2>
-            <div class="ol-spacer" data-y="min:xxsmall">
+            <div class="ol-spacer" data-py="min:1">
               <p>「olayout.min.css」を読み込む。</p>
             </div>
-            <div class="ol-spacer" data-y="min:xsmall">
+            <div class="ol-spacer" data-py="min:2">
               <figure class="codeWrap">
                 <pre><code class="language-html">&lt;link rel="stylesheet" href="olayout.min.css"&gt;</code></pre>
                 <figcaption>sample.html</figcaption>
@@ -152,21 +149,20 @@
             </div>
           </div>
         </section>
-        <section class="ol-spacer" data-y="min:small lg:medium">
+        <section class="ol-spacer" data-py="min:4 lg:6">
           <div class="ol-container">
             <h2 lang="en">Settings</h2>
-            <div class="ol-spacer" data-y="min:xxsmall">
+            <div class="ol-spacer" data-py="min:1">
               <p>カスタムプロパティで余白量や配色、書体を設定を上書きできる</p>
             </div>
-            <div class="ol-spacer" data-y="min:xsmall">
+            <div class="ol-spacer" data-py="min:2">
               <figure class="codeWrap">
                 <pre><code class="language-css">:root {
   /* コンテンツ幅 */
-  --ol-content-width: 1200;
+  --ol-xl-content-width: 1200;
 
   /* スペース量 */
-  --ol-space-large: 80;
-  --ol-space-max: 160;
+  --ol-space: 8;
 
   /* 色 */
   --ol-main-color: #116ec5;
@@ -180,11 +176,11 @@
             </div>
           </div>
         </section>
-        <section class="ol-spacer" data-y="min:small lg:medium">
+        <section class="ol-spacer" data-py="min:4 lg:6">
           <div class="ol-container">
             <h2 lang="en">Reset</h2>
-            <div class="ol-spacer" data-y="min:xxsmallTop">
-              <div class="ol-grid" data-gap="min:xsmall lg:small">
+            <div class="ol-spacer" data-pt="min:2">
+              <div class="ol-grid" data-gap="min:2 lg:3">
                 <div class="ol-grid__item" data-col="min:12 lg6">
                   <p>ブラウザのデフォルトスタイルを調整するReset用のCSSが入っています。</p>
                 </div>
@@ -204,13 +200,13 @@
             </div>
           </div>
         </section>
-        <section class="ol-spacer" data-y="min:small lg:medium">
+        <section class="ol-spacer" data-py="min:4 lg:6">
           <div class="ol-container">
             <h2 lang="en">Container &amp; Spacer</h2>
-            <div class="ol-spacer" data-y="min:xxsmallTop">
+            <div class="ol-spacer" data-pt="min:2">
               <p>ボックスのセンタリングは <code>.ol-container</code> を ブロック間の余白には <code>.ol-spacer</code> を使う。</p>
             </div>
-            <div class="ol-spacer" data-y="min:xsmall">
+            <div class="ol-spacer" data-py="min:3">
               <figure class="codeWrap">
                 <pre><code class="language-html">&lt;!-- ボックスのセンタリング --&gt;
 &lt;div class="ol-container"&gt;
@@ -224,34 +220,34 @@
                 <figcaption>sample.html</figcaption>
               </figure>
             </div>
-            <div class="ol-spacer" data-y="min:smallTop lg:mediumTop">
-              <div class="ol-grid" data-cols="min:1 lg:2" data-gap="min:xxsmall lg:large">
+            <div class="ol-spacer" data-pt="min:4 lg:6">
+              <div class="ol-grid" data-cols="min:1 lg:2" data-gap="min:2 lg:6">
                 <section class="ol-grid__item">
                   <h3 lang="en">Top and bottom margins</h3>
-                  <div class="ol-spacer" data-y="min:xxsmallTop">
-                    <p>上下の余白には、<code>data-y</code>属性を使い「ウインドウサイズ名：スペース名」で指定する。<small>（半角スペース区切りで複数指定可能）</small></p>
+                  <div class="ol-spacer" data-pt="min:2">
+                    <p>上下の余白には、<code>data-py</code>属性を使い「ウインドウサイズ名：スペース名」で指定する。<small>（半角スペース区切りで複数指定可能）</small></p>
                   </div>
-                  <div class="ol-spacer" data-y="min:xsmall">
+                  <div class="ol-spacer" data-py="min:3">
                     <figure class="codeWrap">
                       <pre><code class="language-html">&lt;!-- 上下にスペースを空ける --&gt;
-&lt;div class="ol-spacer" data-y="min:small md:medium"&gt;
+&lt;div class="ol-spacer" data-py="min:4 md:medium"&gt;
   ...
 &lt;/div&gt;</code></pre>
                       <figcaption>sample.html</figcaption>
                     </figure>
                   </div>
-                  <div class="ol-spacer" data-y="min:xxsmallTop">
+                  <div class="ol-spacer" data-pt="min:2">
                     <p>上だけ指定する場合は「ウインドウサイズ名：スペース名Top」とし、下だけ指定する場合は「ウインドウサイズ名：スペース名Bottom」とします。</p>
                   </div>
-                  <div class="ol-spacer" data-y="min:xsmall">
+                  <div class="ol-spacer" data-py="min:3">
                     <figure class="codeWrap">
                       <pre><code class="language-html">&lt;!-- 上だけスペースを空ける --&gt;
-&lt;div class="ol-spacer" data-y="min:smallTop md:mediumTop"&gt;
+&lt;div class="ol-spacer" data-pt="min:4 md:mediumTop"&gt;
   ...
 &lt;/div&gt;
 
 &lt;!-- 下だけスペースを空ける --&gt;
-&lt;div class="ol-spacer" data-y="min:smallBottom md:mediumBottom"&gt;
+&lt;div class="ol-spacer" data-py="min:4Bottom md:mediumBottom"&gt;
   ...
 &lt;/div&gt;</code></pre>
                       <figcaption>sample.html</figcaption>
@@ -260,30 +256,30 @@
                 </section>
                 <section class="ol-grid__item">
                   <h3 lang="en">Left and right margins</h3>
-                  <div class="ol-spacer" data-y="min:xxsmallTop">
+                  <div class="ol-spacer" data-pt="min:2">
                     <p>左右の余白には、<code>data-x</code>属性を使い「ウインドウサイズ名：スペース名」で指定する。<small>（半角スペース区切りで複数指定可能）</small></p>
                   </div>
-                  <div class="ol-spacer" data-y="min:xsmall">
+                  <div class="ol-spacer" data-py="min:3">
                     <figure class="codeWrap">
                       <pre><code class="language-html">&lt;!-- 左右にスペースを空ける --&gt;
-&lt;div class="ol-spacer" data-x="min:small md:medium"&gt;
+&lt;div class="ol-spacer" data-x="min:4 md:medium"&gt;
   ...
 &lt;/div"&gt;</code></pre>
                       <figcaption>sample.html</figcaption>
                     </figure>
                   </div>
-                  <div class="ol-spacer" data-y="min:xxsmallTop">
+                  <div class="ol-spacer" data-pt="min:2">
                     <p>左だけ指定する場合は「ウインドウサイズ名：スペース名Left」とし、右だけ指定する場合は「ウインドウサイズ名：スペース名Right」とします。</p>
                   </div>
-                  <div class="ol-spacer" data-y="min:xsmall">
+                  <div class="ol-spacer" data-py="min:3">
                     <figure class="codeWrap">
                       <pre><code class="language-html">&lt;!-- 左だけスペースを空ける --&gt;
-&lt;div class="ol-spacer" data-x="min:smallLeft md:mediumLeft"&gt;
+&lt;div class="ol-spacer" data-x="min:4Left md:mediumLeft"&gt;
   ...
 &lt;/div&gt;
 
 &lt;!-- 右だけスペースを空ける --&gt;
-&lt;div class="ol-spacer" data-x="min:smallRight md:mediumRight"&gt;
+&lt;div class="ol-spacer" data-x="min:4Right md:mediumRight"&gt;
   ...
 &lt;/div&gt;</code></pre>
                       <figcaption>sample.html</figcaption>
@@ -294,11 +290,11 @@
             </div>
           </div>
         </section>
-        <section class="ol-spacer" data-y="min:small lg:mediumTop lg:xlargeBottom" data-overflow="hidden">
+        <section class="ol-spacer" data-py="min:4 lg:6 lg:xlargeBottom" data-overflow="hidden">
           <div class="ol-container">
             <h2 lang="en">Grid System</h2>
-            <div class="ol-spacer" data-y="min:xxsmallTop lg:xsmallTop">
-              <div class="ol-grid" data-gap="min:xxsmall lg:small">
+            <div class="ol-spacer" data-pt="min:2 lg:xsmallTop">
+              <div class="ol-grid" data-gap="min:2 lg:4">
                 <div class="ol-grid__item" data-col="min:6">
                   <div class="box bg-white">
                     <p>Grid Item</p>
@@ -371,11 +367,11 @@
                 </div>
               </div>
             </div>
-            <section class="ol-spacer" data-y="min:mediumTop lg:xlargeTop">
-              <div class="ol-grid" data-cols="min:1 lg:2" data-gap="min:xxsmall lg:small">
+            <section class="ol-spacer" data-pt="min:5 lg:6">
+              <div class="ol-grid" data-cols="min:1 lg:2" data-gap="min:2 lg:4">
                 <div class="ol-grid__item" data-align="lg:middle" data-order="min:1">
                   <h3 lang="en">Over The Container</h3>
-                  <p class="ol-spacer" data-y="min:xxsmall">コンテンツ幅を飛び越えて画像を表示するなども簡単に実装可能。スマホでは左右両方飛び越して、PCでは片側だけ飛び越すなどといったことも可能。</p>
+                  <p class="ol-spacer" data-py="min:2">コンテンツ幅を飛び越えて画像を表示するなども簡単に実装可能。スマホでは左右両方飛び越して、PCでは片側だけ飛び越すなどといったことも可能。</p>
                 </div>
                 <div class="ol-grid__item" data-over="min:left min:right lg:clearRight">
                   <figure>
@@ -384,11 +380,11 @@
                 </div>
               </div>
             </section>
-            <section class="ol-spacer" data-y="min:mediumTop lg:largeTop">
-              <div class="ol-grid" data-cols="min:1 lg:3" data-gap="min:xxsmall lg:large">
+            <section class="ol-spacer" data-pt="min:5 lg:6">
+              <div class="ol-grid" data-cols="min:1 lg:3" data-gap="min:2 lg:6">
                 <div class="ol-grid__item" data-col="lg:1" data-align="lg:middle" data-order="min:1 lg:0">
                   <h3 lang="en">Over The Container</h3>
-                  <p class="ol-spacer" data-y="min:xxsmall">コンテンツ幅を飛び越えて画像を表示するなども簡単に実装可能。スマホでは左右両方飛び越して、PCでは片側だけ飛び越すなどといったことも可能。</p>
+                  <p class="ol-spacer" data-py="min:2">コンテンツ幅を飛び越えて画像を表示するなども簡単に実装可能。スマホでは左右両方飛び越して、PCでは片側だけ飛び越すなどといったことも可能。</p>
                 </div>
                 <div class="ol-grid__item" data-col="lg:1" data-over="min:left min:right lg:clearLeft">
                   <figure>
@@ -400,7 +396,7 @@
           </div>
         </section>
       </main>
-      <footer class="ol-spacer" data-y="min:xxsmall lg:xsmall" data-bg="dark">
+      <footer class="ol-spacer" data-py="min:2 lg:2" data-bg="dark">
         <div class="ol-container">
           <p>
             <small>&copy; 2022 Shibata Hironori</small>
@@ -414,6 +410,6 @@
         smooth: true,
       });
     </script>
-    <script type="module" src="/assets/js/main.js"></script>
+    <!-- <script type="module" src="assets/js/main.js"></script> -->
   </body>
 </html>
