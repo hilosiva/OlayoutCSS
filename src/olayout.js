@@ -50,16 +50,18 @@ const defaultConfig = {
   },
 };
 
-module.exports = postcss.plugin("olayout", () => {
+const plugin = postcss.plugin("olayout", () => {
   const categories = ["layout", "colors", "typos", "animations"];
 
   return (root, result) => {
     const cssPath = path.resolve(__dirname, "assets/css/olayout.css");
+
     const pluginDir = path.dirname(result.opts.from);
     const projectRoot = findProjectRoot(pluginDir);
 
     const configPath = path.join(projectRoot, "olayout.config.cjs");
-    const configFile = require(configPath);
+
+    const configFile = fileExists(configPath) ? require(configPath) : {};
 
     const config = deepMerge(defaultConfig, configFile);
 
@@ -99,6 +101,8 @@ module.exports = postcss.plugin("olayout", () => {
     }
   };
 });
+
+module.exports = plugin;
 
 function findProjectRoot(dir) {
   // ディレクトリがルートディレクトリに到達したら終了
