@@ -1,6 +1,6 @@
 {
   "name": "@hilosiva/olayoutcss",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "commonjs",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
@@ -29,7 +29,12 @@
     "autoprefixer": "^10.4.13",
     "css-declaration-sorter": "^6.3.1",
     "css-mqpacker": "^7.0.0",
+    "postcss": "^8.0.0",
+    "postcss-focus": "^6.0.0",
     "sass": "^1.57.1",
     "vite": "^4.3.9"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
   }
 }
