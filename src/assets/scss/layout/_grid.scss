@@ -14,7 +14,7 @@
   padding: 0;
 
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+    @include mq($device) {
       // Columns
       // ----------------------------
       @for $i from 1 through $column {
@@ -55,7 +55,7 @@
     margin: 0;
 
     @each $device, $breakpoint in $breakpoints {
-      @media screen and (min-width: $breakpoint) {
+      @include mq($device) {
         // Alignment
         // ----------------------------
         &[data-align~="#{$device}:start"] {

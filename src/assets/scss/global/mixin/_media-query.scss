@@ -13,7 +13,7 @@
         @content;
       }
     } @else if($type == min) {
-      @media screen and (min-width: #{map.get($breakpoints, $breakpoint)}) {
+      @media #{$breakpoint} {
         @content;
       }
     }

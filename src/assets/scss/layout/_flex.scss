@@ -12,7 +12,7 @@
   // Wrap
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+    @include mq($device) {
       &[data-wrap~="#{$device}:nowrap"] {
         flex-wrap: nowrap;
       }
@@ -25,7 +25,7 @@
   // Direction
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+    @include mq($device) {
       &[data-dir~="#{$device}:row"] {
         flex-direction: row;
       }
@@ -41,7 +41,7 @@
   // Alignment
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+    @include mq($device) {
       &[data-align~="#{$device}:start"] {
         justify-content: flex-start;
       }
@@ -75,7 +75,7 @@
   // Gap
   // ----------------------------
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+    @include mq($device) {
       @for $i from 0 through $space-range {
         &[data-gap~="#{$device}:#{$i}"] {
           gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
@@ -95,7 +95,7 @@
     flex-direction: column;
 
     @each $device, $breakpoint in $breakpoints {
-      @media screen and (min-width: $breakpoint) {
+      @include mq($device) {
         // Col
         // ----------------------------
         @for $i from 1 through $column {

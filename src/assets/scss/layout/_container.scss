@@ -17,7 +17,7 @@
   }
 
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+    @include mq($device) {
       &[data-width~="#{$device}:xsmall"] {
         width: 70%;
       }

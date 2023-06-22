@@ -5,7 +5,7 @@ const postcss = require("postcss");
 module.exports = postcss.plugin("olayout", () => {
   const categories = ["layout", "color"];
 
-  return (root, result) => {
+  return async (root, result) => {
     const cssPath = path.resolve(__dirname, "assets/css/olayout.css");
     const pluginDir = path.dirname(result.opts.from);
     const projectRoot = findProjectRoot(pluginDir);
@@ -13,38 +13,37 @@ module.exports = postcss.plugin("olayout", () => {
     const configPath = path.join(projectRoot, "olayout.config.cjs");
     const configFile = require(configPath);
 
-    try {
-      const css = fs.readFileSync(cssPath, "utf8");
+    // ループ処理でscreensの値に基づいてスタイルを生成
+    for (const device in configFile.theme.screens) {
+      const breakpoint = configFile.theme.screens[device];
 
-      const insertNode = postcss.parse(css, { from: cssPath });
+      // コンテナのスタイルを生成
+      const containerRule = postcss.rule({
+        selector: `.${configFile.prefix}-container:not([data-width])`,
+      });
 
-      try {
-        insertNode.walkAtRules("media", (atrule) => {
-          const screenKey = atrule.params.trim();
+      // widthのスタイルを追加
+      containerRule.append(
+        postcss.decl({
+          prop: "width",
+          value: "90%",
+        })
+      );
 
-          if (configFile.theme.screens[screenKey]) {
-            atrule.params = `screen and (min-width: ${configFile.theme.screens[screenKey]})`;
-          }
-        });
-        insertNode.walkRules(":root", (rule) => {
-          if (rule.parent.type !== "atrule" || rule.parent.name !== "media") {
-            rule.walkDecls(/^--/, (decl) => {
-              const prop = decl.prop.slice(5);
+      // 他のプロパティのスタイルを追加
 
-              if (configFile.theme.layout[prop]) {
-                decl.value = String(configFile.theme.layout[prop]);
-              }
-            });
-          }
-        });
-      } catch (e) {
-        console.error(e.message);
-      }
-
-      root.prepend(insertNode);
-    } catch (e) {
-      return;
+      // メディアクエリを生成してルールに追加
+      const mediaQuery = postcss.atRule({
+        name: "media",
+        params: `screen and (min-width: ${breakpoint})`,
+      });
+      mediaQuery.append(containerRule);
+      root.append(mediaQuery);
     }
+
+    const from = result.opts.from || "<unknown>";
+    console.log("Processing CSS from:", from);
+    return root;
   };
 });
 

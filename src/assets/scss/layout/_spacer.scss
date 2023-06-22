@@ -6,7 +6,7 @@
 -----------------------------------------------------*/
 .#{$prefix}-spacer {
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+    @include mq($device) {
       @for $i from 0 through $space-range {
         // Padding
         // ----------------------------

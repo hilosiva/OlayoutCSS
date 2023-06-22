@@ -1,6 +1,7 @@
 module.exports = {
   plugins: [
-    require("./src/olayout.cjs"),
+    // require("./src/olayout.js"),
+    // require("./lib/index.js"),
 
     require("autoprefixer")({
       grid: "autoplace", // IE11対応

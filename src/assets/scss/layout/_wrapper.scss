@@ -7,7 +7,7 @@
 -----------------------------------------------------*/
 .#{$prefix}-wrapper {
   @each $device, $breakpoint in $breakpoints {
-    @media screen and (min-width: $breakpoint) {
+    @include mq($device) {
       // Position
       // ----------------------------
       &[data-position~="#{$device}:static"] {

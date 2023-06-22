@@ -1,15 +1,29 @@
 {
-  "name": "olayoutcss",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "@hilosiva/olayoutcss",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "lib"
+  ],
+  "license": "MIT",
   "browserslist": [
     "defaults"
   ],
+  "author": "Shibata Hironori",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test": "NODE_ENV=test vite build",
     "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hilosiva/OlayoutCSS"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
