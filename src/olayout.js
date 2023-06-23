@@ -123,6 +123,11 @@ const plugin = (opts = {}) => {
               atrule.params = `screen and (min-width: ${config.theme.screens[screenKey]})`;
             }
           });
+
+          insertNode.walkAtRules("custom-media", (atrule) => {
+            console.log(atrule.params);
+          });
+
           insertNode.walkRules(":root", (rule) => {
             if (rule.parent.type !== "atrule" || rule.parent.name !== "media") {
               rule.walkDecls(/^--/, (decl) => {

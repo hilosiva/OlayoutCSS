@@ -1,3 +1,10 @@
-p {
-  color: red;
+@custom-media --ol-screen-xs (min-width: 768px);
+
+body {
+  & p {
+    color: red;
+    @media (--ol-screen-xs) {
+      color: blue;
+    }
+  }
 }

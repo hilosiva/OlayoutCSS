@@ -13,7 +13,7 @@
         @content;
       }
     } @else if($type == min) {
-      @media #{$breakpoint} {
+      @media ( --#{$prefix}-#{$breakpoint}-screen ) {
         @content;
       }
     }

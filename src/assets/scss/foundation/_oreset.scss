@@ -8,6 +8,10 @@
 /**
  * Settings
  */
+@each $device, $breakpoint in $breakpoints {
+  @custom-media --#{$prefix}-#{$device}-screen screen and (min-width: #{$breakpoint});
+}
+
 :root {
   @each $size, $val in $content-widths {
     --#{$prefix}-#{$size}-content-width: #{$val};
