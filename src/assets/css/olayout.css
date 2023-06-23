@@ -6,14 +6,14 @@
 /**
  * Settings
  */
-@custom-media --ol-min-screen screen and (min-width: 0);
-@custom-media --ol-xxs-screen screen and (min-width: 375px);
-@custom-media --ol-xs-screen screen and (min-width: 414px);
-@custom-media --ol-sm-screen screen and (min-width: 576px);
-@custom-media --ol-md-screen screen and (min-width: 768px);
-@custom-media --ol-lg-screen screen and (min-width: 1024px);
-@custom-media --ol-xl-screen screen and (min-width: 1280px);
-@custom-media --ol-xxl-screen screen and (min-width: 1480px);
+@custom-media --ol-min screen and (min-width: 0);
+@custom-media --ol-xxs screen and (min-width: 375px);
+@custom-media --ol-xs screen and (min-width: 414px);
+@custom-media --ol-sm screen and (min-width: 576px);
+@custom-media --ol-md screen and (min-width: 768px);
+@custom-media --ol-lg screen and (min-width: 1024px);
+@custom-media --ol-xl screen and (min-width: 1280px);
+@custom-media --ol-xxl screen and (min-width: 1480px);
 :root {
   --ol-sm-content-width: 640;
   --ol-md-content-width: 768;
@@ -729,7 +729,7 @@ form button:not([type]):after {
   white-space: nowrap;
           clip-path: inset(50%);
 }
-@media (--ol-md-screen) {
+@media (--ol-md) {
   :root {
     --ol-view-point: var(--ol-md-design-width);
   }
@@ -4388,7 +4388,7 @@ form button:not([type]):after {
     display: initial;
   }
 }
-@media (--ol-lg-screen) {
+@media (--ol-lg) {
   :root {
     --ol-view-point: var(--ol-lg-design-width);
   }
@@ -8073,7 +8073,7 @@ form button:not([type]):after {
     transition-duration: 1ms !important;
   }
 }
-@media (--ol-min-screen) {
+@media (--ol-min) {
   .ol-container[data-width~="min:xsmall"] {
     width: 70%;
   }
@@ -11729,7 +11729,7 @@ form button:not([type]):after {
     display: initial;
   }
 }
-@media (--ol-xxs-screen) {
+@media (--ol-xxs) {
   .ol-container[data-width~="xxs:xsmall"] {
     width: 70%;
   }
@@ -15385,7 +15385,7 @@ form button:not([type]):after {
     display: initial;
   }
 }
-@media (--ol-xs-screen) {
+@media (--ol-xs) {
   .ol-container[data-width~="xs:xsmall"] {
     width: 70%;
   }
@@ -19041,7 +19041,7 @@ form button:not([type]):after {
     display: initial;
   }
 }
-@media (--ol-sm-screen) {
+@media (--ol-sm) {
   .ol-container[data-width~="sm:xsmall"] {
     width: 70%;
   }
@@ -22697,7 +22697,7 @@ form button:not([type]):after {
     display: initial;
   }
 }
-@media (--ol-xl-screen) {
+@media (--ol-xl) {
   .ol-container[data-width~="xl:xsmall"] {
     width: 70%;
   }
@@ -26353,7 +26353,7 @@ form button:not([type]):after {
     display: initial;
   }
 }
-@media (--ol-xxl-screen) {
+@media (--ol-xxl) {
   .ol-container[data-width~="xxl:xsmall"] {
     width: 70%;
   }
