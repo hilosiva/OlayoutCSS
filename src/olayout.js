@@ -173,7 +173,7 @@ const plugin = (opts = {}) => {
             // @charset、フォント関連のルールを prependNodes に追加
 
             prependNodes.push(atrule);
-            prependNodes.remove();
+            atrule.remove();
           }
         });
 
