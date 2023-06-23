@@ -110,23 +110,47 @@ const plugin = (opts = {}) => {
 
       const config = deepMerge(defaultConfig, configFile);
 
+      const mediaQueries = new Map();
+
       try {
         const css = fs.readFileSync(cssPath, "utf8");
 
         const insertNode = postcss.parse(css, { from: cssPath });
 
         try {
-          insertNode.walkAtRules("media", (atrule) => {
-            const screenKey = atrule.params.trim();
+          // ｐrefixの置き換え
+          // insertNode.walkRules((rule) => {
+          //   rule.selector = rule.selector.replace(/.ol-/g, `.${config.prefix}-`);
 
-            if (config.theme.screens[screenKey]) {
-              atrule.params = `screen and (min-width: ${config.theme.screens[screenKey]})`;
+          //   rule.walkDecls((decl) => {
+          //     decl.value.replace("--ol-", `--${config.prefix}-`);
+          //   });
+          // });
+
+          // カスタムメディアの処理
+          insertNode.walkAtRules("custom-media", (atrule) => {
+            const match = /--ol-(\w+)/.exec(atrule.params);
+
+            if (match) {
+              const screenKey = match[1];
+
+              if (config.theme.screens[screenKey]) {
+                const minWidthValue = config.theme.screens[screenKey];
+                const mediaValue = `screen and (min-width: ${minWidthValue})`;
+                atrule.params = `${match[0]} ${mediaValue}`;
+
+                mediaQueries.set(match[0], mediaValue);
+
+                atrule.remove();
+              }
             }
           });
+
+          // カスタムプロパティの処理
           insertNode.walkRules(":root", (rule) => {
             if (rule.parent.type !== "atrule" || rule.parent.name !== "media") {
               rule.walkDecls(/^--/, (decl) => {
-                const prop = decl.prop.slice(5);
+                const prop = decl.prop.slice(config.prefix.length + 3);
 
                 categories.forEach((category) => {
                   if (config.theme[category][prop]) {
@@ -140,7 +164,18 @@ const plugin = (opts = {}) => {
           console.error(e.message);
         }
 
+        // 先頭に追加
         root.prepend(insertNode);
+        console.log(mediaQueries);
+
+        // 既存のCSSファイルを含むカスタムメディアをメディアクエリに置き換え
+        root.walkAtRules("media", (atrule) => {
+          const screenKey = atrule.params.trim().replace(/[()]/g, "");
+
+          if (mediaQueries.has(screenKey)) {
+            atrule.params = mediaQueries.get(screenKey);
+          }
+        });
       } catch (e) {
         return;
       }

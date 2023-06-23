@@ -61,6 +61,6 @@ export default defineConfig({
         },
       },
     },
-    minify: false,
+    // minify: false,
   },
 });

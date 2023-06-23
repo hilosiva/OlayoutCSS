@@ -1,11 +1,11 @@
 module.exports = {
-  prefix: "ol",
+  prefix: "prefix",
   theme: {
     screens: {
-      md: "768px",
+      md: "500px",
     },
     layout: {
-      space: 8,
+      space: 10,
     },
     colors: {},
     typos: {
