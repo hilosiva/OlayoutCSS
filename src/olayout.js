@@ -164,9 +164,26 @@ const plugin = (opts = {}) => {
           console.error(e.message);
         }
 
+        const prependNodes = [];
+
+        // @charsetやWebフォントを一旦避ける
+
+        root.walkAtRules((atrule) => {
+          if (atrule.name === "charset" || (atrule.name === "import" && atrule.params.includes("//")) || atrule.name === "font-face") {
+            // @charset、フォント関連のルールを prependNodes に追加
+
+            prependNodes.push(atrule);
+            prependNodes.remove();
+          }
+        });
+
         // 先頭に追加
         root.prepend(insertNode);
-        console.log(mediaQueries);
+
+        // prependNodes 配列の要素を root の先頭に順番に挿入
+        prependNodes.reverse().forEach((node) => {
+          root.prepend(node);
+        });
 
         // 既存のCSSファイルを含むカスタムメディアをメディアクエリに置き換え
         root.walkAtRules("media", (atrule) => {

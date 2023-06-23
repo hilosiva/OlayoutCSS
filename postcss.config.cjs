@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    // require("./src/olayout.js"),
+    require("./src/olayout.js"),
     // require("./lib/index.js"),
     require("postcss-preset-env")({
       features: {

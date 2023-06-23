@@ -1,6 +1,8 @@
+@import "https://fonts.googleapis.com/css2?family=Orbitron&display=swap";
 body {
   & p {
     color: red;
+    font-family: Orbitron, sans-serif;
 
     @media (--ol-lg-screen) {
       color: blue;
