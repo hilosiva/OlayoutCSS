@@ -31,7 +31,7 @@ export default defineConfig({
   // plugins: [ViteOlayout()],
 
   build: {
-    outDir: process.env.NODE_ENV === "test" ? "../test" : "./lib",
+    outDir: process.env.NODE_ENV === "test" ? "../test" : "./dist",
     lib: {
       entry: [resolve(__dirname, "src/index.ts")],
       name: "index",

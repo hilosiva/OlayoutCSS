@@ -1,14 +1,14 @@
 {
   "name": "@hilosiva/olayoutcss",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "commonjs",
-  "main": "./lib/index.js",
-  "module": "./lib/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "license": "MIT",
   "browserslist": [
