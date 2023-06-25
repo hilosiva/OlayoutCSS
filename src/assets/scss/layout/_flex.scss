@@ -1,12 +1,14 @@
 @charset "UTF-8";
 @use "sass:math";
 @use "../global" as *;
-//====================================
+
+// ====================================
 //  Flex
-//====================================
+// ====================================
 
 .#{$prefix}-flex {
   $this: &;
+
   display: flex;
 
   // Wrap
@@ -100,7 +102,7 @@
         // ----------------------------
         @for $i from 1 through $column {
           &[data-col~="#{$device}:#{$i}"] {
-            width: percentage(math.div($i, $column));
+            width: calc(math.div($i, $column) * 100%);
           }
         }
 
@@ -160,13 +162,14 @@
         // Over Container
         // ----------------------------
         &[data-over~="#{$device}:left"] {
-          margin-left: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
           flex-grow: 1;
+          margin-left: calc(-1 * var(--#{$prefix}-left-offset, 0));
         }
         &[data-over~="#{$device}:right"] {
-          margin-right: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
           flex-grow: 1;
+          margin-right: calc(-1 * var(--#{$prefix}-right-offset, 0));
         }
+
         &[data-over~="#{$device}:clearLeft"] {
           margin-left: 0;
         }

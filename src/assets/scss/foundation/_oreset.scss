@@ -16,6 +16,11 @@
   @each $size, $val in $content-widths {
     --#{$prefix}-#{$size}-content-width: #{$val};
   }
+
+  @each $size, $val in $offsets {
+    --#{$prefix}-#{$size}-offset: #{$val};
+  }
+
   @each $size, $val in $comps {
     --#{$prefix}-#{$size}-design-width: #{$val};
   }
@@ -38,7 +43,8 @@
   --#{$prefix}-scroll-behavior: smooth;
   --#{$prefix}-ease-out-expo: #{$ease-out-expo};
   --#{$prefix}-duration: #{$duration};
-
+  --#{$prefix}-left-offset: 0;
+  --#{$prefix}-right-offset: 0;
   --#{$prefix}-view-point: var(--#{$prefix}-sm-design-width);
   @include mq(md) {
     --#{$prefix}-view-point: var(--#{$prefix}-md-design-width);

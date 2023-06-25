@@ -1,17 +1,21 @@
 @charset "UTF-8";
 @use "sass:math";
 @use "../global" as *;
-//====================================
+
+// ====================================
 //  Grid
-//====================================
+// ====================================
 
 .#{$prefix}-grid {
   $this: &;
-  --ol-grid-columns: #{$column};
+
+  --#{$prefix}-grid-columns: #{$column};
+  --#{$prefix}-grid-template: repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr));
+
   display: grid;
-  grid-template-columns: repeat(var(--ol-grid-columns), minmax(0, 1fr));
-  margin: 0;
+  grid-template-columns: var(--#{$prefix}-grid-template);
   padding: 0;
+  margin: 0;
 
   @each $device, $breakpoint in $breakpoints {
     @include mq($device) {
@@ -19,8 +23,7 @@
       // ----------------------------
       @for $i from 1 through $column {
         &[data-cols~="#{$device}:#{$i}"] {
-          --ol-grid-columns: #{$i};
-          grid-template-columns: repeat(var(--ol-grid-columns), minmax(0, 1fr));
+          --#{$prefix}-grid-columns: #{$i};
         }
       }
 
@@ -45,12 +48,31 @@
           row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
         }
       }
+
+      // Offset
+      // ----------------------------
+
+      &[data-offset~="#{$device}:small"] {
+        --#{$prefix}-grid-template: var(--#{$prefix}-sm-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-sm-offset);
+      }
+      &[data-offset~="#{$device}:medium"] {
+        --#{$prefix}-grid-template: var(--#{$prefix}-md-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-md-offset);
+      }
+      &[data-offset~="#{$device}:large"] {
+        --#{$prefix}-grid-template: var(--#{$prefix}-lg-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-lg-offset);
+      }
+      &[data-offset~="#{$device}:xlarge"] {
+        --#{$prefix}-grid-template: var(--#{$prefix}-xl-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-xl-offset);
+      }
+      &[data-offset~="#{$device}:none"] {
+        --#{$prefix}-grid-template: repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr));
+      }
     }
   }
 
   &__item {
-    display: flex;
     box-sizing: border-box;
+    display: flex;
     flex-direction: column;
     margin: 0;
 
@@ -165,10 +187,10 @@
         // Over Container
         // ----------------------------
         &[data-over~="#{$device}:left"] {
-          margin-left: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
+          margin-left: calc(-1 * var(--#{$prefix}-left-offset, 0));
         }
         &[data-over~="#{$device}:right"] {
-          margin-right: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
+          margin-right: calc(-1 * var(--#{$prefix}-right-offset, 0));
         }
         &[data-over~="#{$device}:clearLeft"] {
           margin-left: 0;

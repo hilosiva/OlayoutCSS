@@ -16,6 +16,10 @@ const defaultConfig = {
       xxl: "1480px",
     },
     layout: {
+      "sm-offset": "2.5vw",
+      "md-offset": "5vw",
+      "lg-offset": "10vw",
+      "xl-offset": "15vw",
       "sm-content-width": 640,
       "md-content-width": 765,
       "lg-content-width": 1024,

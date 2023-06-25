@@ -1,15 +1,73 @@
-@import "https://fonts.googleapis.com/css2?family=Orbitron&display=swap";
+:root {
+  --ol-content-width: 1440;
+
+  /* --ol-base-color: #ecebe3; */
+  --ol-base-color: #1c1c1c;
+  --ol-main-color: #efefef;
+  --ol-accent-color: #e9e1c8;
+  --ol-light-color: #ecebe3;
+  --ol-dark-color: #161616;
+  --ol-primary-text-color: #ecebe3;
+  --ol-light-text-color: #fff;
+  --ol-primary-font-set: "Zen Kaku Gothic New", sans-serif;
+  --ol-en-font-set: "Marcellus", serif;
+  /* --ol-base-feature-settings: "palt"; */
+  /* --ol-base-letter-spacing: 1em; */
+}
+
+[lang="en"] {
+  font-family: var(--ol-en-font-set);
+}
 body {
-  & p {
-    color: red;
-    font-family: Orbitron, sans-serif;
+  line-height: 2;
+}
+.box {
+  padding: 1rem;
+  background-color: #101010;
+}
 
-    @media (--ol-lg-screen) {
-      color: blue;
-    }
+.hero {
+  font-size: 5rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  color: var(--ol-accent-color);
+  /* color: var(--ol-base-color); */
+}
 
-    @media (--ol-xl-screen) {
-      color: green;
-    }
+.full {
+  width: 100%;
+}
+
+h1 {
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  /* color: var(--ol-accent-color); */
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+  /* color: var(--ol-accent-color); */
+}
+h3 {
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid currentColor;
+  /* color: var(--ol-accent-color); */
+}
+
+@media screen and (min-width: 992px) {
+  .hero {
+    font-size: 10rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+  h3 {
+    font-size: 1.5rem;
   }
 }
