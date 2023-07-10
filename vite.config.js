@@ -61,6 +61,7 @@ export default defineConfig({
         },
       },
     },
+    cssTarget: "safari14",
     // minify: false,
   },
 });

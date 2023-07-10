@@ -2,13 +2,13 @@ module.exports = {
   plugins: [
     // require("./src/olayout.js"),
     // require("./dist/index.js"),
-    require("postcss-preset-env")({
-      features: {
-        "nesting-rules": true,
-        clamp: true,
-        "custom-media-queries": false,
-      },
-    }),
+    // require("postcss-preset-env")({
+    //   features: {
+    //     "nesting-rules": true,
+    //     clamp: true,
+    //     "custom-media-queries": false,
+    //   },
+    // }),
     require("autoprefixer")({
       grid: "autoplace", // IE11対応
     }),

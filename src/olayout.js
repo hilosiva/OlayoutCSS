@@ -155,7 +155,6 @@ const plugin = (opts = {}) => {
             if (rule.parent.type !== "atrule" || rule.parent.name !== "media") {
               rule.walkDecls(/^--/, (decl) => {
                 const prop = decl.prop.slice(config.prefix.length + 3);
-
                 categories.forEach((category) => {
                   if (config.theme[category][prop]) {
                     decl.value = String(config.theme[category][prop]);

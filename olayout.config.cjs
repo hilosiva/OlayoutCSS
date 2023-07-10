@@ -1,5 +1,5 @@
 module.exports = {
-  prefix: "prefix",
+  prefix: "ol",
   theme: {
     screens: {
       md: "500px",

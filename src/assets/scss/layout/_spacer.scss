@@ -43,12 +43,31 @@
           margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
         }
 
+        @if $i != 0 {
+          &[data-my~="#{$device}:-#{$i}"] {
+            margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+            margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+          }
+        }
+
         &[data-mt~="#{$device}:#{$i}"] {
           margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
         }
 
+        @if $i != 0 {
+          &[data-mt~="#{$device}:-#{$i}"] {
+            margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+          }
+        }
+
         &[data-mb~="#{$device}:#{$i}"] {
           margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        @if $i != 0 {
+          &[data-mb~="#{$device}:-#{$i}"] {
+            margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+          }
         }
 
         &[data-mx~="#{$device}:#{$i}"] {
@@ -56,12 +75,31 @@
           margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
         }
 
+        @if $i != 0 {
+          &[data-mx~="#{$device}:-#{$i}"] {
+            margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+            margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+          }
+        }
+
         &[data-ml~="#{$device}:#{$i}"] {
           margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
         }
 
+        @if $i != 0 {
+          &[data-ml~="#{$device}:-#{$i}"] {
+            margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+          }
+        }
+
         &[data-mr~="#{$device}:#{$i}"] {
           margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        @if $i != 0 {
+          &[data-mr~="#{$device}:-#{$i}"] {
+            margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+          }
         }
 
         // space
