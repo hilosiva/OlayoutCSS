@@ -46,7 +46,7 @@ export default defineConfig({
         // assetFileNames: "olayout.[ext]",
         assetFileNames: ({ name }) => {
           if (/\.css$/.test(name ?? "")) {
-            return "assets/css/olayout[extname]";
+            return "olayout[extname]";
           }
           if (/\.js$/.test(name ?? "")) {
             return "assets/js/olayout[extname]";
