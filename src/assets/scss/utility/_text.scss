@@ -225,6 +225,15 @@
       &[data-color~="#{$device}:black"] {
         color: #000;
       }
+
+      // Writing Mode
+      // ----------------------------
+      &[data-writing~="#{$device}:tb"] {
+        writing-mode: horizontal-tb;
+      }
+      &[data-writing~="#{$device}:rl"] {
+        writing-mode: vertical-rl;
+      }
     }
   }
 }
