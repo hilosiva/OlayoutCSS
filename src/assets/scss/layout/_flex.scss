@@ -6,180 +6,107 @@
 //  Flex
 // ====================================
 
-.#{$prefix}-flex {
-  $this: &;
+// Wrap
+// ----------------------------
+[data-flex~="nowrap"] {
+  flex-wrap: nowrap;
+}
+[data-flex~="wrap"] {
+  flex-wrap: wrap;
+}
 
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-flex~="#{$device}:nowrap"] {
+      flex-wrap: nowrap;
+    }
+    [data-flex~="#{$device}:wrap"] {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// Direction
+// ----------------------------
+
+[data-flex~="row"] {
+  flex-direction: row;
+}
+[data-flex~="reverse"] {
+  flex-direction: row-reverse;
+}
+[data-flex~="column"] {
+  flex-direction: column;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-flex~="#{$device}:row"] {
+      flex-direction: row;
+    }
+    [data-flex~="#{$device}:reverse"] {
+      flex-direction: row-reverse;
+    }
+    [data-flex~="#{$device}:column"] {
+      flex-direction: column;
+    }
+  }
+}
+
+[data-flex-item] {
   display: flex;
+  flex-direction: column;
+}
 
-  // Wrap
-  // ----------------------------
-  @each $device, $breakpoint in $breakpoints {
-    @include mq($device) {
-      &[data-wrap~="#{$device}:nowrap"] {
-        flex-wrap: nowrap;
+// Grow & Shrink
+// ----------------------------
+
+@for $i from 0 through 3 {
+  [data-grow~="#{$i}"] {
+    flex-grow: $i;
+  }
+  [data-shrink~="#{$i}"] {
+    flex-shrink: $i;
+  }
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    @for $i from 0 through 3 {
+      [data-grow~="#{$device}:#{$i}"] {
+        flex-grow: $i;
       }
-      &[data-wrap~="#{$device}:wrap"] {
-        flex-wrap: wrap;
+      [data-shrink~="#{$device}:#{$i}"] {
+        flex-shrink: $i;
       }
     }
   }
+}
 
-  // Direction
-  // ----------------------------
-  @each $device, $breakpoint in $breakpoints {
-    @include mq($device) {
-      &[data-dir~="#{$device}:row"] {
-        flex-direction: row;
-      }
-      &[data-dir~="#{$device}:reverse"] {
-        flex-direction: row-reverse;
-      }
-      &[data-dir~="#{$device}:column"] {
-        flex-direction: column;
-      }
+// Over Container
+// ----------------------------
+
+[data-over~="left"] {
+  flex-grow: 1;
+}
+[data-over~="right"] {
+  flex-grow: 1;
+}
+
+[data-over~="clearLeft"][data-over~="clearRight"] {
+  flex-grow: 0;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-over~="#{$device}:left"] {
+      flex-grow: 1;
     }
-  }
-
-  // Alignment
-  // ----------------------------
-  @each $device, $breakpoint in $breakpoints {
-    @include mq($device) {
-      &[data-align~="#{$device}:start"] {
-        justify-content: flex-start;
-      }
-
-      &[data-align~="#{$device}:center"] {
-        justify-content: center;
-      }
-
-      &[data-align~="#{$device}:end"] {
-        justify-content: flex-end;
-      }
-
-      &[data-align~="#{$device}:justify"] {
-        justify-content: space-between;
-      }
-
-      &[data-align~="#{$device}:top"] {
-        align-items: flex-start;
-      }
-
-      &[data-align~="#{$device}:middle"] {
-        align-items: center;
-      }
-
-      &[data-align~="#{$device}:bottom"] {
-        align-items: flex-end;
-      }
+    [data-over~="#{$device}:right"] {
+      flex-grow: 1;
     }
-  }
-
-  // Gap
-  // ----------------------------
-  @each $device, $breakpoint in $breakpoints {
-    @include mq($device) {
-      @for $i from 0 through $space-range {
-        &[data-gap~="#{$device}:#{$i}"] {
-          gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
-        }
-        &[data-gap-x~="#{$device}:#{$i}"] {
-          column-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
-        }
-        &[data-gap-y~="#{$device}:#{$i}"] {
-          row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
-        }
-      }
-    }
-  }
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-
-    @each $device, $breakpoint in $breakpoints {
-      @include mq($device) {
-        // Col
-        // ----------------------------
-        @for $i from 1 through $column {
-          &[data-col~="#{$device}:#{$i}"] {
-            width: calc(math.div($i, $column) * 100%);
-          }
-        }
-
-        // Alignment
-        // ----------------------------
-        &[data-align~="#{$device}:start"] {
-          align-items: flex-start;
-        }
-
-        &[data-align~="#{$device}:center"] {
-          align-items: center;
-        }
-
-        &[data-align~="#{$device}:end"] {
-          align-items: flex-end;
-        }
-
-        &[data-align~="#{$device}:top"] {
-          justify-content: flex-start;
-        }
-
-        &[data-align~="#{$device}:middle"] {
-          justify-content: center;
-        }
-
-        &[data-align~="#{$device}:bottom"] {
-          justify-content: flex-end;
-        }
-
-        // Order
-        // ----------------------------
-        &[data-order~="#{$device}:0"] {
-          order: 0;
-        }
-
-        @for $i from 1 through 3 {
-          &[data-order~="#{$device}:-#{$i}"] {
-            order: calc($i * -1);
-          }
-
-          &[data-order~="#{$device}:#{$i}"] {
-            order: $i;
-          }
-        }
-
-        // Grow & Shrink
-        // ----------------------------
-        @for $i from 0 through 3 {
-          &[data-grow~="#{$device}:#{$i}"] {
-            flex-grow: $i;
-          }
-          &[data-shrink~="#{$device}:#{$i}"] {
-            flex-shrink: $i;
-          }
-        }
-
-        // Over Container
-        // ----------------------------
-        &[data-over~="#{$device}:left"] {
-          flex-grow: 1;
-          margin-left: calc(-1 * var(--#{$prefix}-left-offset, 0));
-        }
-        &[data-over~="#{$device}:right"] {
-          flex-grow: 1;
-          margin-right: calc(-1 * var(--#{$prefix}-right-offset, 0));
-        }
-
-        &[data-over~="#{$device}:clearLeft"] {
-          margin-left: 0;
-        }
-        &[data-over~="#{$device}:clearRight"] {
-          margin-right: 0;
-        }
-        &[data-over~="#{$device}:clearLeft"][data-over~="#{$device}:clearRight"] {
-          flex-grow: 0;
-        }
-      }
+    [data-over~="#{$device}:clearLeft"][data-over~="#{$device}:clearRight"] {
+      flex-grow: 0;
     }
   }
 }

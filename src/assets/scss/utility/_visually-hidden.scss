@@ -5,7 +5,7 @@
 /*
   Visually Hidden
 */
-.#{$prefix}-visuallyHidden:not(:focus) {
+[data-visually-hidden]:not(:focus) {
   position: absolute;
   width: 1px;
   height: 1px;

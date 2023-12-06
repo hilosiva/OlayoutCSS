@@ -4,112 +4,241 @@
 /*
   Spacer
 -----------------------------------------------------*/
-.#{$prefix}-spacer {
-  @each $device, $breakpoint in $breakpoints {
-    @include mq($device) {
-      @for $i from 0 through $space-range {
-        // Padding
-        // ----------------------------
-        &[data-py~="#{$device}:#{$i}"] {
-          padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-          padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+@for $i from 0 through $space-range {
+  // Padding
+  // ----------------------------
+  [data-py~="#{$i}"] {
+    padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
 
-        &[data-pt~="#{$device}:#{$i}"] {
-          padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+  [data-pt~="#{$i}"] {
+    padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
 
-        &[data-pb~="#{$device}:#{$i}"] {
-          padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+  [data-pb~="#{$i}"] {
+    padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
 
-        &[data-px~="#{$device}:#{$i}"] {
-          padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-          padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+  [data-px~="#{$i}"] {
+    padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
 
-        &[data-pl~="#{$device}:#{$i}"] {
-          padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+  [data-pl~="#{$i}"] {
+    padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
 
-        &[data-pr~="#{$device}:#{$i}"] {
-          padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+  [data-pr~="#{$i}"] {
+    padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
 
-        // Margin
-        // ----------------------------
-        &[data-my~="#{$device}:#{$i}"] {
-          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-          margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+  // Margin
+  // ----------------------------
+  [data-my~="#{$i}"] {
+    margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
 
-        @if $i != 0 {
-          &[data-my~="#{$device}:-#{$i}"] {
-            margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-            margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-          }
-        }
+  @if $i != 0 {
+    [data-my~="-#{$i}"] {
+      margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+      margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    }
+  }
 
-        &[data-mt~="#{$device}:#{$i}"] {
-          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+  [data-mt~="#{$i}"] {
+    margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
 
-        @if $i != 0 {
-          &[data-mt~="#{$device}:-#{$i}"] {
-            margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-          }
-        }
+  @if $i != 0 {
+    [data-mt~="-#{$i}"] {
+      margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    }
+  }
 
-        &[data-mb~="#{$device}:#{$i}"] {
-          margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+  [data-mb~="#{$i}"] {
+    margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
 
-        @if $i != 0 {
-          &[data-mb~="#{$device}:-#{$i}"] {
-            margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-          }
-        }
+  @if $i != 0 {
+    [data-mb~="-#{$i}"] {
+      margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    }
+  }
 
-        &[data-mx~="#{$device}:#{$i}"] {
-          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-mx~="auto"] {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  [data-mx~="#{$i}"] {
+    margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
+
+  @if $i != 0 {
+    [data-mx~="-#{$i}"] {
+      margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+      margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    }
+  }
+
+  [data-ml~="auto"] {
+    margin-left: auto;
+  }
+
+  [data-ml~="#{$i}"] {
+    margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
+
+  @if $i != 0 {
+    [data-ml~="-#{$i}"] {
+      margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    }
+  }
+
+  [data-mr~="auto"] {
+    margin-right: auto;
+  }
+
+  [data-mr~="#{$i}"] {
+    margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
+
+  @if $i != 0 {
+    [data-mr~="-#{$i}"] {
+      margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    }
+  }
+
+  // space
+  // ----------------------------
+  [data-space-x~="#{$i}"] > * + * {
+    margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
+  [data-space-y~="#{$i}"] > * + * {
+    margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    @for $i from 0 through $space-range {
+      // Padding
+      // ----------------------------
+      [data-py~="#{$device}:#{$i}"] {
+        padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      [data-pt~="#{$device}:#{$i}"] {
+        padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      [data-pb~="#{$device}:#{$i}"] {
+        padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      [data-px~="#{$device}:#{$i}"] {
+        padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      [data-pl~="#{$device}:#{$i}"] {
+        padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      [data-pr~="#{$device}:#{$i}"] {
+        padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      // Margin
+      // ----------------------------
+      [data-my~="#{$device}:#{$i}"] {
+        margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      @if $i != 0 {
+        [data-my~="#{$device}:-#{$i}"] {
+          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+          margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        }
+      }
+
+      [data-mt~="#{$device}:#{$i}"] {
+        margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      @if $i != 0 {
+        [data-mt~="#{$device}:-#{$i}"] {
+          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        }
+      }
+
+      [data-mb~="#{$device}:#{$i}"] {
+        margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      @if $i != 0 {
+        [data-mb~="#{$device}:-#{$i}"] {
+          margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        }
+      }
+
+      [data-mx~="#{$device}:auto"] {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      [data-mx~="#{$device}:#{$i}"] {
+        margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      @if $i != 0 {
+        [data-mx~="#{$device}:-#{$i}"] {
+          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+          margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        }
+      }
+
+      [data-ml~="#{$device}:auto"] {
+        margin-left: auto;
+      }
+
+      [data-ml~="#{$device}:#{$i}"] {
+        margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      @if $i != 0 {
+        [data-ml~="#{$device}:-#{$i}"] {
+          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        }
+      }
+
+      [data-mr~="#{$device}:auto"] {
+        margin-right: auto;
+      }
+
+      [data-mr~="#{$device}:#{$i}"] {
+        margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      @if $i != 0 {
+        [data-mr~="#{$device}:-#{$i}"] {
           margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
         }
+      }
 
-        @if $i != 0 {
-          &[data-mx~="#{$device}:-#{$i}"] {
-            margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-            margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-          }
-        }
-
-        &[data-ml~="#{$device}:#{$i}"] {
-          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
-
-        @if $i != 0 {
-          &[data-ml~="#{$device}:-#{$i}"] {
-            margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-          }
-        }
-
-        &[data-mr~="#{$device}:#{$i}"] {
-          margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
-
-        @if $i != 0 {
-          &[data-mr~="#{$device}:-#{$i}"] {
-            margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-          }
-        }
-
-        // space
-        // ----------------------------
-        &[data-space-x~="#{$device}:#{$i}"] > * + * {
-          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
-        &[data-space-y~="#{$device}:#{$i}"] > * + * {
-          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        }
+      // space
+      // ----------------------------
+      [data-space-x~="#{$device}:#{$i}"] > * + * {
+        margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+      [data-space-y~="#{$device}:#{$i}"] > * + * {
+        margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
     }
   }

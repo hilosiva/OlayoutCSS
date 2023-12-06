@@ -5,235 +5,481 @@
 /*
   Text
 -----------------------------------------------------*/
-.#{$prefix}-text {
-  @each $device, $breakpoint in $breakpoints {
-    @include mq($device) {
-      // Align
-      // ----------------------------
-      &[data-align~="#{$device}:left"] {
-        text-align: left;
-      }
-      &[data-align~="#{$device}:center"] {
-        text-align: center;
-      }
-      &[data-align~="#{$device}:right"] {
-        text-align: right;
-      }
-      &[data-align~="#{$device}:justify"] {
-        text-align: justify;
-        text-justify: inter-character;
-      }
+// Align
+// ----------------------------
+[data-text~="left"] {
+  text-align: left;
+}
+[data-text~="center"] {
+  text-align: center;
+}
+[data-text~="right"] {
+  text-align: right;
+}
+[data-text~="justify"] {
+  text-align: justify;
+  text-justify: inter-character;
+}
 
-      // case
-      // ----------------------------
-      &[data-case~="#{$device}:uppercase"] {
-        text-transform: uppercase;
-      }
-      &[data-case~="#{$device}:normal"] {
-        text-transform: initial;
-      }
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-text~="#{$device}:left"] {
+      text-align: left;
+    }
+    [data-text~="#{$device}:center"] {
+      text-align: center;
+    }
+    [data-text~="#{$device}:right"] {
+      text-align: right;
+    }
+    [data-text~="#{$device}:justify"] {
+      text-align: justify;
+      text-justify: inter-character;
+    }
+  }
+}
 
-      // Word Break
-      // ----------------------------
-      &[data-word~="#{$device}:keep"] {
-        word-break: keep-all;
-        overflow-wrap: break-word;
-      }
-      &[data-word~="#{$device}:auto"] {
-        word-break: initial;
-        overflow-wrap: initial;
-      }
+// case
+// ----------------------------
 
-      // White Space
-      // ----------------------------
-      &[data-space~="#{$device}:nowrap"] {
-        white-space: nowrap;
-      }
-      &[data-space~="#{$device}:wrap"] {
-        white-space: normal;
-      }
-      &[data-space~="#{$device}:pre"] {
-        white-space: pre;
-      }
-      &[data-space~="#{$device}:preWrap"] {
-        white-space: pre-wrap;
-      }
+[data-text~="uppercase"] {
+  text-transform: uppercase;
+}
+[data-text~="normal"] {
+  text-transform: initial;
+}
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-text~="#{$device}:uppercase"] {
+      text-transform: uppercase;
+    }
+    [data-text~="#{$device}:normal"] {
+      text-transform: initial;
+    }
+  }
+}
 
-      // Line Height
-      // ----------------------------
-      &[data-line~="#{$device}:-2"] {
-        line-height: 0.5;
-      }
-      &[data-line~="#{$device}:-1"] {
-        line-height: 0.75;
-      }
-      &[data-line~="#{$device}:1"] {
-        line-height: 1;
-      }
-      &[data-line~="#{$device}:+1"] {
-        line-height: 1.25;
-      }
-      &[data-line~="#{$device}:+2"] {
-        line-height: 1.5;
-      }
-      &[data-line~="#{$device}:+3"] {
-        line-height: 1.75;
-      }
-      &[data-line~="#{$device}:+4"] {
-        line-height: 2;
-      }
-      &[data-line~="#{$device}:+5"] {
-        line-height: 2.25;
-      }
-      &[data-line~="#{$device}:+6"] {
-        line-height: 2.5;
-      }
+// Word Break
+// ----------------------------
+[data-text~="keep"] {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+[data-text~="auto"] {
+  word-break: initial;
+  overflow-wrap: initial;
+}
 
-      // Tracking
-      // ----------------------------
-      &[data-tracking~="#{$device}:-2"] {
-        letter-spacing: -0.05em;
-      }
-      &[data-tracking~="#{$device}:-1"] {
-        letter-spacing: -0.025em;
-      }
-      &[data-tracking~="#{$device}:0"] {
-        letter-spacing: 0;
-      }
-      &[data-tracking~="#{$device}:+1"] {
-        letter-spacing: 0.025em;
-      }
-      &[data-tracking~="#{$device}:+2"] {
-        letter-spacing: 0.05em;
-      }
-      &[data-tracking~="#{$device}:+3"] {
-        letter-spacing: 0.1em;
-      }
-      &[data-tracking~="#{$device}:+4"] {
-        letter-spacing: 0.125em;
-      }
-      &[data-tracking~="#{$device}:+5"] {
-        letter-spacing: 0.15em;
-      }
-      &[data-tracking~="#{$device}:+6"] {
-        letter-spacing: 0.175em;
-      }
-      &[data-tracking~="#{$device}:+7"] {
-        letter-spacing: 0.2em;
-      }
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-text~="#{$device}:keep"] {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    [data-text~="#{$device}:auto"] {
+      word-break: initial;
+      overflow-wrap: initial;
+    }
+  }
+}
 
-      // kerning
-      // ----------------------------
-      &[data-kerning~="#{$device}:normal"] {
-        font-feature-settings: normal;
-      }
-      &[data-kerning~="#{$device}:palt"] {
-        font-feature-settings: "palt";
-      }
-      &[data-kerning~="#{$device}:pkna"] {
-        font-feature-settings: "pkna";
-      }
+// White Space
+// ----------------------------
+[data-text~="nowrap"] {
+  white-space: nowrap;
+}
+[data-text~="wrap"] {
+  white-space: normal;
+}
+[data-text~="pre"] {
+  white-space: pre;
+}
+[data-text~="preWrap"] {
+  white-space: pre-wrap;
+}
 
-      // Size
-      // ----------------------------
-      &[data-size~="#{$device}:2xsmall"] {
-        font-size: calc(10 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:xsmall"] {
-        font-size: calc(12 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:small"] {
-        font-size: calc(14 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:normal"] {
-        font-size: calc(16 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:large"] {
-        font-size: calc(18 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:xlarge"] {
-        font-size: calc(20 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:2xlarge"] {
-        font-size: calc(24 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:3xlarge"] {
-        font-size: calc(32 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:4xlarge"] {
-        font-size: calc(40 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:5xlarge"] {
-        font-size: calc(48 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:6xlarge"] {
-        font-size: calc(56 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:7xlarge"] {
-        font-size: calc(64 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:8xlarge"] {
-        font-size: calc(72 / 16 * 1rem);
-      }
-      &[data-size~="#{$device}:9xlarge"] {
-        font-size: calc(80 / 16 * 1rem);
-      }
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-text~="#{$device}:nowrap"] {
+      white-space: nowrap;
+    }
+    [data-text~="#{$device}:wrap"] {
+      white-space: normal;
+    }
+    [data-text~="#{$device}:pre"] {
+      white-space: pre;
+    }
+    [data-text~="#{$device}:preWrap"] {
+      white-space: pre-wrap;
+    }
+  }
+}
 
-      // family
-      // ----------------------------
-      &[data-family~="#{$device}:primary"] {
-        font-family: var(--#{$prefix}-primary-font-set, "sans-serif");
-      }
-      &[data-family~="#{$device}:en"] {
-        font-family: var(--#{$prefix}-en-font-set, "sans-serif");
-      }
+// Line Height
+// ----------------------------
 
-      // Weight
-      // ----------------------------
-      @for $i from 1 through 9 {
-        &[data-weight~="#{$device}:#{$i * 100}"] {
-          font-weight: $i * 100;
-        }
-      }
+[data-line~="-2"] {
+  line-height: 0.5;
+}
+[data-line~="-1"] {
+  line-height: 0.75;
+}
+[data-line~="1"] {
+  line-height: 1;
+}
+[data-line~="+1"] {
+  line-height: 1.25;
+}
+[data-line~="+2"] {
+  line-height: 1.5;
+}
+[data-line~="+3"] {
+  line-height: 1.75;
+}
+[data-line~="+4"] {
+  line-height: 2;
+}
+[data-line~="+5"] {
+  line-height: 2.25;
+}
+[data-line~="+6"] {
+  line-height: 2.5;
+}
 
-      // Style
-      // ----------------------------
-      &[data-style~="#{$device}:normal"] {
-        font-style: normal;
-      }
-      &[data-style~="#{$device}:italic"] {
-        font-style: italic;
-      }
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-line~="#{$device}:-2"] {
+      line-height: 0.5;
+    }
+    [data-line~="#{$device}:-1"] {
+      line-height: 0.75;
+    }
+    [data-line~="#{$device}:1"] {
+      line-height: 1;
+    }
+    [data-line~="#{$device}:+1"] {
+      line-height: 1.25;
+    }
+    [data-line~="#{$device}:+2"] {
+      line-height: 1.5;
+    }
+    [data-line~="#{$device}:+3"] {
+      line-height: 1.75;
+    }
+    [data-line~="#{$device}:+4"] {
+      line-height: 2;
+    }
+    [data-line~="#{$device}:+5"] {
+      line-height: 2.25;
+    }
+    [data-line~="#{$device}:+6"] {
+      line-height: 2.5;
+    }
+  }
+}
 
-      // Color
-      // ----------------------------
-      &[data-color~="#{$device}:primary"] {
-        color: var(--#{$prefix}-primary-text-color);
-      }
-      &[data-color~="#{$device}:main"] {
-        color: var(--#{$prefix}-main-color);
-      }
-      &[data-color~="#{$device}:accent"] {
-        color: var(--#{$prefix}-accent-color);
-      }
-      &[data-color~="#{$device}:light"] {
-        color: var(--#{$prefix}-light-text-color);
-      }
-      &[data-color~="#{$device}:white"] {
-        color: #fff;
-      }
-      &[data-color~="#{$device}:black"] {
-        color: #000;
-      }
+// Tracking
+// ----------------------------
+[data-tracking~="-2"] {
+  letter-spacing: -0.05em;
+}
+[data-tracking~="-1"] {
+  letter-spacing: -0.025em;
+}
+[data-tracking~="0"] {
+  letter-spacing: 0;
+}
+[data-tracking~="+1"] {
+  letter-spacing: 0.025em;
+}
+[data-tracking~="+2"] {
+  letter-spacing: 0.05em;
+}
+[data-tracking~="+3"] {
+  letter-spacing: 0.1em;
+}
+[data-tracking~="+4"] {
+  letter-spacing: 0.125em;
+}
+[data-tracking~="+5"] {
+  letter-spacing: 0.15em;
+}
+[data-tracking~="+6"] {
+  letter-spacing: 0.175em;
+}
+[data-tracking~="+7"] {
+  letter-spacing: 0.2em;
+}
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-tracking~="#{$device}:-2"] {
+      letter-spacing: -0.05em;
+    }
+    [data-tracking~="#{$device}:-1"] {
+      letter-spacing: -0.025em;
+    }
+    [data-tracking~="#{$device}:0"] {
+      letter-spacing: 0;
+    }
+    [data-tracking~="#{$device}:+1"] {
+      letter-spacing: 0.025em;
+    }
+    [data-tracking~="#{$device}:+2"] {
+      letter-spacing: 0.05em;
+    }
+    [data-tracking~="#{$device}:+3"] {
+      letter-spacing: 0.1em;
+    }
+    [data-tracking~="#{$device}:+4"] {
+      letter-spacing: 0.125em;
+    }
+    [data-tracking~="#{$device}:+5"] {
+      letter-spacing: 0.15em;
+    }
+    [data-tracking~="#{$device}:+6"] {
+      letter-spacing: 0.175em;
+    }
+    [data-tracking~="#{$device}:+7"] {
+      letter-spacing: 0.2em;
+    }
+  }
+}
 
-      // Writing Mode
-      // ----------------------------
-      &[data-writing~="#{$device}:tb"] {
-        writing-mode: horizontal-tb;
+// kerning
+// ----------------------------
+
+[data-kerning~="normal"] {
+  font-feature-settings: normal;
+}
+[data-kerning~="palt"] {
+  font-feature-settings: "palt";
+}
+[data-kerning~="pkna"] {
+  font-feature-settings: "pkna";
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-kerning~="#{$device}:normal"] {
+      font-feature-settings: normal;
+    }
+    [data-kerning~="#{$device}:palt"] {
+      font-feature-settings: "palt";
+    }
+    [data-kerning~="#{$device}:pkna"] {
+      font-feature-settings: "pkna";
+    }
+  }
+}
+
+// Size
+// ----------------------------
+[data-font~="2xsmall"] {
+  font-size: calc(10 / 16 * 1rem);
+}
+[data-font~="xsmall"] {
+  font-size: calc(12 / 16 * 1rem);
+}
+[data-font~="small"] {
+  font-size: calc(14 / 16 * 1rem);
+}
+[data-font~="normal"] {
+  font-size: calc(16 / 16 * 1rem);
+}
+[data-font~="large"] {
+  font-size: calc(18 / 16 * 1rem);
+}
+[data-font~="xlarge"] {
+  font-size: calc(20 / 16 * 1rem);
+}
+[data-font~="2xlarge"] {
+  font-size: calc(24 / 16 * 1rem);
+}
+[data-font~="3xlarge"] {
+  font-size: calc(32 / 16 * 1rem);
+}
+[data-font~="4xlarge"] {
+  font-size: calc(40 / 16 * 1rem);
+}
+[data-font~="5xlarge"] {
+  font-size: calc(48 / 16 * 1rem);
+}
+[data-font~="6xlarge"] {
+  font-size: calc(56 / 16 * 1rem);
+}
+[data-font~="7xlarge"] {
+  font-size: calc(64 / 16 * 1rem);
+}
+[data-font~="8xlarge"] {
+  font-size: calc(72 / 16 * 1rem);
+}
+[data-font~="9xlarge"] {
+  font-size: calc(80 / 16 * 1rem);
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-font~="#{$device}:2xsmall"] {
+      font-size: calc(10 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:xsmall"] {
+      font-size: calc(12 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:small"] {
+      font-size: calc(14 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:normal"] {
+      font-size: calc(16 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:large"] {
+      font-size: calc(18 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:xlarge"] {
+      font-size: calc(20 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:2xlarge"] {
+      font-size: calc(24 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:3xlarge"] {
+      font-size: calc(32 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:4xlarge"] {
+      font-size: calc(40 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:5xlarge"] {
+      font-size: calc(48 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:6xlarge"] {
+      font-size: calc(56 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:7xlarge"] {
+      font-size: calc(64 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:8xlarge"] {
+      font-size: calc(72 / 16 * 1rem);
+    }
+    [data-font~="#{$device}:9xlarge"] {
+      font-size: calc(80 / 16 * 1rem);
+    }
+  }
+}
+
+// family
+// ----------------------------
+[data-font~="primary"] {
+  font-family: var(--#{$prefix}-primary-font-set, "sans-serif");
+}
+[data-font~="en"] {
+  font-family: var(--#{$prefix}-en-font-set, "sans-serif");
+}
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-font~="#{$device}:primary"] {
+      font-family: var(--#{$prefix}-primary-font-set, "sans-serif");
+    }
+    [data-font~="#{$device}:en"] {
+      font-family: var(--#{$prefix}-en-font-set, "sans-serif");
+    }
+  }
+}
+
+// Weight
+// ----------------------------
+@for $i from 1 through 9 {
+  [data-font~="#{$i * 100}"] {
+    font-weight: $i * 100;
+  }
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    @for $i from 1 through 9 {
+      [data-font~="#{$device}:#{$i * 100}"] {
+        font-weight: $i * 100;
       }
-      &[data-writing~="#{$device}:rl"] {
-        writing-mode: vertical-rl;
-      }
+    }
+  }
+}
+
+// Style
+// ----------------------------
+[data-font~="normal"] {
+  font-style: normal;
+}
+[data-style~="italic"] {
+  font-style: italic;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-font~="#{$device}:normal"] {
+      font-style: normal;
+    }
+    [data-style~="#{$device}:italic"] {
+      font-style: italic;
+    }
+  }
+}
+
+// Color
+// ----------------------------
+[data-color~="primary"] {
+  color: var(--#{$prefix}-primary-text-color);
+}
+[data-color~="main"] {
+  color: var(--#{$prefix}-main-color);
+}
+[data-color~="accent"] {
+  color: var(--#{$prefix}-accent-color);
+}
+[data-color~="light"] {
+  color: var(--#{$prefix}-light-text-color);
+}
+[data-color~="white"] {
+  color: #fff;
+}
+[data-color~="black"] {
+  color: #000;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-color~="#{$device}:primary"] {
+      color: var(--#{$prefix}-primary-text-color);
+    }
+    [data-color~="#{$device}:main"] {
+      color: var(--#{$prefix}-main-color);
+    }
+    [data-color~="#{$device}:accent"] {
+      color: var(--#{$prefix}-accent-color);
+    }
+    [data-color~="#{$device}:light"] {
+      color: var(--#{$prefix}-light-text-color);
+    }
+    [data-color~="#{$device}:white"] {
+      color: #fff;
+    }
+    [data-color~="#{$device}:black"] {
+      color: #000;
+    }
+  }
+}
+
+// Writing Mode
+// ----------------------------
+[data-writing~="tb"] {
+  writing-mode: horizontal-tb;
+}
+[data-writing~="rl"] {
+  writing-mode: vertical-rl;
+}
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-writing~="#{$device}:tb"] {
+      writing-mode: horizontal-tb;
+    }
+    [data-writing~="#{$device}:rl"] {
+      writing-mode: vertical-rl;
     }
   }
 }

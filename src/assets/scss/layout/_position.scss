@@ -1,0 +1,148 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+// ====================================
+//  Position
+// ====================================
+[data-position~="static"] {
+  position: static;
+}
+[data-position~="relative"] {
+  position: relative;
+}
+[data-position~="absolute"] {
+  position: absolute;
+}
+[data-position~="fixed"] {
+  position: fixed;
+}
+[data-position~="sticky"] {
+  position: sticky;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-position~="#{$device}:static"] {
+      position: static;
+    }
+    [data-position~="#{$device}:relative"] {
+      position: relative;
+    }
+    [data-position~="#{$device}:absolute"] {
+      position: absolute;
+    }
+    [data-position~="#{$device}:fixed"] {
+      position: fixed;
+    }
+    [data-position~="#{$device}:sticky"] {
+      position: sticky;
+    }
+  }
+}
+
+// Inset & Top, Left, Right , Bottom
+// ----------------------------
+[data-inset~="0"] {
+  inset: 0;
+}
+[data-inset~="auto"] {
+  inset: auto;
+}
+
+[data-top~="0"] {
+  top: 0;
+}
+[data-top~="auto"] {
+  top: auto;
+}
+
+[data-right~="auto"] {
+  right: auto;
+}
+[data-right~="0"] {
+  right: 0;
+}
+
+[data-bottom~="auto"] {
+  bottom: auto;
+}
+[data-bottom~="0"] {
+  bottom: 0;
+}
+
+[data-left~="auto"] {
+  left: auto;
+}
+[data-left~="0"] {
+  left: 0;
+}
+
+@for $i from 0 through $space-range {
+  [data-inset~="#{$i}"] {
+    inset: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+  }
+  [data-top~="#{$i}"] {
+    top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+  }
+  [data-right~="#{$i}"] {
+    right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+  }
+  [data-bottom~="#{$i}"] {
+    bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+  }
+  [data-left~="#{$i}"] {
+    left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+  }
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-inset~="#{$device}:0"] {
+      inset: 0;
+    }
+    [data-inset~="#{$device}:auto"] {
+      inset: auto;
+    }
+    [data-top~="#{$device}:0"] {
+      top: 0;
+    }
+    [data-top~="#{$device}:auto"] {
+      top: auto;
+    }
+    [data-right~="#{$device}:auto"] {
+      right: auto;
+    }
+    [data-right~="#{$device}:0"] {
+      right: 0;
+    }
+    [data-bottom~="#{$device}:auto"] {
+      bottom: auto;
+    }
+    [data-bottom~="#{$device}:0"] {
+      bottom: 0;
+    }
+    [data-left~="#{$device}:auto"] {
+      left: auto;
+    }
+    [data-left~="#{$device}:0"] {
+      left: 0;
+    }
+    @for $i from 0 through $space-range {
+      [data-inset~="#{$device}:#{$i}"] {
+        inset: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+      }
+      [data-top~="#{$device}:#{$i}"] {
+        top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+      }
+      [data-right~="#{$device}:#{$i}"] {
+        right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+      }
+      [data-bottom~="#{$device}:#{$i}"] {
+        bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+      }
+      [data-left~="#{$device}:#{$i}"] {
+        left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+      }
+    }
+  }
+}

@@ -5,26 +5,26 @@
 /*
   Card
 */
-.#{$prefix}-card {
+:where([data-card]) {
   display: flex;
   position: relative;
   flex: 1 1 auto;
   flex-direction: column;
   color: inherit;
   text-decoration: none;
+}
 
-  &__body {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    order: 1;
-  }
+:where([data-card-body]) {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  order: 1;
+}
 
-  &__thumbnail {
-    order: 0;
-  }
+:where([data-card-tumbnail]) {
+  order: 0;
+}
 
-  &__image {
-    width: 100%;
-  }
+:where([data-card-image]) {
+  width: 100%;
 }

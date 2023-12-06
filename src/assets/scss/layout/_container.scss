@@ -5,7 +5,7 @@
 /*
   Container
 ----------------------------------------------------- */
-.#{$prefix}-container {
+[data-container] {
   --#{$prefix}-container-offset-ratio: 2;
   --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
   --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
@@ -14,106 +14,240 @@
 
   padding-right: var(--#{$prefix}-right-offset);
   padding-left: var(--#{$prefix}-left-offset);
+}
 
-  @each $device, $breakpoint in $breakpoints {
-    @include mq($device) {
-      // Offset
-      // ----------------------------
-      &[data-offset~="#{$device}:small"] {
-        --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
-        --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
-      }
-      &[data-offset~="#{$device}:medium"] {
-        --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
-        --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
-      }
-      &[data-offset~="#{$device}:large"] {
-        --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
-        --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
-      }
-      &[data-offset~="#{$device}:xlarge"] {
-        --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
-        --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
-      }
-      &[data-offset~="#{$device}:none"] {
-        --#{$prefix}-container-left-offset: 0;
-        --#{$prefix}-container-right-offset: 0;
-      }
-      &[data-offset-left~="#{$device}:small"] {
-        --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
-      }
-      &[data-offset-left~="#{$device}:medium"] {
-        --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
-      }
-      &[data-offset-left~="#{$device}:large"] {
-        --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
-      }
-      &[data-offset-left~="#{$device}:xlarge"] {
-        --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
-      }
-      &[data-offset-left~="#{$device}:none"] {
-        --#{$prefix}-container-left-offset: 0;
-      }
-      &[data-offset-right~="#{$device}:small"] {
-        --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
-      }
-      &[data-offset-right~="#{$device}:medium"] {
-        --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
-      }
-      &[data-offset-right~="#{$device}:large"] {
-        --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
-      }
-      &[data-offset-right~="#{$device}:xlarge"] {
-        --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
-      }
-      &[data-offset-right~="#{$device}:none"] {
-        --#{$prefix}-container-right-offset: 0;
-      }
+// Offset
+// ----------------------------
 
-      // Max
-      // ----------------------------
-      &[data-max~="#{$device}:small"] {
-        --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-        --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      }
-      &[data-max~="#{$device}:medium"] {
-        --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-        --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      }
-      &[data-max~="#{$device}:large"] {
-        --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-        --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      }
-      &[data-max~="#{$device}:xlarge"] {
-        --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-        --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      }
-      &[data-max~="#{$device}:xxlarge"] {
-        --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-        --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      }
-      &[data-max~="#{$device}:none"] {
-        --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
-        --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
-      }
+[data-offset~="small"] {
+  --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
+  --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
+}
+[data-offset~="medium"] {
+  --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
+  --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
+}
+[data-offset~="large"] {
+  --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
+  --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
+}
+[data-offset~="xlarge"] {
+  --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
+  --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
+}
+[data-offset~="none"] {
+  --#{$prefix}-container-left-offset: 0;
+  --#{$prefix}-container-right-offset: 0;
+}
+[data-offset-left~="small"] {
+  --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
+}
+[data-offset-left~="medium"] {
+  --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
+}
+[data-offset-left~="large"] {
+  --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
+}
+[data-offset-left~="xlarge"] {
+  --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
+}
+[data-offset-left~="none"] {
+  --#{$prefix}-container-left-offset: 0;
+}
+[data-offset-right~="small"] {
+  --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
+}
+[data-offset-right~="medium"] {
+  --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
+}
+[data-offset-right~="large"] {
+  --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
+}
+[data-offset-right~="xlarge"] {
+  --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
+}
+[data-offset-right~="none"] {
+  --#{$prefix}-container-right-offset: 0;
+}
 
-      // Align
-      // ----------------------------
-      &[data-align~="#{$device}:left"] {
-        --#{$prefix}-container-offset-ratio: 1;
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-offset~="#{$device}:small"] {
+      --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
+      --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
+    }
+    [data-offset~="#{$device}:medium"] {
+      --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
+      --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
+    }
+    [data-offset~="#{$device}:large"] {
+      --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
+      --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
+    }
+    [data-offset~="#{$device}:xlarge"] {
+      --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
+      --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
+    }
+    [data-offset~="#{$device}:none"] {
+      --#{$prefix}-container-left-offset: 0;
+      --#{$prefix}-container-right-offset: 0;
+    }
+    [data-offset-left~="#{$device}:small"] {
+      --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
+    }
+    [data-offset-left~="#{$device}:medium"] {
+      --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
+    }
+    [data-offset-left~="#{$device}:large"] {
+      --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
+    }
+    [data-offset-left~="#{$device}:xlarge"] {
+      --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
+    }
+    [data-offset-left~="#{$device}:none"] {
+      --#{$prefix}-container-left-offset: 0;
+    }
+    [data-offset-right~="#{$device}:small"] {
+      --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
+    }
+    [data-offset-right~="#{$device}:medium"] {
+      --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
+    }
+    [data-offset-right~="#{$device}:large"] {
+      --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
+    }
+    [data-offset-right~="#{$device}:xlarge"] {
+      --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
+    }
+    [data-offset-right~="#{$device}:none"] {
+      --#{$prefix}-container-right-offset: 0;
+    }
+  }
+}
 
-        padding-left: 0;
-      }
-      &[data-align~="#{$device}:right"] {
-        --#{$prefix}-container-offset-ratio: 1;
+// Max
+// ----------------------------
+[data-container-limit~="small"] {
+  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+}
+[data-container-limit~="medium"] {
+  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+}
+[data-container-limit~="large"] {
+  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+}
+[data-container-limit~="xlarge"] {
+  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+}
+[data-container-limit~="xxlarge"] {
+  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+}
+[data-container-limit~="none"] {
+  --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
+  --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
+}
 
-        padding-right: 0;
-      }
-      &[data-align~="#{$device}:center"] {
-        --#{$prefix}-container-offset-ratio: 2;
-        --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
-        --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
-      }
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-container-limit~="#{$device}:small"] {
+      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+    }
+    [data-container-limit~="#{$device}:medium"] {
+      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+    }
+    [data-container-limit~="#{$device}:large"] {
+      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+    }
+    [data-container-limit~="#{$device}:xlarge"] {
+      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+    }
+    [data-container-limit~="#{$device}:xxlarge"] {
+      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
+    }
+    [data-container-limit~="#{$device}:none"] {
+      --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
+      --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
+    }
+  }
+}
+
+// Align
+// ----------------------------
+
+[data-container~="left"] {
+  --#{$prefix}-container-offset-ratio: 1;
+
+  --#{$prefix}-left-offset: 0;
+}
+[data-container~="right"] {
+  --#{$prefix}-container-offset-ratio: 1;
+
+  --#{$prefix}-right-offset: 0;
+}
+[data-container~="center"] {
+  --#{$prefix}-container-offset-ratio: 2;
+  --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
+  --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-container~="#{$device}:left"] {
+      --#{$prefix}-container-offset-ratio: 1;
+
+      --#{$prefix}-left-offset: 0;
+    }
+    [data-container~="#{$device}:right"] {
+      --#{$prefix}-container-offset-ratio: 1;
+
+      --#{$prefix}-right-offset: 0;
+    }
+    [data-container~="#{$device}:center"] {
+      --#{$prefix}-container-offset-ratio: 2;
+      --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
+      --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
+    }
+  }
+}
+
+// Over Container
+// ----------------------------
+[data-over~="left"] {
+  margin-left: calc(-1 * var(--#{$prefix}-left-offset, 0));
+}
+[data-over~="right"] {
+  margin-right: calc(-1 * var(--#{$prefix}-right-offset, 0));
+}
+[data-over~="clearLeft"] {
+  margin-left: 0;
+}
+[data-over~="clearRight"] {
+  margin-right: 0;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-over~="#{$device}:left"] {
+      margin-left: calc(-1 * var(--#{$prefix}-left-offset, 0));
+    }
+    [data-over~="#{$device}:right"] {
+      margin-right: calc(-1 * var(--#{$prefix}-right-offset, 0));
+    }
+    [data-over~="#{$device}:clearLeft"] {
+      margin-left: 0;
+    }
+    [data-over~="#{$device}:clearRight"] {
+      margin-right: 0;
     }
   }
 }
