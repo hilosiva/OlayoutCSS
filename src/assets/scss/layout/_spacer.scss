@@ -7,6 +7,10 @@
 @for $i from 0 through $space-range {
   // Padding
   // ----------------------------
+  [data-pa~="#{$i}"] {
+    padding: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
+
   [data-py~="#{$i}"] {
     padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
     padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
@@ -35,6 +39,20 @@
 
   // Margin
   // ----------------------------
+
+  [data-ma~="auto"] {
+    margin: auto;
+  }
+
+  [data-ma~="#{$i}"] {
+    margin: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
+
+  [data-my~="auto"] {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
   [data-my~="#{$i}"] {
     margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
     margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
@@ -127,6 +145,10 @@
     @for $i from 0 through $space-range {
       // Padding
       // ----------------------------
+      [data-pa~="#{$device}:#{$i}"] {
+        padding: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
       [data-py~="#{$device}:#{$i}"] {
         padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
         padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
@@ -155,6 +177,19 @@
 
       // Margin
       // ----------------------------
+      [data-ma~="#{$device}:auto"] {
+        margin: auto;
+      }
+
+      [data-ma~="#{$device}:#{$i}"] {
+        margin: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      }
+
+      [data-my~="#{$device}:auto"] {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+
       [data-my~="#{$device}:#{$i}"] {
         margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
         margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);

@@ -1,0 +1,640 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Border
+-----------------------------------------------------*/
+[data-border] {
+  border: var(--#{$prefix}-border-width, 0) var(--#{$prefix}-border-style, solid) var(--#{$prefix}-border-color, var(--#{$prefix}-border-color-1));
+}
+
+[data-border~="0"] {
+  --#{$prefix}-border-width: 0;
+}
+
+@for $i from 1 through 8 {
+  [data-border~="#{$i}"] {
+    --#{$prefix}-border-width: calc(#{$i} * 1px);
+  }
+}
+
+[data-border~="solid"] {
+  --#{$prefix}-border-style: solid;
+}
+
+[data-border~="dashed"] {
+  --#{$prefix}-border-style: dashed;
+}
+
+[data-border~="dotted"] {
+  --#{$prefix}-border-style: dotted;
+}
+
+[data-border~="none"] {
+  --#{$prefix}-border-style: none;
+}
+
+[data-border~="color"] {
+  --#{$prefix}-border-color: currentColor;
+}
+[data-border~="border-1"] {
+  --#{$prefix}-border-color: var(--#{$prefix}-border-color-1);
+}
+[data-border~="border-2"] {
+  --#{$prefix}-border-color: var(--#{$prefix}-border-color-2);
+}
+[data-border~="border-3"] {
+  --#{$prefix}-border-color: var(--#{$prefix}-border-color-3);
+}
+[data-border~="base"] {
+  --#{$prefix}-border-color: var(--#{$prefix}-base-color);
+}
+[data-border~="main"] {
+  --#{$prefix}-border-color: var(--#{$prefix}-main-color);
+}
+[data-border~="accent"] {
+  --#{$prefix}-border-color: var(--#{$prefix}-accent-color);
+}
+[data-border~="light"] {
+  --#{$prefix}-border-color: var(--#{$prefix}-light-color);
+}
+[data-border~="dark"] {
+  --#{$prefix}-border-color: var(--#{$prefix}-dark-color);
+}
+[data-border~="white"] {
+  --#{$prefix}-border-color: #fff;
+}
+[data-border~="black"] {
+  --#{$prefix}-border-color: #000;
+}
+
+// Top
+[data-border-top] {
+  border-top: var(--#{$prefix}-border-top-width, 0) var(--#{$prefix}-border-top-style, solid) var(--#{$prefix}-border-top-color, var(--#{$prefix}-border-color-1));
+}
+
+[data-border-top~="0"] {
+  --#{$prefix}-border-top-width: 0;
+}
+
+@for $i from 1 through 8 {
+  [data-border-top~="#{$i}"] {
+    --#{$prefix}-border-top-width: calc(#{$i} * 1px);
+  }
+}
+
+[data-border-top~="solid"] {
+  --#{$prefix}-border-top-style: solid;
+}
+
+[data-border-top~="dashed"] {
+  --#{$prefix}-border-top-style: dashed;
+}
+
+[data-border-top~="dotted"] {
+  --#{$prefix}-border-top-style: dotted;
+}
+
+[data-border-top~="none"] {
+  --#{$prefix}-border-top-style: none;
+}
+
+[data-border-top~="color"] {
+  --#{$prefix}-border-top-color: currentColor;
+}
+[data-border-top~="border-1"] {
+  --#{$prefix}-border-top-color: var(--#{$prefix}-border-color-1);
+}
+[data-border-top~="border-2"] {
+  --#{$prefix}-border-top-color: var(--#{$prefix}-border-color-2);
+}
+[data-border-top~="border-3"] {
+  --#{$prefix}-border-top-color: var(--#{$prefix}-border-color-3);
+}
+[data-border-top~="base"] {
+  --#{$prefix}-border-top-color: var(--#{$prefix}-base-color);
+}
+[data-border-top~="main"] {
+  --#{$prefix}-border-top-color: var(--#{$prefix}-main-color);
+}
+[data-border-top~="accent"] {
+  --#{$prefix}-border-top-color: var(--#{$prefix}-accent-color);
+}
+[data-border-top~="light"] {
+  --#{$prefix}-border-top-color: var(--#{$prefix}-light-color);
+}
+[data-border-top~="dark"] {
+  --#{$prefix}-border-top-color: var(--#{$prefix}-dark-color);
+}
+[data-border-top~="white"] {
+  --#{$prefix}-border-top-color: #fff;
+}
+[data-border-top~="black"] {
+  --#{$prefix}-border-top-color: #000;
+}
+
+// right
+[data-border-right] {
+  border-right: var(--#{$prefix}-border-right-width, 0) var(--#{$prefix}-border-right-style, solid) var(--#{$prefix}-border-right-color, var(--#{$prefix}-border-color-1));
+}
+
+[data-border-right~="0"] {
+  --#{$prefix}-border-right-width: 0;
+}
+
+@for $i from 1 through 8 {
+  [data-border-right~="#{$i}"] {
+    --#{$prefix}-border-right-width: calc(#{$i} * 1px);
+  }
+}
+
+[data-border-right~="solid"] {
+  --#{$prefix}-border-right-style: solid;
+}
+
+[data-border-right~="dashed"] {
+  --#{$prefix}-border-right-style: dashed;
+}
+
+[data-border-right~="dotted"] {
+  --#{$prefix}-border-right-style: dotted;
+}
+
+[data-border-right~="none"] {
+  --#{$prefix}-border-right-style: none;
+}
+
+[data-border-right~="color"] {
+  --#{$prefix}-border-right-color: currentColor;
+}
+[data-border-right~="border-1"] {
+  --#{$prefix}-border-right-color: var(--#{$prefix}-border-color-1);
+}
+[data-border-right~="border-2"] {
+  --#{$prefix}-border-right-color: var(--#{$prefix}-border-color-2);
+}
+[data-border-right~="border-3"] {
+  --#{$prefix}-border-right-color: var(--#{$prefix}-border-color-3);
+}
+[data-border-right~="base"] {
+  --#{$prefix}-border-right-color: var(--#{$prefix}-base-color);
+}
+[data-border-right~="main"] {
+  --#{$prefix}-border-right-color: var(--#{$prefix}-main-color);
+}
+[data-border-right~="accent"] {
+  --#{$prefix}-border-right-color: var(--#{$prefix}-accent-color);
+}
+[data-border-right~="light"] {
+  --#{$prefix}-border-right-color: var(--#{$prefix}-light-color);
+}
+[data-border-right~="dark"] {
+  --#{$prefix}-border-right-color: var(--#{$prefix}-dark-color);
+}
+[data-border-right~="white"] {
+  --#{$prefix}-border-right-color: #fff;
+}
+[data-border-right~="black"] {
+  --#{$prefix}-border-right-color: #000;
+}
+
+[data-border-bottom] {
+  border-bottom: var(--#{$prefix}-border-bottom-width, 0) var(--#{$prefix}-border-bottom-style, solid) var(--#{$prefix}-border-bottom-color, var(--#{$prefix}-border-color-1));
+}
+
+[data-border-bottom~="0"] {
+  --#{$prefix}-border-bottom-width: 0;
+}
+
+@for $i from 1 through 8 {
+  [data-border-bottom~="#{$i}"] {
+    --#{$prefix}-border-bottom-width: calc(#{$i} * 1px);
+  }
+}
+
+[data-border-bottom~="solid"] {
+  --#{$prefix}-border-bottom-style: solid;
+}
+
+[data-border-bottom~="dashed"] {
+  --#{$prefix}-border-bottom-style: dashed;
+}
+
+[data-border-bottom~="dotted"] {
+  --#{$prefix}-border-bottom-style: dotted;
+}
+
+[data-border-bottom~="none"] {
+  --#{$prefix}-border-bottom-style: none;
+}
+
+[data-border-bottom~="color"] {
+  --#{$prefix}-border-bottom-color: currentColor;
+}
+
+[data-border-bottom~="border-1"] {
+  --#{$prefix}-border-bottom-color: var(--#{$prefix}-border-color-1);
+}
+[data-border-bottom~="border-2"] {
+  --#{$prefix}-border-bottom-color: var(--#{$prefix}-border-color-2);
+}
+[data-border-bottom~="border-3"] {
+  --#{$prefix}-border-bottom-color: var(--#{$prefix}-border-color-3);
+}
+[data-border-bottom~="base"] {
+  --#{$prefix}-border-bottom-color: var(--#{$prefix}-base-color);
+}
+[data-border-bottom~="main"] {
+  --#{$prefix}-border-bottom-color: var(--#{$prefix}-main-color);
+}
+[data-border-bottom~="accent"] {
+  --#{$prefix}-border-bottom-color: var(--#{$prefix}-accent-color);
+}
+[data-border-bottom~="light"] {
+  --#{$prefix}-border-bottom-color: var(--#{$prefix}-light-color);
+}
+[data-border-bottom~="dark"] {
+  --#{$prefix}-border-bottom-color: var(--#{$prefix}-dark-color);
+}
+[data-border-bottom~="white"] {
+  --#{$prefix}-border-bottom-color: #fff;
+}
+[data-border-bottom~="black"] {
+  --#{$prefix}-border-bottom-color: #000;
+}
+
+[data-border-left] {
+  border-left: var(--#{$prefix}-border-left-width, 0) var(--#{$prefix}-border-left-style, solid) var(--#{$prefix}-border-left-color, var(--#{$prefix}-border-color-1));
+}
+
+[data-border-left~="0"] {
+  --#{$prefix}-border-left-width: 0;
+}
+
+@for $i from 1 through 8 {
+  [data-border-left~="#{$i}"] {
+    --#{$prefix}-border-left-width: calc(#{$i} * 1px);
+  }
+}
+
+[data-border-left~="solid"] {
+  --#{$prefix}-border-left-style: solid;
+}
+
+[data-border-left~="dashed"] {
+  --#{$prefix}-border-left-style: dashed;
+}
+
+[data-border-left~="dotted"] {
+  --#{$prefix}-border-left-style: dotted;
+}
+
+[data-border-left~="none"] {
+  --#{$prefix}-border-left-style: none;
+}
+
+[data-border-left~="color"] {
+  --#{$prefix}-border-left-color: currentColor;
+}
+
+[data-border-left~="border-1"] {
+  --#{$prefix}-border-left-color: var(--#{$prefix}-border-color-1);
+}
+[data-border-left~="border-2"] {
+  --#{$prefix}-border-left-color: var(--#{$prefix}-border-color-2);
+}
+[data-border-left~="border-3"] {
+  --#{$prefix}-border-left-color: var(--#{$prefix}-border-color-3);
+}
+[data-border-left~="base"] {
+  --#{$prefix}-border-left-color: var(--#{$prefix}-base-color);
+}
+[data-border-left~="main"] {
+  --#{$prefix}-border-left-color: var(--#{$prefix}-main-color);
+}
+[data-border-left~="accent"] {
+  --#{$prefix}-border-left-color: var(--#{$prefix}-accent-color);
+}
+[data-border-left~="light"] {
+  --#{$prefix}-border-left-color: var(--#{$prefix}-light-color);
+}
+[data-border-left~="dark"] {
+  --#{$prefix}-border-left-color: var(--#{$prefix}-dark-color);
+}
+[data-border-left~="white"] {
+  --#{$prefix}-border-left-color: #fff;
+}
+[data-border-left~="black"] {
+  --#{$prefix}-border-left-color: #000;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-border~="#{$device}:0"] {
+      --#{$prefix}-border-width: 0;
+    }
+
+    @for $i from 1 through 8 {
+      [data-border~="#{$device}:#{$i}"] {
+        --#{$prefix}-border-width: calc(#{$i} * 1px);
+      }
+    }
+
+    [data-border~="#{$device}:solid"] {
+      --#{$prefix}-border-style: solid;
+    }
+
+    [data-border~="#{$device}:dashed"] {
+      --#{$prefix}-border-style: dashed;
+    }
+
+    [data-border~="#{$device}:dotted"] {
+      --#{$prefix}-border-style: dotted;
+    }
+
+    [data-border~="#{$device}:none"] {
+      --#{$prefix}-border-style: none;
+    }
+
+    [data-border~="#{$device}:color"] {
+      --#{$prefix}-border-color: currentColor;
+    }
+
+    [data-border~="#{$device}:border-1"] {
+      --#{$prefix}-border-color: var(--#{$prefix}-border-color-1);
+    }
+    [data-border~="#{$device}:border-2"] {
+      --#{$prefix}-border-color: var(--#{$prefix}-border-color-2);
+    }
+    [data-border~="#{$device}:border-3"] {
+      --#{$prefix}-border-color: var(--#{$prefix}-border-color-3);
+    }
+    [data-border~="#{$device}:base"] {
+      --#{$prefix}-border-color: var(--#{$prefix}-base-color);
+    }
+    [data-border~="#{$device}:main"] {
+      --#{$prefix}-border-color: var(--#{$prefix}-main-color);
+    }
+    [data-border~="#{$device}:accent"] {
+      --#{$prefix}-border-color: var(--#{$prefix}-accent-color);
+    }
+    [data-border~="#{$device}:light"] {
+      --#{$prefix}-border-color: var(--#{$prefix}-light-color);
+    }
+    [data-border~="#{$device}:dark"] {
+      --#{$prefix}-border-color: var(--#{$prefix}-dark-color);
+    }
+    [data-border~="#{$device}:white"] {
+      --#{$prefix}-border-color: #fff;
+    }
+    [data-border~="#{$device}:black"] {
+      --#{$prefix}-border-color: #000;
+    }
+
+    // Top
+
+    [data-border-top~="#{$device}:0"] {
+      --#{$prefix}-border-top-width: 0;
+    }
+
+    @for $i from 1 through 8 {
+      [data-border-top~="#{$device}:#{$i}"] {
+        --#{$prefix}-border-top-width: calc(#{$i} * 1px);
+      }
+    }
+
+    [data-border-top~="#{$device}:solid"] {
+      --#{$prefix}-border-top-style: solid;
+    }
+
+    [data-border-top~="#{$device}:dashed"] {
+      --#{$prefix}-border-top-style: dashed;
+    }
+
+    [data-border-top~="#{$device}:dotted"] {
+      --#{$prefix}-border-top-style: dotted;
+    }
+
+    [data-border-top~="#{$device}:none"] {
+      --#{$prefix}-border-top-style: none;
+    }
+
+    [data-border-top~="#{$device}:color"] {
+      --#{$prefix}-border-top-color: currentColor;
+    }
+    [data-border-top~="#{$device}:border-1"] {
+      --#{$prefix}-border-top-color: var(--#{$prefix}-border-color-1);
+    }
+    [data-border-top~="#{$device}:border-2"] {
+      --#{$prefix}-border-top-color: var(--#{$prefix}-border-color-2);
+    }
+    [data-border-top~="#{$device}:border-3"] {
+      --#{$prefix}-border-top-color: var(--#{$prefix}-border-color-3);
+    }
+    [data-border-top~="#{$device}:base"] {
+      --#{$prefix}-border-top-color: var(--#{$prefix}-base-color);
+    }
+    [data-border-top~="#{$device}:main"] {
+      --#{$prefix}-border-top-color: var(--#{$prefix}-main-color);
+    }
+    [data-border-top~="#{$device}:accent"] {
+      --#{$prefix}-border-top-color: var(--#{$prefix}-accent-color);
+    }
+    [data-border-top~="#{$device}:light"] {
+      --#{$prefix}-border-top-color: var(--#{$prefix}-light-color);
+    }
+    [data-border-top~="#{$device}:dark"] {
+      --#{$prefix}-border-top-color: var(--#{$prefix}-dark-color);
+    }
+    [data-border-top~="#{$device}:white"] {
+      --#{$prefix}-border-top-color: #fff;
+    }
+    [data-border-top~="#{$device}:black"] {
+      --#{$prefix}-border-top-color: #000;
+    }
+
+    // right
+    [data-border-right~="#{$device}:0"] {
+      --#{$prefix}-border-right-width: 0;
+    }
+
+    @for $i from 1 through 8 {
+      [data-border-right~="#{$device}:#{$i}"] {
+        --#{$prefix}-border-right-width: calc(#{$i} * 1px);
+      }
+    }
+
+    [data-border-right~="#{$device}:solid"] {
+      --#{$prefix}-border-right-style: solid;
+    }
+
+    [data-border-right~="#{$device}:dashed"] {
+      --#{$prefix}-border-right-style: dashed;
+    }
+
+    [data-border-right~="#{$device}:dotted"] {
+      --#{$prefix}-border-right-style: dotted;
+    }
+
+    [data-border-right~="#{$device}:none"] {
+      --#{$prefix}-border-right-style: none;
+    }
+
+    [data-border-right~="#{$device}:color"] {
+      --#{$prefix}-border-right-color: currentColor;
+    }
+
+    [data-border-right~="#{$device}:border-1"] {
+      --#{$prefix}-border-right-color: var(--#{$prefix}-border-color-1);
+    }
+    [data-border-right~="#{$device}:border-2"] {
+      --#{$prefix}-border-right-color: var(--#{$prefix}-border-color-2);
+    }
+    [data-border-right~="#{$device}:border-3"] {
+      --#{$prefix}-border-right-color: var(--#{$prefix}-border-color-3);
+    }
+    [data-border-right~="#{$device}:base"] {
+      --#{$prefix}-border-right-color: var(--#{$prefix}-base-color);
+    }
+    [data-border-right~="#{$device}:main"] {
+      --#{$prefix}-border-right-color: var(--#{$prefix}-main-color);
+    }
+    [data-border-right~="#{$device}:accent"] {
+      --#{$prefix}-border-right-color: var(--#{$prefix}-accent-color);
+    }
+    [data-border-right~="#{$device}:light"] {
+      --#{$prefix}-border-right-color: var(--#{$prefix}-light-color);
+    }
+    [data-border-right~="#{$device}:dark"] {
+      --#{$prefix}-border-right-color: var(--#{$prefix}-dark-color);
+    }
+    [data-border-right~="#{$device}:white"] {
+      --#{$prefix}-border-right-color: #fff;
+    }
+    [data-border-right~="#{$device}:black"] {
+      --#{$prefix}-border-right-color: #000;
+    }
+
+    [data-border-bottom~="#{$device}:0"] {
+      --#{$prefix}-border-bottom-width: 0;
+    }
+
+    @for $i from 1 through 8 {
+      [data-border-bottom~="#{$device}:#{$i}"] {
+        --#{$prefix}-border-bottom-width: calc(#{$i} * 1px);
+      }
+    }
+
+    [data-border-bottom~="#{$device}:solid"] {
+      --#{$prefix}-border-bottom-style: solid;
+    }
+
+    [data-border-bottom~="#{$device}:dashed"] {
+      --#{$prefix}-border-bottom-style: dashed;
+    }
+
+    [data-border-bottom~="#{$device}:dotted"] {
+      --#{$prefix}-border-bottom-style: dotted;
+    }
+
+    [data-border-bottom~="#{$device}:none"] {
+      --#{$prefix}-border-bottom-style: none;
+    }
+
+    [data-border-bottom~="#{$device}:color"] {
+      --#{$prefix}-border-bottom-color: currentColor;
+    }
+    [data-border-bottom~="#{$device}:border-1"] {
+      --#{$prefix}-border-bottom-color: var(--#{$prefix}-border-color-1);
+    }
+    [data-border-bottom~="#{$device}:border-2"] {
+      --#{$prefix}-border-bottom-color: var(--#{$prefix}-border-color-2);
+    }
+    [data-border-bottom~="#{$device}:border-3"] {
+      --#{$prefix}-border-bottom-color: var(--#{$prefix}-border-color-3);
+    }
+    [data-border-bottom~="#{$device}:base"] {
+      --#{$prefix}-border-bottom-color: var(--#{$prefix}-base-color);
+    }
+    [data-border-bottom~="#{$device}:main"] {
+      --#{$prefix}-border-bottom-color: var(--#{$prefix}-main-color);
+    }
+    [data-border-bottom~="#{$device}:accent"] {
+      --#{$prefix}-border-bottom-color: var(--#{$prefix}-accent-color);
+    }
+    [data-border-bottom~="#{$device}:light"] {
+      --#{$prefix}-border-bottom-color: var(--#{$prefix}-light-color);
+    }
+    [data-border-bottom~="#{$device}:dark"] {
+      --#{$prefix}-border-bottom-color: var(--#{$prefix}-dark-color);
+    }
+    [data-border-bottom~="#{$device}:white"] {
+      --#{$prefix}-border-bottom-color: #fff;
+    }
+    [data-border-bottom~="#{$device}:black"] {
+      --#{$prefix}-border-bottom-color: #000;
+    }
+
+    [data-border-left~="#{$device}:0"] {
+      --#{$prefix}-border-left-width: 0;
+    }
+
+    @for $i from 1 through 8 {
+      [data-border-left~="#{$device}:#{$i}"] {
+        --#{$prefix}-border-left-width: calc(#{$i} * 1px);
+      }
+    }
+
+    [data-border-left~="#{$device}:solid"] {
+      --#{$prefix}-border-left-style: solid;
+    }
+
+    [data-border-left~="#{$device}:dashed"] {
+      --#{$prefix}-border-left-style: dashed;
+    }
+
+    [data-border-left~="#{$device}:dotted"] {
+      --#{$prefix}-border-left-style: dotted;
+    }
+
+    [data-border-left~="#{$device}:none"] {
+      --#{$prefix}-border-left-style: none;
+    }
+
+    [data-border-left~="#{$device}:color"] {
+      --#{$prefix}-border-left-color: currentColor;
+    }
+
+    [data-border-left~="#{$device}:border-1"] {
+      --#{$prefix}-border-left-color: var(--#{$prefix}-border-color-1);
+    }
+    [data-border-left~="#{$device}:border-2"] {
+      --#{$prefix}-border-left-color: var(--#{$prefix}-border-color-2);
+    }
+    [data-border-left~="#{$device}:border-3"] {
+      --#{$prefix}-border-left-color: var(--#{$prefix}-border-color-3);
+    }
+    [data-border-left~="#{$device}:base"] {
+      --#{$prefix}-border-left-color: var(--#{$prefix}-base-color);
+    }
+    [data-border-left~="#{$device}:main"] {
+      --#{$prefix}-border-left-color: var(--#{$prefix}-main-color);
+    }
+    [data-border-left~="#{$device}:accent"] {
+      --#{$prefix}-border-left-color: var(--#{$prefix}-accent-color);
+    }
+    [data-border-left~="#{$device}:light"] {
+      --#{$prefix}-border-left-color: var(--#{$prefix}-light-color);
+    }
+    [data-border-left~="#{$device}:dark"] {
+      --#{$prefix}-border-left-color: var(--#{$prefix}-dark-color);
+    }
+    [data-border-left~="#{$device}:white"] {
+      --#{$prefix}-border-left-color: #fff;
+    }
+    [data-border-left~="#{$device}:black"] {
+      --#{$prefix}-border-left-color: #000;
+    }
+  }
+}

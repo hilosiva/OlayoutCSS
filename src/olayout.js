@@ -6,7 +6,6 @@ const defaultConfig = {
   prefix: "ol",
   theme: {
     screens: {
-      min: "0",
       xxs: "375px",
       xs: "414px",
       sm: "576px",
@@ -26,9 +25,8 @@ const defaultConfig = {
       "xl-content-width": 1280,
       "xxl-content-width": 1440,
       "sm-design-width": 375,
-      "md-design-width": 765,
+      "md-design-width": 768,
       "lg-design-width": 1440,
-      "scrollbar-width": 0,
       space: 8,
     },
     colors: {
@@ -37,19 +35,29 @@ const defaultConfig = {
       "accent-color": "#e4d558",
       "light-color": "#efefef",
       "dark-color": "#1c1c1c",
-      "primary-text-color": "#101010",
-      "light-text-color": "#fff",
+      "border-color-1": "#dedede",
+      "border-color-2": "#303030",
+      "border-color-3": "#fafafa",
+      "text-color-1": "#101010",
+      "text-color-2": "#606060",
+      "text-color-3": "#f0f0f0",
     },
     typos: {
-      "primary-font-set": '-apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif',
-      "en-font-set": '"Helvetica Neue", "Helvetica", "Arial", sans-serif',
+      "font-set-1": '-apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif',
+      "font-set-2": '"Helvetica Neue", "Helvetica", "Arial", sans-serif',
+      "font-set-3": '"Times New Roman", "YuMincho", "Yu Mincho", serif',
       "base-line-height": 1.5,
       "base-feature-settings": '"pkna"',
       "base-letter-spacing": "0.05em",
     },
+    effects: {
+      "shadow-1": "0 0 8px rgba(0, 0, 0, 0.16)",
+      "shadow-2": "2px 4px 24px -1px rgba(0, 0, 0, 0.1)",
+      "shadow-3": "8px 16px 32px -4px rgba(0, 0, 0, 0.05)",
+    },
     animations: {
       "scroll-behavior": "smooth",
-      "ease-out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
       duration: "0.6s",
     },
   },
@@ -98,7 +106,7 @@ function deepMerge(target, source) {
 }
 
 const plugin = (opts = {}) => {
-  const categories = ["layout", "colors", "typos", "animations"];
+  const categories = ["layout", "colors", "typos", "effects", "animations"];
 
   return {
     postcssPlugin: "olayout",
@@ -155,6 +163,7 @@ const plugin = (opts = {}) => {
             if (rule.parent.type !== "atrule" || rule.parent.name !== "media") {
               rule.walkDecls(/^--/, (decl) => {
                 const prop = decl.prop.slice(config.prefix.length + 3);
+
                 categories.forEach((category) => {
                   if (config.theme[category][prop]) {
                     decl.value = String(config.theme[category][prop]);

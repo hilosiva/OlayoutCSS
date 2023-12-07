@@ -2,7 +2,11 @@
 //============================================
 //  Utillity
 //============================================
+@use "display";
+@use "border";
+@use "radius";
 @use "text";
 @use "background";
-@use "display";
+@use "blend-mode";
+@use "shadow";
 @use "visually-hidden";

@@ -29,22 +29,30 @@
 
   --#{$prefix}-space: #{$space};
 
-  --#{$prefix}-scrollbar-width: #{$scroll-bar};
   --#{$prefix}-base-color: #fff;
   --#{$prefix}-main-color: #116ec5;
   --#{$prefix}-accent-color: #e4d558;
   --#{$prefix}-light-color: #efefef;
   --#{$prefix}-dark-color: #1c1c1c;
-  --#{$prefix}-primary-text-color: #101010;
-  --#{$prefix}-light-text-color: #fff;
-  --#{$prefix}-primary-font-set: -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif;
-  --#{$prefix}-en-font-set: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --#{$prefix}-border-color-1: #dedede;
+  --#{$prefix}-border-color-2: #303030;
+  --#{$prefix}-border-color-3: #fafafa;
+  --#{$prefix}-text-color-1: #101010;
+  --#{$prefix}-text-color-2: #606060;
+  --#{$prefix}-text-color-3: #f0f0f0;
+  --#{$prefix}-font-set-1: -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif;
+  --#{$prefix}-font-set-2: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --#{$prefix}-font-set-3: "Times New Roman", "YuMincho", "Yu Mincho", serif;
   --#{$prefix}-base-line-height: 1.5;
   --#{$prefix}-base-feature-settings: "pkna";
   --#{$prefix}-base-letter-spacing: 0.05em;
+  --#{$prefix}-shadow-1: 0 0 16px rgba(0, 0, 0, 0.16);
+  --#{$prefix}-shadow-2: 2px 4px 24px -1px rgba(0, 0, 0, 0.1);
+  --#{$prefix}-shadow-3: 8px 16px 32px -4px rgba(0, 0, 0, 0.05);
   --#{$prefix}-scroll-behavior: smooth;
-  --#{$prefix}-ease-out-expo: #{$ease-out-expo};
+  --#{$prefix}-easing: #{$ease-out-expo};
   --#{$prefix}-duration: #{$duration};
+  --#{$prefix}-transition: var(--#{$prefix}-duration) var(--#{$prefix}-easing);
   --#{$prefix}-left-offset: 0;
   --#{$prefix}-right-offset: 0;
   --#{$prefix}-view-point: var(--#{$prefix}-sm-design-width);
@@ -80,10 +88,10 @@
 :where(body) {
   min-block-size: 100%;
   text-rendering: optimizeLegibility;
-  color: var(--#{$prefix}-primary-text-color);
+  color: var(--#{$prefix}-text-color-1);
   background-color: var(--#{$prefix}-base-color);
   line-height: var(--#{$prefix}-base-line-height);
-  font-family: var(--#{$prefix}-primary-font-set);
+  font-family: var(--#{$prefix}-font-set-1);
   font-feature-settings: var(--#{$prefix}-base-feature-settings);
   -webkit-font-smoothing: antialiased;
 }

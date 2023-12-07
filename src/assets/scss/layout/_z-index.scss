@@ -1,0 +1,67 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+// ====================================
+//  Z-index
+// ====================================
+
+[data-z-index] {
+  --#{$prefix}-z-index: 0;
+  z-index: var(--#{$prefix}-z-index);
+}
+
+[data-z-index~="auto"] {
+  --#{$prefix}-z-index: auto;
+}
+
+[data-z-index~="0"] {
+  --#{$prefix}-z-index: 0;
+}
+
+[data-z-index~="-1"] {
+  --#{$prefix}-z-index: -1;
+}
+
+[data-z-index~="1"] {
+  --#{$prefix}-z-index: 1;
+}
+
+@for $i from 1 through 5 {
+  [data-z-index~="-#{$i * 10}"] {
+    --#{$prefix}-z-index: calc(($i * 10) * -1);
+  }
+
+  [data-z-index~="#{$i * 10}"] {
+    --#{$prefix}-z-index: $i * 10;
+  }
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-z-index~="#{$device}:auto"] {
+      --#{$prefix}-z-index: auto;
+    }
+
+    [data-z-index~="#{$device}:0"] {
+      --#{$prefix}-z-index: 0;
+    }
+
+    [data-z-index~="#{$device}:-1"] {
+      --#{$prefix}-z-index: -1;
+    }
+
+    [data-z-index~="#{$device}:1"] {
+      --#{$prefix}-z-index: 1;
+    }
+
+    @for $i from 1 through 5 {
+      [data-z-index~="#{$device}:-#{$i * 10}"] {
+        --#{$prefix}-z-index: calc(($i * 10) * -1);
+      }
+
+      [data-z-index~="#{$device}:#{$i * 10}"] {
+        --#{$prefix}-z-index: $i * 10;
+      }
+    }
+  }
+}

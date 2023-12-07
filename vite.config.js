@@ -31,7 +31,7 @@ export default defineConfig({
   // plugins: [ViteOlayout()],
 
   build: {
-    outDir: process.env.NODE_ENV === "test" ? "../test" : "./dist",
+    outDir: process.env.NODE_ENV === "cdn" ? "./cdn" : "./dist",
     lib: {
       entry: [resolve(__dirname, "src/index.ts")],
       name: "index",
@@ -46,7 +46,7 @@ export default defineConfig({
         // assetFileNames: "olayout.[ext]",
         assetFileNames: ({ name }) => {
           if (/\.css$/.test(name ?? "")) {
-            return "assets/css/olayout[extname]";
+            return process.env.NODE_ENV === "cdn" ? "olayout.min[extname]" : "assets/css/olayout[extname]";
           }
           if (/\.js$/.test(name ?? "")) {
             return "assets/js/olayout[extname]";

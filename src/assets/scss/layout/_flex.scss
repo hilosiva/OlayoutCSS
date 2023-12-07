@@ -5,22 +5,25 @@
 // ====================================
 //  Flex
 // ====================================
+[data-flex] {
+  display: flex;
+}
 
 // Wrap
 // ----------------------------
-[data-flex~="nowrap"] {
+[data-flow~="nowrap"] {
   flex-wrap: nowrap;
 }
-[data-flex~="wrap"] {
+[data-flow~="wrap"] {
   flex-wrap: wrap;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-flex~="#{$device}:nowrap"] {
+    [data-flow~="#{$device}:nowrap"] {
       flex-wrap: nowrap;
     }
-    [data-flex~="#{$device}:wrap"] {
+    [data-flow~="#{$device}:wrap"] {
       flex-wrap: wrap;
     }
   }
@@ -29,25 +32,25 @@
 // Direction
 // ----------------------------
 
-[data-flex~="row"] {
+[data-flow~="row"] {
   flex-direction: row;
 }
-[data-flex~="reverse"] {
+[data-flow~="reverse"] {
   flex-direction: row-reverse;
 }
-[data-flex~="column"] {
+[data-flow~="column"] {
   flex-direction: column;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-flex~="#{$device}:row"] {
+    [data-flow~="#{$device}:row"] {
       flex-direction: row;
     }
-    [data-flex~="#{$device}:reverse"] {
+    [data-flow~="#{$device}:reverse"] {
       flex-direction: row-reverse;
     }
-    [data-flex~="#{$device}:column"] {
+    [data-flow~="#{$device}:column"] {
       flex-direction: column;
     }
   }
@@ -86,26 +89,27 @@
 // Over Container
 // ----------------------------
 
-[data-over~="left"] {
-  flex-grow: 1;
-}
-[data-over~="right"] {
+[data-over~="left"],
+[data-over~="right"],
+[data-over~="both"] {
   flex-grow: 1;
 }
 
-[data-over~="clearLeft"][data-over~="clearRight"] {
+[data-over~="clearLeft"][data-over~="clearRight"],
+[data-over~="clearBoth"] {
   flex-grow: 0;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-over~="#{$device}:left"] {
+    [data-over~="#{$device}:left"],
+    [data-over~="#{$device}:right"],
+    [data-over~="#{$device}:both"] {
       flex-grow: 1;
     }
-    [data-over~="#{$device}:right"] {
-      flex-grow: 1;
-    }
-    [data-over~="#{$device}:clearLeft"][data-over~="#{$device}:clearRight"] {
+
+    [data-over~="#{$device}:clearLeft"][data-over~="#{$device}:clearRight"],
+    [data-over~="#{$device}:clearBoth"] {
       flex-grow: 0;
     }
   }

@@ -45,7 +45,7 @@
 [data-text~="uppercase"] {
   text-transform: uppercase;
 }
-[data-text~="normal"] {
+[data-text~="normal-case"] {
   text-transform: initial;
 }
 @each $device, $breakpoint in $breakpoints {
@@ -53,7 +53,7 @@
     [data-text~="#{$device}:uppercase"] {
       text-transform: uppercase;
     }
-    [data-text~="#{$device}:normal"] {
+    [data-text~="#{$device}:normal-case"] {
       text-transform: initial;
     }
   }
@@ -61,22 +61,22 @@
 
 // Word Break
 // ----------------------------
-[data-text~="keep"] {
+[data-break~="keep"] {
   word-break: keep-all;
   overflow-wrap: break-word;
 }
-[data-text~="auto"] {
+[data-break~="auto"] {
   word-break: initial;
   overflow-wrap: initial;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-text~="#{$device}:keep"] {
+    [data-break~="#{$device}:keep"] {
       word-break: keep-all;
       overflow-wrap: break-word;
     }
-    [data-text~="#{$device}:auto"] {
+    [data-break~="#{$device}:auto"] {
       word-break: initial;
       overflow-wrap: initial;
     }
@@ -85,31 +85,31 @@
 
 // White Space
 // ----------------------------
-[data-text~="nowrap"] {
+[data-white-space~="nowrap"] {
   white-space: nowrap;
 }
-[data-text~="wrap"] {
+[data-white-space~="wrap"] {
   white-space: normal;
 }
-[data-text~="pre"] {
+[data-white-space~="pre"] {
   white-space: pre;
 }
-[data-text~="preWrap"] {
+[data-white-space~="preWrap"] {
   white-space: pre-wrap;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-text~="#{$device}:nowrap"] {
+    [data-white-space~="#{$device}:nowrap"] {
       white-space: nowrap;
     }
-    [data-text~="#{$device}:wrap"] {
+    [data-white-space~="#{$device}:wrap"] {
       white-space: normal;
     }
-    [data-text~="#{$device}:pre"] {
+    [data-white-space~="#{$device}:pre"] {
       white-space: pre;
     }
-    [data-text~="#{$device}:preWrap"] {
+    [data-white-space~="#{$device}:preWrap"] {
       white-space: pre-wrap;
     }
   }
@@ -118,61 +118,61 @@
 // Line Height
 // ----------------------------
 
-[data-line~="-2"] {
+[data-leading~="-2"] {
   line-height: 0.5;
 }
-[data-line~="-1"] {
+[data-leading~="-1"] {
   line-height: 0.75;
 }
-[data-line~="1"] {
+[data-leading~="1"] {
   line-height: 1;
 }
-[data-line~="+1"] {
+[data-leading~="+1"] {
   line-height: 1.25;
 }
-[data-line~="+2"] {
+[data-leading~="+2"] {
   line-height: 1.5;
 }
-[data-line~="+3"] {
+[data-leading~="+3"] {
   line-height: 1.75;
 }
-[data-line~="+4"] {
+[data-leading~="+4"] {
   line-height: 2;
 }
-[data-line~="+5"] {
+[data-leading~="+5"] {
   line-height: 2.25;
 }
-[data-line~="+6"] {
+[data-leading~="+6"] {
   line-height: 2.5;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-line~="#{$device}:-2"] {
+    [data-leading~="#{$device}:-2"] {
       line-height: 0.5;
     }
-    [data-line~="#{$device}:-1"] {
+    [data-leading~="#{$device}:-1"] {
       line-height: 0.75;
     }
-    [data-line~="#{$device}:1"] {
+    [data-leading~="#{$device}:1"] {
       line-height: 1;
     }
-    [data-line~="#{$device}:+1"] {
+    [data-leading~="#{$device}:+1"] {
       line-height: 1.25;
     }
-    [data-line~="#{$device}:+2"] {
+    [data-leading~="#{$device}:+2"] {
       line-height: 1.5;
     }
-    [data-line~="#{$device}:+3"] {
+    [data-leading~="#{$device}:+3"] {
       line-height: 1.75;
     }
-    [data-line~="#{$device}:+4"] {
+    [data-leading~="#{$device}:+4"] {
       line-height: 2;
     }
-    [data-line~="#{$device}:+5"] {
+    [data-leading~="#{$device}:+5"] {
       line-height: 2.25;
     }
-    [data-line~="#{$device}:+6"] {
+    [data-leading~="#{$device}:+6"] {
       line-height: 2.5;
     }
   }
@@ -366,18 +366,24 @@
 
 // family
 // ----------------------------
-[data-font~="primary"] {
-  font-family: var(--#{$prefix}-primary-font-set, "sans-serif");
+[data-font~="font-set-1"] {
+  font-family: var(--#{$prefix}-font-set-1, "sans-serif");
 }
-[data-font~="en"] {
-  font-family: var(--#{$prefix}-en-font-set, "sans-serif");
+[data-font~="font-set-2"] {
+  font-family: var(--#{$prefix}-font-set-2, "sans-serif");
+}
+[data-font~="font-set-3"] {
+  font-family: var(--#{$prefix}-font-set-3, "sans-serif");
 }
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-font~="#{$device}:primary"] {
-      font-family: var(--#{$prefix}-primary-font-set, "sans-serif");
+    [data-font~="#{$device}:font-set-1"] {
+      font-family: var(--#{$prefix}-font-set-1, "sans-serif");
     }
-    [data-font~="#{$device}:en"] {
+    [data-font~="#{$device}:font-set-2"] {
+      font-family: var(--#{$prefix}-en-font-set, "sans-serif");
+    }
+    [data-font~="#{$device}:font-set-3"] {
       font-family: var(--#{$prefix}-en-font-set, "sans-serif");
     }
   }
@@ -406,7 +412,7 @@
 [data-font~="normal"] {
   font-style: normal;
 }
-[data-style~="italic"] {
+[data-font~="italic"] {
   font-style: italic;
 }
 
@@ -415,7 +421,7 @@
     [data-font~="#{$device}:normal"] {
       font-style: normal;
     }
-    [data-style~="#{$device}:italic"] {
+    [data-font~="#{$device}:italic"] {
       font-style: italic;
     }
   }
@@ -423,17 +429,20 @@
 
 // Color
 // ----------------------------
-[data-color~="primary"] {
-  color: var(--#{$prefix}-primary-text-color);
+[data-color~="text-1"] {
+  color: var(--#{$prefix}-text-color-1);
+}
+[data-color~="text-2"] {
+  color: var(--#{$prefix}-text-color-2);
+}
+[data-color~="text-3"] {
+  color: var(--#{$prefix}-text-color-3);
 }
 [data-color~="main"] {
   color: var(--#{$prefix}-main-color);
 }
 [data-color~="accent"] {
   color: var(--#{$prefix}-accent-color);
-}
-[data-color~="light"] {
-  color: var(--#{$prefix}-light-text-color);
 }
 [data-color~="white"] {
   color: #fff;
@@ -444,17 +453,20 @@
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-color~="#{$device}:primary"] {
-      color: var(--#{$prefix}-primary-text-color);
+    [data-color~="#{$device}:text-1"] {
+      color: var(--#{$prefix}-text-color-1);
+    }
+    [data-color~="#{$device}:text-2"] {
+      color: var(--#{$prefix}-text-color-2);
+    }
+    [data-color~="#{$device}:text-3"] {
+      color: var(--#{$prefix}-text-color-3);
     }
     [data-color~="#{$device}:main"] {
       color: var(--#{$prefix}-main-color);
     }
     [data-color~="#{$device}:accent"] {
       color: var(--#{$prefix}-accent-color);
-    }
-    [data-color~="#{$device}:light"] {
-      color: var(--#{$prefix}-light-text-color);
     }
     [data-color~="#{$device}:white"] {
       color: #fff;

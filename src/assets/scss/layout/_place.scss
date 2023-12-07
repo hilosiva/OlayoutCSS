@@ -1,0 +1,51 @@
+@charset "UTF-8";
+@use "sass:math";
+@use "../global" as *;
+
+// ====================================
+//  Place Items
+// ====================================
+
+[data-place~="start"] {
+  place-items: start;
+}
+
+[data-place~="center"] {
+  place-items: center;
+}
+
+[data-place~="end"] {
+  place-items: end;
+}
+
+[data-place~="baseline"] {
+  place-items: baseline;
+}
+
+[data-place~="stretch"] {
+  place-items: stretch;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-place~="#{$device}:start"] {
+      place-items: start;
+    }
+
+    [data-place~="#{$device}:center"] {
+      place-items: center;
+    }
+
+    [data-place~="#{$device}:end"] {
+      place-items: end;
+    }
+
+    [data-place~="#{$device}:baseline"] {
+      place-items: baseline;
+    }
+
+    [data-place~="#{$device}:stretch"] {
+      place-items: stretch;
+    }
+  }
+}

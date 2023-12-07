@@ -7,20 +7,19 @@
   --ol-accent-color: #e9e1c8;
   --ol-light-color: #ecebe3;
   --ol-dark-color: #161616;
-  --ol-primary-text-color: #ecebe3;
-  --ol-light-text-color: #fff;
-  --ol-primary-font-set: "Zen Kaku Gothic New", sans-serif;
-  --ol-en-font-set: "Marcellus", serif;
+  --ol-text-color-1: #ecebe3;
+  --ol-text-color-2: #fff;
+  --ol-font-set-1: "Zen Kaku Gothic New", sans-serif;
+  --ol-font-set-2: "Marcellus", serif;
+  --ol-base-line-height: 2;
   /* --ol-base-feature-settings: "palt"; */
   /* --ol-base-letter-spacing: 1em; */
 }
 
 [lang="en"] {
-  font-family: var(--ol-en-font-set);
+  font-family: var(--ol-font-set-2);
 }
-body {
-  line-height: 2;
-}
+
 .box {
   padding: 1rem;
   background-color: #101010;
@@ -56,7 +55,7 @@ h3 {
   /* color: var(--ol-accent-color); */
 }
 
-@media screen and (min-width: 992px) {
+@media (--ol-lg) {
   .hero {
     font-size: 10rem;
   }

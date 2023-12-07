@@ -11,9 +11,47 @@
   --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
   --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
   --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
+  --#{$prefix}-left-margin: auto;
+  --#{$prefix}-right-margin: auto;
 
   padding-right: var(--#{$prefix}-right-offset);
   padding-left: var(--#{$prefix}-left-offset);
+  margin-right: var(--#{$prefix}-right-margin);
+  margin-left: var(--#{$prefix}-left-margin);
+  box-sizing: content-box;
+}
+
+// Align
+// ----------------------------
+
+[data-container~="left"] {
+  --#{$prefix}-left-margin: 0;
+  --#{$prefix}-right-margin: auto;
+}
+[data-container~="right"] {
+  --#{$prefix}-left-margin: auto;
+  --#{$prefix}-right-margin: 0;
+}
+[data-container~="center"] {
+  --#{$prefix}-left-margin: 0;
+  --#{$prefix}-right-margin: auto;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-container~="#{$device}:left"] {
+      --#{$prefix}-left-margin: 0;
+      --#{$prefix}-right-margin: auto;
+    }
+    [data-container~="#{$device}:right"] {
+      --#{$prefix}-left-margin: auto;
+      --#{$prefix}-right-margin: 0;
+    }
+    [data-container~="#{$device}:center"] {
+      --#{$prefix}-left-margin: 0;
+      --#{$prefix}-right-margin: auto;
+    }
+  }
 }
 
 // Offset
@@ -125,129 +163,69 @@
   }
 }
 
-// Max
-// ----------------------------
-[data-container-limit~="small"] {
-  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-}
-[data-container-limit~="medium"] {
-  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-}
-[data-container-limit~="large"] {
-  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-}
-[data-container-limit~="xlarge"] {
-  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-}
-[data-container-limit~="xxlarge"] {
-  --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-  --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-}
-[data-container-limit~="none"] {
-  --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
-  --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
-}
-
-@each $device, $breakpoint in $breakpoints {
-  @include mq($device) {
-    [data-container-limit~="#{$device}:small"] {
-      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-sm-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-    }
-    [data-container-limit~="#{$device}:medium"] {
-      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-md-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-    }
-    [data-container-limit~="#{$device}:large"] {
-      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-lg-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-    }
-    [data-container-limit~="#{$device}:xlarge"] {
-      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-    }
-    [data-container-limit~="#{$device}:xxlarge"] {
-      --#{$prefix}-left-offset: max(var(--#{$prefix}-container-left-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-      --#{$prefix}-right-offset: max(var(--#{$prefix}-container-right-offset), calc((100% - (var(--#{$prefix}-xxl-content-width) * 1px)) / var(--#{$prefix}-container-offset-ratio)));
-    }
-    [data-container-limit~="#{$device}:none"] {
-      --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
-      --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
-    }
-  }
-}
-
-// Align
-// ----------------------------
-
-[data-container~="left"] {
-  --#{$prefix}-container-offset-ratio: 1;
-
-  --#{$prefix}-left-offset: 0;
-}
-[data-container~="right"] {
-  --#{$prefix}-container-offset-ratio: 1;
-
-  --#{$prefix}-right-offset: 0;
-}
-[data-container~="center"] {
-  --#{$prefix}-container-offset-ratio: 2;
-  --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
-  --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
-}
-
-@each $device, $breakpoint in $breakpoints {
-  @include mq($device) {
-    [data-container~="#{$device}:left"] {
-      --#{$prefix}-container-offset-ratio: 1;
-
-      --#{$prefix}-left-offset: 0;
-    }
-    [data-container~="#{$device}:right"] {
-      --#{$prefix}-container-offset-ratio: 1;
-
-      --#{$prefix}-right-offset: 0;
-    }
-    [data-container~="#{$device}:center"] {
-      --#{$prefix}-container-offset-ratio: 2;
-      --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
-      --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
-    }
-  }
-}
-
 // Over Container
 // ----------------------------
+[data-over] {
+  --#{$prefix}-left-over: calc(-1 * var(--#{$prefix}-left-offset, 0));
+  --#{$prefix}-right-over: calc(-1 * var(--#{$prefix}-right-offset, 0));
+
+  margin-right: var(--#{$prefix}-right-margin, 0);
+  margin-left: var(--#{$prefix}-left-margin, 0);
+}
+
 [data-over~="left"] {
-  margin-left: calc(-1 * var(--#{$prefix}-left-offset, 0));
+  --#{$prefix}-left-margin: var(--#{$prefix}-left-over);
+  --#{$prefix}-right-margin: 0;
 }
+
 [data-over~="right"] {
-  margin-right: calc(-1 * var(--#{$prefix}-right-offset, 0));
+  --#{$prefix}-left-margin: 0;
+  --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
 }
+
+[data-over~="both"] {
+  --#{$prefix}-left-margin: var(--#{$prefix}-left-over);
+  --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
+}
+
 [data-over~="clearLeft"] {
-  margin-left: 0;
+  --#{$prefix}-left-margin: 0;
 }
+
 [data-over~="clearRight"] {
-  margin-right: 0;
+  --#{$prefix}-right-margin: 0;
+}
+
+[data-over~="clearBoth"] {
+  --#{$prefix}-left-margin: 0;
+  --#{$prefix}-right-margin: 0;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-over~="#{$device}:left"] {
-      margin-left: calc(-1 * var(--#{$prefix}-left-offset, 0));
+      --#{$prefix}-left-margin: var(--#{$prefix}-left-over);
+      --#{$prefix}-right-margin: 0;
     }
     [data-over~="#{$device}:right"] {
-      margin-right: calc(-1 * var(--#{$prefix}-right-offset, 0));
+      --#{$prefix}-left-margin: 0;
+      --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
     }
+
+    [data-over~="#{$device}:both"] {
+      --#{$prefix}-left-margin: var(--#{$prefix}-left-over);
+      --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
+    }
+
     [data-over~="#{$device}:clearLeft"] {
-      margin-left: 0;
+      --#{$prefix}-left-margin: 0;
     }
     [data-over~="#{$device}:clearRight"] {
-      margin-right: 0;
+      --#{$prefix}-right-margin: 0;
+    }
+    [data-over~="#{$device}:clearBoth"] {
+      --#{$prefix}-left-margin: 0;
+      --#{$prefix}-right-margin: 0;
     }
   }
 }

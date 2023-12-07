@@ -7,14 +7,14 @@
 // ====================================
 
 [data-grid] {
+  --#{$prefix}-grid-columns: #{$column};
   display: grid;
 }
 
 // Columns
 // ----------------------------
 [data-cols] {
-  --#{$prefix}-grid-columns: #{$column};
-  --#{$prefix}-grid-template-colmns: repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr));
+  --#{$prefix}-grid-template-colmns: repeat(var(--#{$prefix}-grid-columns, 1), minmax(0, 1fr));
   grid-template-columns: var(--#{$prefix}-grid-template-colmns);
 }
 

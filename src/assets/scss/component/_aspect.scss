@@ -1,0 +1,78 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Aspect Ratio
+*/
+[data-aspect] {
+  aspect-ratio: var(--#{$prefix}-aspect, auto);
+}
+
+[data-aspect~="squere"],
+[data-aspect~="1"] {
+  --#{$prefix}-aspect: 1 / 1;
+}
+
+[data-aspect~="16/9"] {
+  --#{$prefix}-aspect: 16 / 9;
+}
+
+[data-aspect~="3/4"] {
+  --#{$prefix}-aspect: 3 / 4;
+}
+
+[data-aspect~="x-golden"] {
+  --#{$prefix}-aspect: 1.618 / 1;
+}
+[data-aspect~="y-golden"] {
+  --#{$prefix}-aspect: 1 / 1.618;
+}
+[data-aspect~="x-shilver"] {
+  --#{$prefix}-aspect: 1.414 / 1;
+}
+[data-aspect~="y-shilver"] {
+  --#{$prefix}-aspect: 1 / 1.414;
+}
+[data-aspect~="x-platinum"] {
+  --#{$prefix}-aspect: 1.732 / 1;
+}
+[data-aspect~="y-platinum"] {
+  --#{$prefix}-aspect: 1 / 1.732;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-aspect~="#{$device}:squere"],
+    [data-aspect~="#{$device}:1"] {
+      --#{$prefix}-aspect: 1 / 1;
+    }
+
+    [data-aspect~="#{$device}:16/9"] {
+      --#{$prefix}-aspect: 16 / 9;
+    }
+
+    [data-aspect~="#{$device}:3/4"] {
+      --#{$prefix}-aspect: 3 / 4;
+    }
+
+    [data-aspect~="#{$device}:x-golden"] {
+      --#{$prefix}-aspect: 1.618 / 1;
+    }
+    [data-aspect~="#{$device}:y-golden"] {
+      --#{$prefix}-aspect: 1 / 1.618;
+    }
+    [data-aspect~="#{$device}:x-shilver"] {
+      --#{$prefix}-aspect: 1.414 / 1;
+    }
+    [data-aspect~="#{$device}:y-shilver"] {
+      --#{$prefix}-aspect: 1 / 1.414;
+    }
+    [data-aspect~="#{$device}:x-platinum"] {
+      --#{$prefix}-aspect: 1.732 / 1;
+    }
+    [data-aspect~="#{$device}:y-platinum"] {
+      --#{$prefix}-aspect: 1 / 1.732;
+    }
+  }
+}

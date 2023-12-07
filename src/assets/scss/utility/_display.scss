@@ -29,6 +29,7 @@
 [data-display~="unset"] {
   display: unset;
 }
+
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-display~="#{$device}:none"] {

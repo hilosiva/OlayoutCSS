@@ -1,0 +1,82 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+// ====================================
+//  Mix Blend Mode
+// ====================================
+
+[data-blend-mode] {
+  mix-blend-mode: var(--#{$prefix}-blend-mode, normal);
+}
+
+[data-blend-mode~="normal"] {
+  --#{$prefix}-blend-mode: normal;
+}
+[data-blend-mode~="multiply"] {
+  --#{$prefix}-blend-mode: multiply;
+}
+[data-blend-mode~="screen"] {
+  --#{$prefix}-blend-mode: screen;
+}
+[data-blend-mode~="overlay"] {
+  --#{$prefix}-blend-mode: overlay;
+}
+[data-blend-mode~="darken"] {
+  --#{$prefix}-blend-mode: darken;
+}
+[data-blend-mode~="lighten"] {
+  --#{$prefix}-blend-mode: lighten;
+}
+[data-blend-mode~="hard-light"] {
+  --#{$prefix}-blend-mode: hard-light;
+}
+[data-blend-mode~="soft-light"] {
+  --#{$prefix}-blend-mode: soft-light;
+}
+[data-blend-mode~="difference"] {
+  --#{$prefix}-blend-mode: difference;
+}
+[data-blend-mode~="exclusion"] {
+  --#{$prefix}-blend-mode: exclusion;
+}
+[data-blend-mode~="saturation"] {
+  --#{$prefix}-blend-mode: saturation;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-blend-mode~="#{$device}:normal"] {
+      --#{$prefix}-blend-mode: normal;
+    }
+    [data-blend-mode~="#{$device}:multiply"] {
+      --#{$prefix}-blend-mode: multiply;
+    }
+    [data-blend-mode~="#{$device}:screen"] {
+      --#{$prefix}-blend-mode: screen;
+    }
+    [data-blend-mode~="#{$device}:overlay"] {
+      --#{$prefix}-blend-mode: overlay;
+    }
+    [data-blend-mode~="#{$device}:darken"] {
+      --#{$prefix}-blend-mode: darken;
+    }
+    [data-blend-mode~="#{$device}:lighten"] {
+      --#{$prefix}-blend-mode: lighten;
+    }
+    [data-blend-mode~="#{$device}:hard-light"] {
+      --#{$prefix}-blend-mode: hard-light;
+    }
+    [data-blend-mode~="#{$device}:soft-light"] {
+      --#{$prefix}-blend-mode: soft-light;
+    }
+    [data-blend-mode~="#{$device}:difference"] {
+      --#{$prefix}-blend-mode: difference;
+    }
+    [data-blend-mode~="#{$device}:exclusion"] {
+      --#{$prefix}-blend-mode: exclusion;
+    }
+    [data-blend-mode~="#{$device}:saturation"] {
+      --#{$prefix}-blend-mode: saturation;
+    }
+  }
+}

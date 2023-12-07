@@ -10,7 +10,7 @@
 }
 
 [data-height~="device"] {
-  height: 100vw;
+  height: 100vh;
 }
 
 @each $device, $breakpoint in $breakpoints {

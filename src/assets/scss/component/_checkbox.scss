@@ -5,8 +5,7 @@
 /*
   Checkbox
 */
-.#{$prefix}-checkbox {
-  $this: &;
+[data-checkbox] {
   width: pxToRem(25px);
   height: pxToRem(25px);
   margin: pxToRem(4px) pxToRem(8px);

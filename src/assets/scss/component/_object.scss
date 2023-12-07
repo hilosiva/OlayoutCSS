@@ -1,0 +1,77 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Object
+*/
+[data-object] {
+  width: 100%;
+  height: 100%;
+  object-position: var(--#{$prefix}-object-position-x, 50%) var(--#{$prefix}-object-position-y, 50%);
+}
+[data-object~="cover"] {
+  object-fit: cover;
+}
+[data-object~="contain"] {
+  object-fit: contain;
+}
+[data-object~="fill"] {
+  object-fit: fill;
+}
+[data-object~="none"] {
+  object-fit: none;
+}
+[data-object~="top"] {
+  --#{$prefix}-object-position-y: top;
+}
+[data-object~="bottom"] {
+  --#{$prefix}-object-positio-y: bottom;
+}
+[data-object~="left"] {
+  --#{$prefix}-object-position-x: left;
+}
+[data-object~="right"] {
+  --#{$prefix}-object-position-x: right;
+}
+[data-object~="center"] {
+  --#{$prefix}-object-position-x: center;
+}
+[data-object~="middle"] {
+  --#{$prefix}-object-position-y: center;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-object~="#{$device}:cover"] {
+      object-fit: cover;
+    }
+    [data-object~="#{$device}:contain"] {
+      object-fit: contain;
+    }
+    [data-object~="#{$device}:fill"] {
+      object-fit: fill;
+    }
+    [data-object~="#{$device}:none"] {
+      object-fit: none;
+    }
+    [data-object~="#{$device}:top"] {
+      --#{$prefix}-object-position-y: top;
+    }
+    [data-object~="#{$device}:bottom"] {
+      --#{$prefix}-object-positio-y: bottom;
+    }
+    [data-object~="#{$device}:left"] {
+      --#{$prefix}-object-position-x: left;
+    }
+    [data-object~="#{$device}:right"] {
+      --#{$prefix}-object-position-x: right;
+    }
+    [data-object~="#{$device}:center"] {
+      --#{$prefix}-object-position-x: center;
+    }
+    [data-object~="#{$device}:middle"] {
+      --#{$prefix}-object-position-y: center;
+    }
+  }
+}
