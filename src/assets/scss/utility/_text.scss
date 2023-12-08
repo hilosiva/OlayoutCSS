@@ -65,6 +65,10 @@
   word-break: keep-all;
   overflow-wrap: break-word;
 }
+[data-break~="phrase"] {
+  word-break: auto-phrase;
+  overflow-wrap: break-word;
+}
 [data-break~="auto"] {
   word-break: initial;
   overflow-wrap: initial;
@@ -74,6 +78,10 @@
   @include mq($device) {
     [data-break~="#{$device}:keep"] {
       word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    [data-break~="#{$device}:phrase"] {
+      word-break: auto-phrase;
       overflow-wrap: break-word;
     }
     [data-break~="#{$device}:auto"] {

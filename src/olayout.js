@@ -105,6 +105,21 @@ function deepMerge(target, source) {
   return target;
 }
 
+const getRem = (px) => {
+  return `${px / 16}rem`;
+};
+const getEm = (px, base = 16) => {
+  return `${px / base}em`;
+};
+
+// Clampを計算する関数
+const getFluid = (minSize, maxSize, minViewPort = defaultConfig.theme.layout["sm-design-width"], maxViewPort = defaultConfig.theme.layout["lg-design-width"]) => {
+  const valiablePart = (maxSize - minSize) / (maxViewPort - minViewPort);
+  const constant = maxSize - maxViewPort * valiablePart;
+
+  return `clamp(${getRem(minSize)}, ${getRem(constant)} + ${100 * valiablePart}vw, ${getRem(maxSize)})`;
+};
+
 const plugin = (opts = {}) => {
   const categories = ["layout", "colors", "typos", "effects", "animations"];
 
@@ -205,7 +220,114 @@ const plugin = (opts = {}) => {
             atrule.params = mediaQueries.get(screenKey);
           }
         });
+
+        // 既存のCSSファイルに含むオリジナル関数の処理
+        root.walkDecls((decl) => {
+          // fluid関数
+          const fluidMatch = /fluid\(([^)]+)\)/.exec(decl.value);
+          if (fluidMatch) {
+            const [minSize, maxSize, minViewPort, maxViewPort] = fluidMatch[1]
+              .replace(/\s/g, "")
+              .split(",")
+              .map((value) => {
+                if (value === "") {
+                  return undefined; // 空文字列があれば undefined とする
+                }
+
+                const numericValue = parseFloat(value);
+
+                if (isNaN(numericValue)) {
+                  throw new Error(`Invalid argument '${value}' in fluid() function.`);
+                }
+
+                return numericValue;
+              }); // () の中の文字列
+
+            decl.value = getFluid(minSize, maxSize, minViewPort ? minViewPort : config.theme.layout["sm-design-width"], maxViewPort ? maxViewPort : config.theme.layout["lg-design-width"]);
+          }
+
+          // em関数
+          const emMatch = /em\(([^)]+)\)/.exec(decl.value);
+          if (emMatch) {
+            const [px, basePx] = emMatch[1]
+              .replace(/\s/g, "")
+              .split(",")
+              .map((value) => {
+                if (value === "") {
+                  return undefined; // 空文字列があれば undefined とする
+                }
+
+                const numericValue = parseFloat(value);
+
+                if (isNaN(numericValue)) {
+                  throw new Error(`Invalid argument '${value}' in em() function.`);
+                }
+
+                return numericValue;
+              }); // () の中の文字列;
+
+            decl.value = getEm(px, basePx ? basePx : 16);
+          }
+
+          // rem関数
+          const remMatch = /rem\(([^)]+)\)/.exec(decl.value);
+          if (remMatch) {
+            const px = parseFloat(remMatch[1]);
+            if (isNaN(px)) {
+              throw new Error(`Invalid argument '${remMatch[1]}' in rem() function.`);
+            }
+
+            decl.value = getRem(px);
+          }
+
+          // vw関数
+          const vwMatch = /vw\(([^)]+)\)/.exec(decl.value);
+          if (vwMatch) {
+            const [px, viewPort] = vwMatch[1]
+              .replace(/\s/g, "")
+              .split(",")
+              .map((value) => {
+                if (value === "") {
+                  return undefined; // 空文字列があれば undefined とする
+                }
+
+                const numericValue = parseFloat(value);
+
+                if (isNaN(numericValue)) {
+                  throw new Error(`Invalid argument '${value}' in vw() function.`);
+                }
+
+                return numericValue;
+              }); // () の中の文字列;
+
+            decl.value = `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vw)`;
+          }
+
+          // vh関数
+          const vhMatch = /vh\(([^)]+)\)/.exec(decl.value);
+          if (vhMatch) {
+            const [px, viewPort] = vhMatch[1]
+              .replace(/\s/g, "")
+              .split(",")
+              .map((value) => {
+                if (value === "") {
+                  return undefined; // 空文字列があれば undefined とする
+                }
+
+                const numericValue = parseFloat(value);
+
+                if (isNaN(numericValue)) {
+                  throw new Error(`Invalid argument '${value}' in vh() function.`);
+                }
+
+                return numericValue;
+              }); // () の中の文字列;
+
+            decl.value = `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vh)`;
+          }
+        });
       } catch (e) {
+        console.error(e.message);
         return;
       }
     },

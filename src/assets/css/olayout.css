@@ -39655,6 +39655,11 @@ form button:not([type]):after {
   overflow-wrap: break-word;
 }
 
+[data-break~=phrase] {
+  word-break: auto-phrase;
+  overflow-wrap: break-word;
+}
+
 [data-break~=auto] {
   word-break: initial;
   overflow-wrap: initial;
@@ -39663,6 +39668,10 @@ form button:not([type]):after {
 @media (--ol-xxs) {
   [data-break~="xxs:keep"] {
     word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  [data-break~="xxs:phrase"] {
+    word-break: auto-phrase;
     overflow-wrap: break-word;
   }
   [data-break~="xxs:auto"] {
@@ -39675,6 +39684,10 @@ form button:not([type]):after {
     word-break: keep-all;
     overflow-wrap: break-word;
   }
+  [data-break~="xs:phrase"] {
+    word-break: auto-phrase;
+    overflow-wrap: break-word;
+  }
   [data-break~="xs:auto"] {
     word-break: initial;
     overflow-wrap: initial;
@@ -39683,6 +39696,10 @@ form button:not([type]):after {
 @media (--ol-sm) {
   [data-break~="sm:keep"] {
     word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  [data-break~="sm:phrase"] {
+    word-break: auto-phrase;
     overflow-wrap: break-word;
   }
   [data-break~="sm:auto"] {
@@ -39695,6 +39712,10 @@ form button:not([type]):after {
     word-break: keep-all;
     overflow-wrap: break-word;
   }
+  [data-break~="md:phrase"] {
+    word-break: auto-phrase;
+    overflow-wrap: break-word;
+  }
   [data-break~="md:auto"] {
     word-break: initial;
     overflow-wrap: initial;
@@ -39703,6 +39724,10 @@ form button:not([type]):after {
 @media (--ol-lg) {
   [data-break~="lg:keep"] {
     word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  [data-break~="lg:phrase"] {
+    word-break: auto-phrase;
     overflow-wrap: break-word;
   }
   [data-break~="lg:auto"] {
@@ -39715,6 +39740,10 @@ form button:not([type]):after {
     word-break: keep-all;
     overflow-wrap: break-word;
   }
+  [data-break~="xl:phrase"] {
+    word-break: auto-phrase;
+    overflow-wrap: break-word;
+  }
   [data-break~="xl:auto"] {
     word-break: initial;
     overflow-wrap: initial;
@@ -39723,6 +39752,10 @@ form button:not([type]):after {
 @media (--ol-xxl) {
   [data-break~="xxl:keep"] {
     word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  [data-break~="xxl:phrase"] {
+    word-break: auto-phrase;
     overflow-wrap: break-word;
   }
   [data-break~="xxl:auto"] {
