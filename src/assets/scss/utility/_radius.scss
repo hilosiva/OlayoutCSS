@@ -1,0 +1,64 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+// ====================================
+//  Radius
+// ====================================
+
+[data-radius] {
+  border-radius: var(--#{$prefix}-radius, 0);
+}
+
+[data-radius~="none"] {
+  --#{$prefix}-radius: 0;
+}
+[data-radius~="xsmall"] {
+  --#{$prefix}-radius: calc(4 / 16 * 1rem);
+}
+[data-radius~="small"] {
+  --#{$prefix}-radius: calc(8 / 16 * 1rem);
+}
+[data-radius~="medium"] {
+  --#{$prefix}-radius: calc(16 / 16 * 1rem);
+}
+[data-radius~="large"] {
+  --#{$prefix}-radius: calc(24 / 16 * 1rem);
+}
+[data-radius~="xlarge"] {
+  --#{$prefix}-radius: calc(32 / 16 * 1rem);
+}
+[data-radius~="xxlarge"] {
+  --#{$prefix}-radius: calc(40 / 16 * 1rem);
+}
+[data-radius~="full"] {
+  --#{$prefix}-radius: 9999px;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-radius~="#{$device}:none"] {
+      --#{$prefix}-radius: 0;
+    }
+    [data-radius~="#{$device}:xsmall"] {
+      --#{$prefix}-radius: calc(4 / 16 * 1rem);
+    }
+    [data-radius~="#{$device}:small"] {
+      --#{$prefix}-radius: calc(8 / 16 * 1rem);
+    }
+    [data-radius~="#{$device}:medium"] {
+      --#{$prefix}-radius: calc(16 / 16 * 1rem);
+    }
+    [data-radius~="#{$device}:large"] {
+      --#{$prefix}-radius: calc(24 / 16 * 1rem);
+    }
+    [data-radius~="#{$device}:xlarge"] {
+      --#{$prefix}-radius: calc(32 / 16 * 1rem);
+    }
+    [data-radius~="#{$device}:xxlarge"] {
+      --#{$prefix}-radius: calc(40 / 16 * 1rem);
+    }
+    [data-radius~="#{$device}:full"] {
+      --#{$prefix}-radius: 9999px;
+    }
+  }
+}

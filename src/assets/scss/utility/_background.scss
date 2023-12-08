@@ -1,0 +1,54 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Background-color
+-----------------------------------------------------*/
+[data-bg~="base"] {
+  background-color: var(--#{$prefix}-base-color);
+}
+[data-bg~="main"] {
+  background-color: var(--#{$prefix}-main-color);
+}
+[data-bg~="accent"] {
+  background-color: var(--#{$prefix}-accent-color);
+}
+[data-bg~="light"] {
+  background-color: var(--#{$prefix}-light-color);
+}
+[data-bg~="dark"] {
+  background-color: var(--#{$prefix}-dark-color);
+}
+[data-bg~="white"] {
+  background-color: #fff;
+}
+[data-bg~="block"] {
+  background-color: #000;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-bg~="#{$device}:base"] {
+      background-color: var(--#{$prefix}-base-color);
+    }
+    [data-bg~="#{$device}:main"] {
+      background-color: var(--#{$prefix}-main-color);
+    }
+    [data-bg~="#{$device}:accent"] {
+      background-color: var(--#{$prefix}-accent-color);
+    }
+    [data-bg~="#{$device}:light"] {
+      background-color: var(--#{$prefix}-light-color);
+    }
+    [data-bg~="#{$device}:dark"] {
+      background-color: var(--#{$prefix}-dark-color);
+    }
+    [data-bg~="#{$device}:white"] {
+      background-color: #fff;
+    }
+    [data-bg~="#{$device}:block"] {
+      background-color: #000;
+    }
+  }
+}

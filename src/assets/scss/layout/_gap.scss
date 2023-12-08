@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@use "sass:math";
+@use "../global" as *;
+
+// ====================================
+//  Gap
+// ====================================
+
+@for $i from 0 through $space-range {
+  [data-gap~="#{$i}"] {
+    gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+  }
+  [data-gap-x~="#{$i}"] {
+    column-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+  }
+  [data-gap-y~="#{$i}"] {
+    row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+  }
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    @for $i from 0 through $space-range {
+      [data-gap~="#{$device}:#{$i}"] {
+        gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+      }
+      [data-gap-x~="#{$device}:#{$i}"] {
+        column-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+      }
+      [data-gap-y~="#{$device}:#{$i}"] {
+        row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+      }
+    }
+  }
+}

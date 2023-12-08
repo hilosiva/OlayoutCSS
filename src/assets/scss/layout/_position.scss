@@ -1,0 +1,41 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+// ====================================
+//  Position
+// ====================================
+[data-position~="static"] {
+  position: static;
+}
+[data-position~="relative"] {
+  position: relative;
+}
+[data-position~="absolute"] {
+  position: absolute;
+}
+[data-position~="fixed"] {
+  position: fixed;
+}
+[data-position~="sticky"] {
+  position: sticky;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-position~="#{$device}:static"] {
+      position: static;
+    }
+    [data-position~="#{$device}:relative"] {
+      position: relative;
+    }
+    [data-position~="#{$device}:absolute"] {
+      position: absolute;
+    }
+    [data-position~="#{$device}:fixed"] {
+      position: fixed;
+    }
+    [data-position~="#{$device}:sticky"] {
+      position: sticky;
+    }
+  }
+}

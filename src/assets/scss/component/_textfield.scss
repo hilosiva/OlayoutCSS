@@ -5,8 +5,7 @@
 /*
   TextField
 */
-.#{$prefix}-textfield {
-  $this: &;
+[data-textfield] {
   display: block;
   width: 100%;
   padding: pxToRem(16px) pxToRem(20px);
@@ -29,9 +28,5 @@
 
   &::placeholder {
     color: #a7a7a7;
-  }
-
-  &.-harf {
-    width: 50%;
   }
 }

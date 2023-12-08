@@ -1,0 +1,36 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+// ====================================
+//  overflow
+// ====================================
+[data-overflow~="auto"] {
+  overflow: auto;
+}
+[data-overflow~="hidden"] {
+  overflow: hidden;
+}
+[data-overflow~="visible"] {
+  overflow: visible;
+}
+[data-overflow~="scroll"] {
+  overflow: scroll;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-overflow~="#{$device}:auto"] {
+      overflow: auto;
+    }
+    [data-overflow~="#{$device}:hidden"] {
+      overflow: hidden;
+    }
+    [data-overflow~="#{$device}:visible"] {
+      overflow: visible;
+    }
+    [data-overflow~="#{$device}:scroll"] {
+      overflow: scroll;
+    }
+  }
+}

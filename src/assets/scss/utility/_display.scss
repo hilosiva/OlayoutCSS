@@ -5,30 +5,56 @@
 /*
   Display
 -----------------------------------------------------*/
-.#{$prefix}-display {
-  @each $device, $breakpoint in $breakpoints {
-    @include mq($device) {
-      &[data-display~="#{$device}:none"] {
-        display: none;
-      }
-      &[data-display~="#{$device}:inline"] {
-        display: inline;
-      }
-      &[data-display~="#{$device}:inline-block"] {
-        display: inline-block;
-      }
-      &[data-display~="#{$device}:block"] {
-        display: block;
-      }
-      &[data-display~="#{$device}:flex"] {
-        display: flex;
-      }
-      &[data-display~="#{$device}:grid"] {
-        display: grid;
-      }
-      &[data-display~="#{$device}:unset"] {
-        display: unset;
-      }
+[data-display~="none"] {
+  display: none;
+}
+[data-display~="inline"] {
+  display: inline;
+}
+[data-display~="inline-block"] {
+  display: inline-block;
+}
+[data-display~="block"] {
+  display: block;
+}
+[data-display~="flex"] {
+  display: flex;
+}
+[data-display~="inline-flex"] {
+  display: inline-flex;
+}
+[data-display~="grid"] {
+  display: grid;
+}
+[data-display~="unset"] {
+  display: unset;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-display~="#{$device}:none"] {
+      display: none;
+    }
+    [data-display~="#{$device}:inline"] {
+      display: inline;
+    }
+    [data-display~="#{$device}:inline-block"] {
+      display: inline-block;
+    }
+    [data-display~="#{$device}:block"] {
+      display: block;
+    }
+    [data-display~="#{$device}:flex"] {
+      display: flex;
+    }
+    [data-display~="#{$device}:inline-flex"] {
+      display: inline-flex;
+    }
+    [data-display~="#{$device}:grid"] {
+      display: grid;
+    }
+    [data-display~="#{$device}:unset"] {
+      display: unset;
     }
   }
 }

@@ -7,26 +7,27 @@
   --ol-accent-color: #e9e1c8;
   --ol-light-color: #ecebe3;
   --ol-dark-color: #161616;
-  --ol-text-color-1: #ecebe3;
-  --ol-text-color-2: #fff;
-  --ol-font-set-1: "Zen Kaku Gothic New", sans-serif;
-  --ol-font-set-2: "Marcellus", serif;
-  --ol-base-line-height: 2;
+  --ol-primary-text-color: #ecebe3;
+  --ol-light-text-color: #fff;
+  --ol-primary-font-set: "Zen Kaku Gothic New", sans-serif;
+  --ol-en-font-set: "Marcellus", serif;
   /* --ol-base-feature-settings: "palt"; */
   /* --ol-base-letter-spacing: 1em; */
 }
 
 [lang="en"] {
-  font-family: var(--ol-font-set-2);
+  font-family: var(--ol-en-font-set);
 }
-
+body {
+  line-height: 2;
+}
 .box {
   padding: 1rem;
   background-color: #101010;
 }
 
 .hero {
-  font-size: fluid(80, 160);
+  font-size: 5rem;
   line-height: 1.25;
   letter-spacing: 0.01em;
   color: var(--ol-accent-color);
@@ -38,25 +39,35 @@
 }
 
 h1 {
-  font-size: rem(24);
+  font-size: 1.25rem;
   letter-spacing: 0.05em;
   /* color: var(--ol-accent-color); */
 }
 
 h2 {
-  font-size: fluid(20, 40);
+  font-size: 2.5rem;
   letter-spacing: 0.05em;
   /* color: var(--ol-accent-color); */
 }
 h3 {
-  font-size: fluid(16, 24);
+  font-size: 1.5rem;
   letter-spacing: 0.05em;
   border-bottom: 1px solid currentColor;
   /* color: var(--ol-accent-color); */
 }
 
-@media (--ol-lg) {
+@media screen and (min-width: 992px) {
+  .hero {
+    font-size: 10rem;
+  }
   h1 {
-    font-size: rem(40);
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+  h3 {
+    font-size: 1.5rem;
   }
 }

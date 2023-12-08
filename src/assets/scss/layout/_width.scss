@@ -1,0 +1,139 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+/*
+      Width
+    ----------------------------------------------------- */
+@for $i from 1 through $column {
+  [data-width~="#{$i}"] {
+    width: calc(math.div($i, $column) * 100%);
+  }
+}
+
+[data-width~="full"] {
+  width: 100%;
+}
+
+[data-width~="device"] {
+  width: 100vw;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    @for $i from 1 through $column {
+      [data-width~="#{$device}:#{$i}"] {
+        width: calc(math.div($i, $column) * 100%);
+      }
+    }
+
+    [data-width~="#{$device}:full"] {
+      width: 100%;
+    }
+
+    [data-width~="#{$device}:device"] {
+      width: 100vw;
+    }
+  }
+}
+
+/*
+      Max Width
+    ----------------------------------------------------- */
+[data-max-width~="small"] {
+  max-width: calc(var(--#{$prefix}-sm-content-width) * 1px);
+}
+
+[data-max-width~="medum"] {
+  max-width: calc(var(--#{$prefix}-md-content-width) * 1px);
+}
+
+[data-max-width~="large"] {
+  max-width: calc(var(--#{$prefix}-lg-content-width) * 1px);
+}
+
+[data-max-width~="xlarge"] {
+  max-width: calc(var(--#{$prefix}-xl-content-width) * 1px);
+}
+
+[data-max-width~="xxlarge"] {
+  max-width: calc(var(--#{$prefix}-xxl-content-width) * 1px);
+}
+
+[data-max-width~="none"] {
+  max-width: none;
+}
+
+[data-max-width~="max-content"] {
+  max-width: max-content;
+}
+
+[data-max-width~="min-content"] {
+  max-width: min-content;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-max-width~="#{$device}:small"] {
+      max-width: calc(var(--#{$prefix}-sm-content-width) * 1px);
+    }
+
+    [data-max-width~="#{$device}:medum"] {
+      max-width: calc(var(--#{$prefix}-md-content-width) * 1px);
+    }
+
+    [data-max-width~="#{$device}:large"] {
+      max-width: calc(var(--#{$prefix}-lg-content-width) * 1px);
+    }
+
+    [data-max-width~="#{$device}:xlarge"] {
+      max-width: calc(var(--#{$prefix}-xl-content-width) * 1px);
+    }
+
+    [data-max-width~="#{$device}:xxlarge"] {
+      max-width: calc(var(--#{$prefix}-xxl-content-width) * 1px);
+    }
+
+    [data-max-width~="#{$device}:none"] {
+      max-width: none;
+    }
+
+    [data-max-width~="#{$device}:max-content"] {
+      max-width: max-content;
+    }
+
+    [data-max-width~="#{$device}:min-content"] {
+      max-width: min-content;
+    }
+  }
+}
+
+/*
+      Min Width
+    ----------------------------------------------------- */
+[data-min-width~="none"] {
+  min-width: none;
+}
+
+[data-min-width~="max-content"] {
+  min-width: max-content;
+}
+
+[data-min-width~="min-content"] {
+  min-width: min-content;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-min-width~="#{$device}:none"] {
+      min-width: none;
+    }
+
+    [data-min-width~="#{$device}:max-content"] {
+      min-width: max-content;
+    }
+
+    [data-min-width~="#{$device}:min-content"] {
+      min-width: min-content;
+    }
+  }
+}
