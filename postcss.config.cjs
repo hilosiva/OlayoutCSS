@@ -9,9 +9,9 @@ module.exports = {
     //     "custom-media-queries": false,
     //   },
     // }),
-    require("autoprefixer")({
-      grid: "autoplace", // IE11対応
-    }),
+    // require("autoprefixer")({
+    //   grid: "autoplace", // IE11対応
+    // }),
     require("css-declaration-sorter")({
       order: "smacss", // alphabetical/ smacss / concentric-css
     }),
