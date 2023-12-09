@@ -43,7 +43,7 @@
   max-width: calc(var(--#{$prefix}-sm-content-width) * 1px);
 }
 
-[data-max-width~="medum"] {
+[data-max-width~="medium"] {
   max-width: calc(var(--#{$prefix}-md-content-width) * 1px);
 }
 
@@ -77,7 +77,7 @@
       max-width: calc(var(--#{$prefix}-sm-content-width) * 1px);
     }
 
-    [data-max-width~="#{$device}:medum"] {
+    [data-max-width~="#{$device}:medium"] {
       max-width: calc(var(--#{$prefix}-md-content-width) * 1px);
     }
 

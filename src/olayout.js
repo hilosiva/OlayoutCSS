@@ -20,7 +20,7 @@ const defaultConfig = {
       "lg-offset": "10vw",
       "xl-offset": "15vw",
       "sm-content-width": 640,
-      "md-content-width": 765,
+      "md-content-width": 768,
       "lg-content-width": 1024,
       "xl-content-width": 1280,
       "xxl-content-width": 1440,
