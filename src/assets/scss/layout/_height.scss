@@ -5,22 +5,34 @@
 /*
   Height
 ----------------------------------------------------- */
+[data-height] {
+  height: var(--#{$prefix}-height, auto);
+}
+
+[data-height~="auto"] {
+  --#{$prefix}-height: auto;
+}
+
 [data-height~="full"] {
-  height: 100%;
+  --#{$prefix}-height: 100%;
 }
 
 [data-height~="device"] {
-  height: 100vh;
+  --#{$prefix}-height: 100vh;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
+    [data-height~="#{$device}:auto"] {
+      --#{$prefix}-height: auto;
+    }
+
     [data-height~="#{$device}:full"] {
-      height: 100%;
+      --#{$prefix}-height: 100%;
     }
 
     [data-height~="#{$device}:device"] {
-      height: 100vw;
+      --#{$prefix}-height: 100vh;
     }
   }
 }
@@ -28,30 +40,34 @@
 /*
   Max Height
 ----------------------------------------------------- */
+[data-max-height] {
+  height: var(--#{$prefix}-max-height, none);
+}
+
 [data-max-height~="none"] {
-  max-height: none;
+  --#{$prefix}-max-height: none;
 }
 
 [data-max-height~="max-content"] {
-  max-height: max-content;
+  --#{$prefix}-max-height: max-content;
 }
 
 [data-max-height~="min-content"] {
-  max-height: min-content;
+  --#{$prefix}-max-height: min-content;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-max-height~="#{$device}:none"] {
-      max-height: none;
+      --#{$prefix}-max-height: none;
     }
 
     [data-max-height~="#{$device}:max-content"] {
-      max-height: max-content;
+      --#{$prefix}-max-height: max-content;
     }
 
     [data-max-height~="#{$device}:min-content"] {
-      max-height: min-content;
+      --#{$prefix}-max-height: min-content;
     }
   }
 }
@@ -59,30 +75,34 @@
 /*
   Min Height
 ----------------------------------------------------- */
-[data-min-height~="none"] {
-  min-height: none;
+[data-min-height] {
+  height: var(--#{$prefix}-min-height, auto);
+}
+
+[data-min-height~="auto"] {
+  --#{$prefix}-min-height: auto;
 }
 
 [data-min-height~="max-content"] {
-  min-height: max-content;
+  --#{$prefix}-min-height: max-content;
 }
 
 [data-min-height~="min-content"] {
-  min-height: min-content;
+  --#{$prefix}-min-height: min-content;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-min-height~="#{$device}:none"] {
-      min-height: none;
+    [data-min-height~="#{$device}:auto"] {
+      --#{$prefix}-min-height: auto;
     }
 
     [data-min-height~="#{$device}:max-content"] {
-      min-height: max-content;
+      --#{$prefix}-min-height: max-content;
     }
 
     [data-min-height~="#{$device}:min-content"] {
-      min-height: min-content;
+      --#{$prefix}-min-height: min-content;
     }
   }
 }

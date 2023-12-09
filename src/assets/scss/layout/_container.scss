@@ -188,15 +188,7 @@
   --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
 }
 
-[data-over~="clearLeft"] {
-  --#{$prefix}-left-margin: 0;
-}
-
-[data-over~="clearRight"] {
-  --#{$prefix}-right-margin: 0;
-}
-
-[data-over~="clearBoth"] {
+[data-over~="clear"] {
   --#{$prefix}-left-margin: 0;
   --#{$prefix}-right-margin: 0;
 }
@@ -217,13 +209,7 @@
       --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
     }
 
-    [data-over~="#{$device}:clearLeft"] {
-      --#{$prefix}-left-margin: 0;
-    }
-    [data-over~="#{$device}:clearRight"] {
-      --#{$prefix}-right-margin: 0;
-    }
-    [data-over~="#{$device}:clearBoth"] {
+    [data-over~="#{$device}:clear"] {
       --#{$prefix}-left-margin: 0;
       --#{$prefix}-right-margin: 0;
     }
