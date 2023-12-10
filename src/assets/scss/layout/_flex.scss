@@ -96,27 +96,25 @@
 // Over Container
 // ----------------------------
 
-[data-over~="left"],
-[data-over~="right"],
-[data-over~="both"] {
+[data-over~="left"]:where([data-flex-item]),
+[data-over~="right"]:where([data-flex-item]),
+[data-over~="both"]:where([data-flex-item]) {
   flex-grow: 1;
 }
 
-[data-over~="clearLeft"][data-over~="clearRight"],
-[data-over~="clearBoth"] {
+[data-over~="clear"]:where([data-flex-item]) {
   flex-grow: 0;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-over~="#{$device}:left"],
-    [data-over~="#{$device}:right"],
-    [data-over~="#{$device}:both"] {
+    [data-over~="#{$device}:left"]:where([data-flex-item]),
+    [data-over~="#{$device}:right"]:where([data-flex-item]),
+    [data-over~="#{$device}:both"]:where([data-flex-item]) {
       flex-grow: 1;
     }
 
-    [data-over~="#{$device}:clearLeft"][data-over~="#{$device}:clearRight"],
-    [data-over~="#{$device}:clearBoth"] {
+    [data-over~="#{$device}:clear"]:where([data-flex-item]) {
       flex-grow: 0;
     }
   }
