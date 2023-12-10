@@ -7,6 +7,7 @@
 // ====================================
 [data-flex] {
   display: flex;
+  flex-wrap: wrap;
 }
 
 // Wrap
@@ -35,11 +36,14 @@
 [data-flow~="row"] {
   flex-direction: row;
 }
-[data-flow~="reverse"] {
+[data-flow~="row-reverse"] {
   flex-direction: row-reverse;
 }
-[data-flow~="column"] {
+[data-flow~="col"] {
   flex-direction: column;
+}
+[data-flow~="col-reverse"] {
+  flex-direction: column-reverse;
 }
 
 @each $device, $breakpoint in $breakpoints {
@@ -47,11 +51,14 @@
     [data-flow~="#{$device}:row"] {
       flex-direction: row;
     }
-    [data-flow~="#{$device}:reverse"] {
+    [data-flow~="#{$device}:row-reverse"] {
       flex-direction: row-reverse;
     }
-    [data-flow~="#{$device}:column"] {
+    [data-flow~="#{$device}:col"] {
       flex-direction: column;
+    }
+    [data-flow~="#{$device}:col-reverse"] {
+      flex-direction: column-reverse;
     }
   }
 }
