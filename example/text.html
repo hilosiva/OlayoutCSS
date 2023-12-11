@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olayout CSS</title>
-  <link rel="stylesheet" href="assets/css/test.css">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-</head>
-<body>
-  <header data-container data-my="1 lg:2">
-    <div data-flex data-align="lg:justify lg:middle">
-      <h1>Olayoutは進化した</h1>
-      <ul data-flex data-gap="1 md:2">
-        <li><a href="#">リンク</a></li>
-        <li><a href="#">リンク</a></li>
-        <li><a href="#">リンク</a></li>
-      </ul>
-    </div>
-  </header>
-  <main>
-    <div data-container>
-      <div data-grid data-cols="4" data-gap="2">
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Olayout CSS</title>
+    <link rel="stylesheet" href="assets/css/test.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header data-container data-my="1 lg:2">
+      <div data-flex data-place="between middle">
+        <h1>Olayoutは進化した</h1>
+        <ul data-flex data-gap="1 md:2">
+          <li><a href="#">リンク</a></li>
+          <li><a href="#">リンク</a></li>
+          <li><a href="#">リンク</a></li>
+        </ul>
       </div>
-    </div>
-  </main>
-</body>
+    </header>
+    <main>
+      <div data-container>
+        <div data-display="flex" data-gap="2" data-flow="wrap" data-place="end +center +middle">
+          <div data-bg="light" data-align="">Item</div>
+          <div data-bg="light">Item</div>
+          <div data-bg="light">ItemItem<br />Item</div>
+          <div data-bg="light">Item</div>
+          <div data-bg="light">Item</div>
+        </div>
+        <div data-grid data-cols="4" data-gap="2" data-place="center" data-height="">
+          <div data-bg="light" data-text="center" data-place="center">Item</div>
+          <div data-bg="light">Item</div>
+          <div data-bg="light">ItemItem<br />Item</div>
+          <div data-bg="light">Item</div>
+          <div data-bg="light">Item</div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
