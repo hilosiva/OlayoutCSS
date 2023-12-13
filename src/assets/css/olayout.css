@@ -11763,27 +11763,27 @@ form button:not([type]):after {
 }
 
 [data-order~="-1"] {
-  --ol-order: calc($i * -1);
+  --ol-order: calc(1 * -1);
 }
 
 [data-order~="1"] {
-  --ol-order: $i;
+  --ol-order: 1;
 }
 
 [data-order~="-2"] {
-  --ol-order: calc($i * -1);
+  --ol-order: calc(2 * -1);
 }
 
 [data-order~="2"] {
-  --ol-order: $i;
+  --ol-order: 2;
 }
 
 [data-order~="-3"] {
-  --ol-order: calc($i * -1);
+  --ol-order: calc(3 * -1);
 }
 
 [data-order~="3"] {
-  --ol-order: $i;
+  --ol-order: 3;
 }
 
 @media (--ol-xxs) {
@@ -11791,22 +11791,22 @@ form button:not([type]):after {
     --ol-order: 0;
   }
   [data-order~="xxs:-1"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(1 * -1);
   }
   [data-order~="xxs:1"] {
-    --ol-order: $i;
+    --ol-order: 1;
   }
   [data-order~="xxs:-2"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(2 * -1);
   }
   [data-order~="xxs:2"] {
-    --ol-order: $i;
+    --ol-order: 2;
   }
   [data-order~="xxs:-3"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(3 * -1);
   }
   [data-order~="xxs:3"] {
-    --ol-order: $i;
+    --ol-order: 3;
   }
 }
 @media (--ol-xs) {
@@ -11814,22 +11814,22 @@ form button:not([type]):after {
     --ol-order: 0;
   }
   [data-order~="xs:-1"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(1 * -1);
   }
   [data-order~="xs:1"] {
-    --ol-order: $i;
+    --ol-order: 1;
   }
   [data-order~="xs:-2"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(2 * -1);
   }
   [data-order~="xs:2"] {
-    --ol-order: $i;
+    --ol-order: 2;
   }
   [data-order~="xs:-3"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(3 * -1);
   }
   [data-order~="xs:3"] {
-    --ol-order: $i;
+    --ol-order: 3;
   }
 }
 @media (--ol-sm) {
@@ -11837,22 +11837,22 @@ form button:not([type]):after {
     --ol-order: 0;
   }
   [data-order~="sm:-1"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(1 * -1);
   }
   [data-order~="sm:1"] {
-    --ol-order: $i;
+    --ol-order: 1;
   }
   [data-order~="sm:-2"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(2 * -1);
   }
   [data-order~="sm:2"] {
-    --ol-order: $i;
+    --ol-order: 2;
   }
   [data-order~="sm:-3"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(3 * -1);
   }
   [data-order~="sm:3"] {
-    --ol-order: $i;
+    --ol-order: 3;
   }
 }
 @media (--ol-md) {
@@ -11860,22 +11860,22 @@ form button:not([type]):after {
     --ol-order: 0;
   }
   [data-order~="md:-1"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(1 * -1);
   }
   [data-order~="md:1"] {
-    --ol-order: $i;
+    --ol-order: 1;
   }
   [data-order~="md:-2"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(2 * -1);
   }
   [data-order~="md:2"] {
-    --ol-order: $i;
+    --ol-order: 2;
   }
   [data-order~="md:-3"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(3 * -1);
   }
   [data-order~="md:3"] {
-    --ol-order: $i;
+    --ol-order: 3;
   }
 }
 @media (--ol-lg) {
@@ -11883,22 +11883,22 @@ form button:not([type]):after {
     --ol-order: 0;
   }
   [data-order~="lg:-1"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(1 * -1);
   }
   [data-order~="lg:1"] {
-    --ol-order: $i;
+    --ol-order: 1;
   }
   [data-order~="lg:-2"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(2 * -1);
   }
   [data-order~="lg:2"] {
-    --ol-order: $i;
+    --ol-order: 2;
   }
   [data-order~="lg:-3"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(3 * -1);
   }
   [data-order~="lg:3"] {
-    --ol-order: $i;
+    --ol-order: 3;
   }
 }
 @media (--ol-xl) {
@@ -11906,22 +11906,22 @@ form button:not([type]):after {
     --ol-order: 0;
   }
   [data-order~="xl:-1"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(1 * -1);
   }
   [data-order~="xl:1"] {
-    --ol-order: $i;
+    --ol-order: 1;
   }
   [data-order~="xl:-2"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(2 * -1);
   }
   [data-order~="xl:2"] {
-    --ol-order: $i;
+    --ol-order: 2;
   }
   [data-order~="xl:-3"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(3 * -1);
   }
   [data-order~="xl:3"] {
-    --ol-order: $i;
+    --ol-order: 3;
   }
 }
 @media (--ol-xxl) {
@@ -11929,22 +11929,22 @@ form button:not([type]):after {
     --ol-order: 0;
   }
   [data-order~="xxl:-1"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(1 * -1);
   }
   [data-order~="xxl:1"] {
-    --ol-order: $i;
+    --ol-order: 1;
   }
   [data-order~="xxl:-2"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(2 * -1);
   }
   [data-order~="xxl:2"] {
-    --ol-order: $i;
+    --ol-order: 2;
   }
   [data-order~="xxl:-3"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(3 * -1);
   }
   [data-order~="xxl:3"] {
-    --ol-order: $i;
+    --ol-order: 3;
   }
 }
 /*

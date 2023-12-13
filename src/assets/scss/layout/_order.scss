@@ -15,11 +15,11 @@
 
 @for $i from 1 through 3 {
   [data-order~="-#{$i}"] {
-    --ol-order: calc($i * -1);
+    --ol-order: calc(#{$i} * -1);
   }
 
   [data-order~="#{$i}"] {
-    --ol-order: $i;
+    --ol-order: #{$i};
   }
 }
 
@@ -31,11 +31,11 @@
 
     @for $i from 1 through 3 {
       [data-order~="#{$device}:-#{$i}"] {
-        --ol-order: calc($i * -1);
+        --ol-order: calc(#{$i} * -1);
       }
 
       [data-order~="#{$device}:#{$i}"] {
-        --ol-order: $i;
+        --ol-order: #{$i};
       }
     }
   }
