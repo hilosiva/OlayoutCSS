@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
-    // require("./src/olayout.js"),
-    // require("./dist/index.js"),
+    // require("./src/olayout.js"), // ビルド時に ON
+    // require("./dist/index.js"), // CDN作成時に ON
     // require("postcss-preset-env")({
     //   features: {
     //     "nesting-rules": true,
@@ -9,6 +9,7 @@ module.exports = {
     //     "custom-media-queries": false,
     //   },
     // }),
+    // CDN作成時に ON
     // require("autoprefixer")({
     //   grid: "autoplace", // IE11対応
     // }),

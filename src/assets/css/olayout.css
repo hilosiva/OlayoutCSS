@@ -5870,7 +5870,7 @@ form button:not([type]):after {
   }
 }
 [data-flex-item] {
-  flex: var(--ol-grow, 1) var(--ol-shrink, 0) auto;
+  flex: var(--ol-grow, 0) var(--ol-shrink, 1) auto;
 }
 
 [data-flex-item~=g-0] {
