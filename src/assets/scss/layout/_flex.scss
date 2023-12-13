@@ -93,7 +93,7 @@
 // ----------------------------
 
 [data-flex-item] {
-  flex: var(--ol-grow, unset) var(--ol-shrink, unset) auto;
+  flex: var(--ol-grow, 1) var(--ol-shrink, 0) auto;
 }
 
 @for $i from 0 through 3 {
