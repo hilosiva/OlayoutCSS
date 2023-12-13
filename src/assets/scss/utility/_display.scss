@@ -26,8 +26,11 @@
 [data-display~="grid"] {
   display: grid;
 }
-[data-display~="unset"] {
-  display: unset;
+[data-display~="contents"] {
+  display: contents;
+}
+[data-display~="revert"] {
+  display: revert;
 }
 
 @each $device, $breakpoint in $breakpoints {
@@ -53,8 +56,11 @@
     [data-display~="#{$device}:grid"] {
       display: grid;
     }
-    [data-display~="#{$device}:unset"] {
-      display: unset;
+    [data-display~="#{$device}:contents"] {
+      display: contents;
+    }
+    [data-display~="#{$device}:revert"] {
+      display: revert;
     }
   }
 }

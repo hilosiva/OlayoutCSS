@@ -40,35 +40,35 @@
 
 // Flow
 // ----------------------------
-[data-grid~="flow-col"] {
+[data-grid~="col"] {
   --#{$prefix}-grid-flow: column;
 }
-[data-grid~="flow-row"] {
+[data-grid~="row"] {
   --#{$prefix}-grid-flow: row;
 }
-[data-grid~="flow-dense"] {
+[data-grid~="dense"] {
   --#{$prefix}-grid-flow: dense;
 }
-[data-grid~="flow-row-dense"] {
+[data-grid~="row-dense"] {
   --#{$prefix}-grid-flow: row dense;
 }
-[data-grid~="flow-col-dense"] {
+[data-grid~="col-dense"] {
   --#{$prefix}-grid-flow: column dense;
 }
 @each $device, $breakpoint in $breakpoints {
-  [data-grid~="#{$device}:flow-col"] {
+  [data-grid~="#{$device}:col"] {
     --#{$prefix}-grid-flow: column;
   }
-  [data-grid~="#{$device}:flow-row"] {
+  [data-grid~="#{$device}:row"] {
     --#{$prefix}-grid-flow: row;
   }
-  [data-grid~="#{$device}:flow-dense"] {
+  [data-grid~="#{$device}:dense"] {
     --#{$prefix}-grid-flow: dense;
   }
-  [data-grid~="#{$device}:flow-row-dense"] {
+  [data-grid~="#{$device}:row-dense"] {
     --#{$prefix}-grid-flow: row dense;
   }
-  [data-grid~="#{$device}:flow-col-dense"] {
+  [data-grid~="#{$device}:col-dense"] {
     --#{$prefix}-grid-flow: column dense;
   }
 }
@@ -77,7 +77,7 @@
 // ----------------------------
 
 // template
-[data-grid~="cols-none"] {
+[data-grid~="cols-0"] {
   --#{$prefix}-grid-cols: none;
 }
 
@@ -88,7 +88,7 @@
 }
 
 @each $device, $breakpoint in $breakpoints {
-  [data-grid~="#{$device}:cols-none"] {
+  [data-grid~="#{$device}:cols-0"] {
     --#{$prefix}-grid-cols: none;
   }
 
@@ -133,7 +133,7 @@
 
 // Rows
 // ----------------------------
-[data-grid~="rows-none"] {
+[data-grid~="rows-0"] {
   --#{$prefix}-grid-rows: none;
 }
 
@@ -144,7 +144,7 @@
 }
 
 @each $device, $breakpoint in $breakpoints {
-  [data-grid~="#{$device}:rows-none"] {
+  [data-grid~="#{$device}:rows-0"] {
     --#{$prefix}-grid-rows: none;
   }
 
