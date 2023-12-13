@@ -72,34 +72,34 @@
   --#{$prefix}-offset-left: 0;
   --#{$prefix}-offset-right: 0;
 }
-[data-container-l~="small"] {
+[data-container~="l-small"] {
   --#{$prefix}-offset-left: var(--#{$prefix}-sm-offset);
 }
-[data-container-l~="medium"] {
+[data-container~="l-medium"] {
   --#{$prefix}-offset-left: var(--#{$prefix}-md-offset);
 }
-[data-container-l~="large"] {
+[data-container~="l-large"] {
   --#{$prefix}-offset-left: var(--#{$prefix}-lg-offset);
 }
-[data-container-l~="xlarge"] {
+[data-container~="l-xlarge"] {
   --#{$prefix}-offset-left: var(--#{$prefix}-xl-offset);
 }
-[data-container-l~="none"] {
+[data-container~="l-none"] {
   --#{$prefix}-offset-left: 0;
 }
-[data-container-r~="small"] {
+[data-container~="r-small"] {
   --#{$prefix}-offset-right: var(--#{$prefix}-sm-offset);
 }
-[data-container-r~="medium"] {
+[data-container~="r-medium"] {
   --#{$prefix}-offset-right: var(--#{$prefix}-md-offset);
 }
-[data-container-r~="large"] {
+[data-container~="r-large"] {
   --#{$prefix}-offset-right: var(--#{$prefix}-lg-offset);
 }
-[data-container-r~="xlarge"] {
+[data-container~="r-xlarge"] {
   --#{$prefix}-offset-right: var(--#{$prefix}-xl-offset);
 }
-[data-container-r~="none"] {
+[data-container~="r-none"] {
   --#{$prefix}-offset-right: 0;
 }
 
@@ -125,34 +125,34 @@
       --#{$prefix}-offset-left: 0;
       --#{$prefix}-offset-right: 0;
     }
-    [data-container-l~="#{$device}:small"] {
+    [data-container~="#{$device}:l-small"] {
       --#{$prefix}-offset-left: var(--#{$prefix}-sm-offset);
     }
-    [data-container-l~="#{$device}:medium"] {
+    [data-container~="#{$device}:l-medium"] {
       --#{$prefix}-offset-left: var(--#{$prefix}-md-offset);
     }
-    [data-container-l~="#{$device}:large"] {
+    [data-container~="#{$device}:l-large"] {
       --#{$prefix}-offset-left: var(--#{$prefix}-lg-offset);
     }
-    [data-container-l~="#{$device}:xlarge"] {
+    [data-container~="#{$device}:l-xlarge"] {
       --#{$prefix}-offset-left: var(--#{$prefix}-xl-offset);
     }
-    [data-container-l~="#{$device}:none"] {
+    [data-container~="#{$device}:l-none"] {
       --#{$prefix}-offset-left: 0;
     }
-    [data-container-r~="#{$device}:small"] {
+    [data-container~="#{$device}:r-small"] {
       --#{$prefix}-offset-right: var(--#{$prefix}-sm-offset);
     }
-    [data-container-r~="#{$device}:medium"] {
+    [data-container~="#{$device}:r-medium"] {
       --#{$prefix}-offset-right: var(--#{$prefix}-md-offset);
     }
-    [data-container-r~="#{$device}:large"] {
+    [data-container~="#{$device}:r-large"] {
       --#{$prefix}-offset-right: var(--#{$prefix}-lg-offset);
     }
-    [data-container-r~="#{$device}:xlarge"] {
+    [data-container~="#{$device}:r-xlarge"] {
       --#{$prefix}-offset-right: var(--#{$prefix}-xl-offset);
     }
-    [data-container-r~="#{$device}:none"] {
+    [data-container~="#{$device}:r-none"] {
       --#{$prefix}-offset-right: 0;
     }
   }

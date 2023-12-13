@@ -103,33 +103,33 @@
 
 // auto
 
-[data-grid~="cols-auto"] {
-  --#{$prefix}-grid-auto-cols: auto;
-}
-[data-grid~="cols-fr"] {
-  --#{$prefix}-grid-auto-cols: minmax(0, 1fr);
-}
-[data-grid~="cols-min"] {
-  --#{$prefix}-grid-auto-cols: min-content;
-}
-[data-grid~="cols-max"] {
-  --#{$prefix}-grid-auto-cols: max-content;
-}
+// [data-grid~="cols-auto"] {
+//   --#{$prefix}-grid-auto-cols: auto;
+// }
+// [data-grid~="cols-fr"] {
+//   --#{$prefix}-grid-auto-cols: minmax(0, 1fr);
+// }
+// [data-grid~="cols-min"] {
+//   --#{$prefix}-grid-auto-cols: min-content;
+// }
+// [data-grid~="cols-max"] {
+//   --#{$prefix}-grid-auto-cols: max-content;
+// }
 
-@each $device, $breakpoint in $breakpoints {
-  [data-grid~="#{$device}:cols-auto"] {
-    --#{$prefix}-grid-auto-cols: auto;
-  }
-  [data-grid~="#{$device}:cols-fr"] {
-    --#{$prefix}-grid-auto-cols: minmax(0, 1fr);
-  }
-  [data-grid~="#{$device}:cols-min"] {
-    --#{$prefix}-grid-auto-cols: min-content;
-  }
-  [data-grid~="#{$device}:cols-max"] {
-    --#{$prefix}-grid-auto-cols: max-content;
-  }
-}
+// @each $device, $breakpoint in $breakpoints {
+//   [data-grid~="#{$device}:cols-auto"] {
+//     --#{$prefix}-grid-auto-cols: auto;
+//   }
+//   [data-grid~="#{$device}:cols-fr"] {
+//     --#{$prefix}-grid-auto-cols: minmax(0, 1fr);
+//   }
+//   [data-grid~="#{$device}:cols-min"] {
+//     --#{$prefix}-grid-auto-cols: min-content;
+//   }
+//   [data-grid~="#{$device}:cols-max"] {
+//     --#{$prefix}-grid-auto-cols: max-content;
+//   }
+// }
 
 // Rows
 // ----------------------------
@@ -159,33 +159,33 @@
 
 // auto
 
-[data-grid~="rows-auto"] {
-  --#{$prefix}-grid-auto-rows: auto;
-}
-[data-grid~="rows-fr"] {
-  --#{$prefix}-grid-auto-rows: minmax(0, 1fr);
-}
-[data-grid~="rows-min"] {
-  --#{$prefix}-grid-auto-rows: min-content;
-}
-[data-grid~="rows-max"] {
-  --#{$prefix}-grid-auto-rows: max-content;
-}
+// [data-grid~="rows-auto"] {
+//   --#{$prefix}-grid-auto-rows: auto;
+// }
+// [data-grid~="rows-fr"] {
+//   --#{$prefix}-grid-auto-rows: minmax(0, 1fr);
+// }
+// [data-grid~="rows-min"] {
+//   --#{$prefix}-grid-auto-rows: min-content;
+// }
+// [data-grid~="rows-max"] {
+//   --#{$prefix}-grid-auto-rows: max-content;
+// }
 
-@each $device, $breakpoint in $breakpoints {
-  [data-grid~="#{$device}:rows-auto"] {
-    --#{$prefix}-grid-auto-rows: auto;
-  }
-  [data-grid~="#{$device}:rows-fr"] {
-    --#{$prefix}-grid-auto-rows: minmax(0, 1fr);
-  }
-  [data-grid~="#{$device}:rows-min"] {
-    --#{$prefix}-grid-auto-rows: min-content;
-  }
-  [data-grid~="#{$device}:rows-max"] {
-    --#{$prefix}-grid-auto-rows: max-content;
-  }
-}
+// @each $device, $breakpoint in $breakpoints {
+//   [data-grid~="#{$device}:rows-auto"] {
+//     --#{$prefix}-grid-auto-rows: auto;
+//   }
+//   [data-grid~="#{$device}:rows-fr"] {
+//     --#{$prefix}-grid-auto-rows: minmax(0, 1fr);
+//   }
+//   [data-grid~="#{$device}:rows-min"] {
+//     --#{$prefix}-grid-auto-rows: min-content;
+//   }
+//   [data-grid~="#{$device}:rows-max"] {
+//     --#{$prefix}-grid-auto-rows: max-content;
+//   }
+// }
 
 // // Offset
 // // ----------------------------
