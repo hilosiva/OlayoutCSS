@@ -19,23 +19,23 @@
   }
 
   [data-order~="#{$i}"] {
-    --ol-order $i;
+    --ol-order: $i;
   }
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-order~="#{$device}:0"] {
-      --ol-order 0;
+      --ol-order: 0;
     }
 
     @for $i from 1 through 3 {
       [data-order~="#{$device}:-#{$i}"] {
-        --ol-order calc($i * -1);
+        --ol-order: calc($i * -1);
       }
 
       [data-order~="#{$device}:#{$i}"] {
-        --ol-order $i;
+        --ol-order: $i;
       }
     }
   }

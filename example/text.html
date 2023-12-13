@@ -20,19 +20,39 @@
     </header>
     <main>
       <div data-container>
-        <div data-display="flex" data-gap="2" data-flow="wrap" data-place="end +center +middle">
-          <div data-bg="light" data-align="">Item</div>
-          <div data-bg="light">Item</div>
-          <div data-bg="light">ItemItem<br />Item</div>
-          <div data-bg="light">Item</div>
-          <div data-bg="light">Item</div>
+        <div data-grid="rows-3 col" data-gap="1" data-mb="5">
+          <div data-bg="light">1</div>
+          <div data-bg="light">2<br />2.5</div>
+          <div data-bg="light">3</div>
+          <div data-bg="light">4</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
         </div>
-        <div data-grid data-cols="4" data-gap="2" data-place="center" data-height="">
-          <div data-bg="light" data-text="center" data-place="center">Item</div>
-          <div data-bg="light">Item</div>
-          <div data-bg="light">ItemItem<br />Item</div>
-          <div data-bg="light">Item</div>
-          <div data-bg="light">Item</div>
+        <div data-grid="cols-1 lg:cols-12" data-gap="2 lg:4">
+          <div data-grid-item="col-6 row-2" data-bg="light">
+            <div data-flex-item style="height: 100%">
+              <h2>01Card<br />Card</h2>
+              <p>test</p>
+              <p style="margin-top: auto">¥500</p>
+            </div>
+          </div>
+          <div data-grid-item="col-6" data-bg="light" style="height: 100%">
+            <h2>02Card</h2>
+            <p>test testtest<br />testtest.<br />testtest.testtes</p>
+            <p style="margin-top: auto">¥500</p>
+          </div>
+          <div data-grid-item="col-6" data-bg="light">
+            <div>
+              <h2>03Card</h2>
+              <p>test</p>
+              <p style="margin-top: auto">¥500</p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
