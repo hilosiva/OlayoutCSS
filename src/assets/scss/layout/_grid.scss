@@ -226,68 +226,82 @@
 //   }
 // }
 
+// Grid Item
+// ----------------------------
+
+[data-grid-item] {
+  grid-column: var(--#{$prefix}-grid-col-start, auto) / var(--#{$prefix}-grid-col-end, auto);
+  grid-row: var(--#{$prefix}-grid-row-start, auto) / var(--#{$prefix}-grid-row-end, auto);
+}
+
 // Column
 // ----------------------------
 @for $i from 1 through $column {
   [data-grid-item~="col-#{$i}"] {
-    grid-column: span $i / span $i;
+    --#{$prefix}-grid-col-start: span #{$i};
+    --#{$prefix}-grid-col-end: span #{$i};
   }
 
   [data-grid-item~="col-start-#{$i}"] {
-    grid-column-start: $i;
+    --#{$prefix}-grid-col-start: #{$i};
   }
 
   [data-grid-item~="col-end-#{$i}"] {
-    grid-column-end: $i;
+    --#{$prefix}-grid-col-end: #{$i};
   }
 }
 
 [data-grid-item~="col-full"] {
-  grid-column: 1 / -1;
+  --#{$prefix}-grid-col-start: 1;
+  --#{$prefix}-grid-col-end: -1;
 }
 
 [data-grid-item~="col-auto"] {
-  grid-column: auto;
+  --#{$prefix}-grid-col-start: auto;
+  --#{$prefix}-grid-col-end: auto;
 }
 
 [data-grid-item~="col-start-auto"] {
-  grid-column-start: auto;
+  --#{$prefix}-grid-col-start: auto;
 }
 
 [data-grid-item~="col-end-auto"] {
-  grid-column-end: auto;
+  --#{$prefix}-grid-col-end: auto;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     @for $i from 1 through $column {
       [data-grid-item~="#{$device}:col-#{$i}"] {
-        grid-column: span $i / span $i;
+        --#{$prefix}-grid-col-start: span #{$i};
+        --#{$prefix}-grid-col-end: span #{$i};
       }
 
       [data-grid-item~="#{$device}:col-start-#{$i}"] {
-        grid-column-start: $i;
+        --#{$prefix}-grid-col-start: #{$i};
       }
 
       [data-grid-item~="#{$device}:col-end#{$i}"] {
-        grid-column-end: $i;
+        --#{$prefix}-grid-col-end: #{$i};
       }
     }
 
     [data-grid-item~="#{$device}:col-full"] {
-      grid-column: 1 / -1;
+      --#{$prefix}-grid-col-start: 1;
+      --#{$prefix}-grid-col-end: -1;
     }
 
     [data-grid-item~="#{$device}:col-auto"] {
-      grid-column: auto;
+      --#{$prefix}-grid-col-start: auto;
+      --#{$prefix}-grid-col-end: auto;
     }
 
     [data-grid-item~="#{$device}:col-start-auto"] {
-      grid-column-start: auto;
+      --#{$prefix}-grid-col-start: auto;
     }
 
     [data-grid-item~="#{$device}:col-end-auto"] {
-      grid-column-end: auto;
+      --#{$prefix}-grid-col-end: auto;
     }
   }
 }
@@ -297,64 +311,70 @@
 
 @for $i from 1 through $row {
   [data-grid-item~="row-#{$i}"] {
-    grid-row: span $i / span $i;
+    --#{$prefix}-grid-row-start: span #{$i};
+    --#{$prefix}-grid-row-end: span #{$i};
   }
 
   [data-grid-item~="row-start-#{$i}"] {
-    grid-row-start: $i;
+    --#{$prefix}-grid-row-start: #{$i};
   }
 
   [data-grid-item~="row-end-#{$i}"] {
-    grid-row-end: $i;
+    --#{$prefix}-grid-row-end: #{$i};
   }
 }
 
 [data-grid-item~="row-full"] {
-  grid-row: 1 / -1;
+  --#{$prefix}-grid-row-start: 1;
+  --#{$prefix}-grid-row-end: -1;
 }
 
 [data-grid-item~="row-auto"] {
-  grid-row: auto;
+  --#{$prefix}-grid-row-start: auto;
+  --#{$prefix}-grid-row-end: auto;
 }
 
 [data-grid-item~="row-start-auto"] {
-  grid-row-start: auto;
+  --#{$prefix}-grid-row-start: auto;
 }
 
 [data-grid-item~="row-end-auto"] {
-  grid-row-end: auto;
+  --#{$prefix}-grid-row-end: auto;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     @for $i from 1 through $row {
       [data-grid-item~="#{$device}:row-#{$i}"] {
-        grid-row: span $i / span $i;
+        --#{$prefix}-grid-row-start: span #{$i};
+        --#{$prefix}-grid-row-end: span #{$i};
       }
 
       [data-grid-item~="#{$device}:row-start-#{$i}"] {
-        grid-row-start: $i;
+        --#{$prefix}-grid-row-start: #{$i};
       }
 
       [data-grid-item~="#{$device}:row-end-#{$i}"] {
-        grid-row-end: $i;
+        --#{$prefix}-grid-row-end: #{$i};
       }
     }
 
     [data-grid-item~="#{$device}:row-full"] {
-      grid-row: 1 / -1;
+      --#{$prefix}-grid-row-start: 1;
+      --#{$prefix}-grid-row-end: -1;
     }
 
     [data-grid-item~="#{$device}:row-auto"] {
-      grid-row: auto;
+      --#{$prefix}-grid-row-start: auto;
+      --#{$prefix}-grid-row-end: auto;
     }
 
     [data-grid-item~="#{$device}:row-start-auto"] {
-      grid-row-start: auto;
+      --#{$prefix}-grid-row-start: auto;
     }
 
     [data-grid-item~="#{$device}:row-end-auto"] {
-      grid-row-end: auto;
+      --#{$prefix}-grid-row-end: auto;
     }
   }
 }
