@@ -5,16 +5,20 @@
 // ====================================
 //  Gap
 // ====================================
+[data-gap] {
+  gap: var(--#{$prefix}-gap-row, normal) var(--#{$prefix}-gap-col, normal);
+}
 
 @for $i from 0 through $space-range {
   [data-gap~="#{$i}"] {
-    gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+    --#{$prefix}-gap-row: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+    --#{$prefix}-gap-col: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
   }
-  [data-gap-x~="#{$i}"] {
-    column-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+  [data-gap~="col-#{$i}"] {
+    --#{$prefix}-gap-col: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
   }
-  [data-gap-y~="#{$i}"] {
-    row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+  [data-gap~="row-#{$i}"] {
+    --#{$prefix}-gap-row: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
   }
 }
 
@@ -22,13 +26,14 @@
   @include mq($device) {
     @for $i from 0 through $space-range {
       [data-gap~="#{$device}:#{$i}"] {
-        gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+        --#{$prefix}-gap-row: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+        --#{$prefix}-gap-col: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
       }
-      [data-gap-x~="#{$device}:#{$i}"] {
-        column-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+      [data-gap~="#{$device}:col-#{$i}"] {
+        --#{$prefix}-gap-col: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
       }
-      [data-gap-y~="#{$device}:#{$i}"] {
-        row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+      [data-gap~="#{$device}:row-#{$i}"] {
+        --#{$prefix}-gap-row: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
       }
     }
   }
