@@ -35,7 +35,7 @@
   --ol-align-items: flex-end;
 }
 [data-place~="stretch"] {
-  --ol-align-items: space-between;
+  --ol-align-items: stretch;
 }
 
 // place-content
@@ -76,8 +76,8 @@
 }
 
 [data-place~="+stretch"] {
-  --ol-justify-items: space-between;
-  --ol-align-items: space-between;
+  --ol-justify-items: stretch;
+  --ol-align-items: stretch;
 }
 
 @each $device, $breakpoint in $breakpoints {
@@ -107,7 +107,7 @@
       --ol-align-items: flex-end;
     }
     [data-place~="#{$device}:stretch"] {
-      --ol-align-items: space-between;
+      --ol-align-items: stretch;
     }
 
     // place-content
@@ -148,8 +148,8 @@
     }
 
     [data-place~="#{$device}:+stretch"] {
-      --ol-justify-items: space-between;
-      --ol-align-items: space-between;
+      --ol-justify-items: stretch;
+      --ol-align-items: stretch;
     }
   }
 }
