@@ -3,52 +3,55 @@
 @use "../global" as *;
 
 /*
-  Background-color
+  Background
 -----------------------------------------------------*/
+[data-bg] {
+  background: var(--#{$prefix}-bg, transparent);
+}
 [data-bg~="base"] {
-  background-color: var(--#{$prefix}-base-color);
+  --#{$prefix}-bg: var(--#{$prefix}-base-color);
 }
 [data-bg~="main"] {
-  background-color: var(--#{$prefix}-main-color);
+  --#{$prefix}-bg: var(--#{$prefix}-main-color);
 }
 [data-bg~="accent"] {
-  background-color: var(--#{$prefix}-accent-color);
+  --#{$prefix}-bg: var(--#{$prefix}-accent-color);
 }
 [data-bg~="light"] {
-  background-color: var(--#{$prefix}-light-color);
+  --#{$prefix}-bg: var(--#{$prefix}-light-color);
 }
 [data-bg~="dark"] {
-  background-color: var(--#{$prefix}-dark-color);
+  --#{$prefix}-bg: var(--#{$prefix}-dark-color);
 }
 [data-bg~="white"] {
-  background-color: #fff;
+  --#{$prefix}-bg: #fff;
 }
 [data-bg~="block"] {
-  background-color: #000;
+  --#{$prefix}-bg: #000;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-bg~="#{$device}:base"] {
-      background-color: var(--#{$prefix}-base-color);
+      --#{$prefix}-bg: var(--#{$prefix}-base-color);
     }
     [data-bg~="#{$device}:main"] {
-      background-color: var(--#{$prefix}-main-color);
+      --#{$prefix}-bg: var(--#{$prefix}-main-color);
     }
     [data-bg~="#{$device}:accent"] {
-      background-color: var(--#{$prefix}-accent-color);
+      --#{$prefix}-bg: var(--#{$prefix}-accent-color);
     }
     [data-bg~="#{$device}:light"] {
-      background-color: var(--#{$prefix}-light-color);
+      --#{$prefix}-bg: var(--#{$prefix}-light-color);
     }
     [data-bg~="#{$device}:dark"] {
-      background-color: var(--#{$prefix}-dark-color);
+      --#{$prefix}-bg: var(--#{$prefix}-dark-color);
     }
     [data-bg~="#{$device}:white"] {
-      background-color: #fff;
+      --#{$prefix}-bg: #fff;
     }
     [data-bg~="#{$device}:block"] {
-      background-color: #000;
+      --#{$prefix}-bg: #000;
     }
   }
 }

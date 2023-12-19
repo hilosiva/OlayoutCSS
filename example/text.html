@@ -6,9 +6,25 @@
     <title>Olayout CSS</title>
     <link rel="stylesheet" href="assets/css/test.css" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      p {
+        font-size: 1rem;
+      }
+
+      @media (--ol-lg) {
+        h1 {
+          font-size: fluid(10, 40);
+        }
+      }
+    </style>
+    <style>
+      p {
+        font-size: 1rem;
+      }
+    </style>
   </head>
   <body>
-    <header data-container data-my="1 lg:2">
+    <header data-container data-m="y-1 lg:y-2">
       <div data-flex data-place="between middle">
         <h1>Olayoutは進化した</h1>
         <ul data-flex data-gap="1 md:2">
@@ -20,12 +36,12 @@
     </header>
     <main>
       <div data-container>
-        <div data-flex="nowrap" data-gap="4" data-my="4">
+        <div data-flex="nowrap" data-gap="4" data-m="y-4">
           <div data-flex-item="s-0 g-0" style="width: 50vw" data-bg="light">test</div>
           <div data-flex-item="s-1" style="width: 50vw" data-bg="light">test</div>
           <div data-flex-item="s-0" style="width: 50vw" data-bg="light">test</div>
         </div>
-        <div data-grid="cols-2 " data-gap="1" data-mb="5">
+        <div data-grid="cols-2 " data-gap="1" data-m="b-5">
           <div data-bg="light">1</div>
           <div data-bg="light">2<br />2.5</div>
           <div data-bg="light">3</div>
@@ -37,6 +53,38 @@
           <div data-bg="light">5</div>
           <div data-bg="light">5</div>
           <div data-bg="light">5</div>
+        </div>
+
+        <div data-grid="cols-4" data-gap="2" data-m="y-6">
+          <div data-grid-item>
+            <div data-card data-bg="main">
+              <h3>test Card</h3>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+            </div>
+          </div>
+          <div data-grid-item>
+            <div data-card data-bg="main">
+              <h3>test Card</h3>
+              <p>teststtt.tett.tt adf ad</p>
+              <p data-m="t-auto">teststtt.tett.tt adf ad</p>
+            </div>
+          </div>
+          <div data-grid-item>
+            <div data-card data-bg="main">
+              <h3>test Card</h3>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+            </div>
+          </div>
+          <div data-card data-bg="main">
+            <h3>test Card</h3>
+            <p>teststtt.tett.tt adf ad</p>
+            <p data-m="t-auto">teststtt.tett.tt adf ad</p>
+          </div>
         </div>
         <div data-grid="cols-1 lg:cols-12" data-gap="2 lg:4">
           <div data-grid-item="col-6 row-2" data-bg="light">
@@ -56,6 +104,23 @@
               <h2>03Card</h2>
               <p>test</p>
               <p style="margin-top: auto">¥500</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-grid="cols-2" data-gap="3" data-place="middle">
+          <div data-grid-item>
+            <div data-position="sticky" data-inset="t-10">Stop</div>
+          </div>
+          <div data-grid-item>
+            <div data-space="y-10">
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
             </div>
           </div>
         </div>

@@ -154,6 +154,15 @@ const plugin = (opts = {}) => {
           //   });
           // });
 
+          // Olayoutの挿入場所を確認
+          let isOlayoutRoot = false;
+          root.walkAtRules((atrule) => {
+            if (atrule.name === "olayoutcss" || atrule.name === "olayout") {
+              isOlayoutRoot = true;
+              atrule.remove();
+            }
+          });
+
           // カスタムメディアの処理
           insertNode.walkAtRules("custom-media", (atrule) => {
             const match = /--ol-(\w+)/.exec(atrule.params);
@@ -173,159 +182,160 @@ const plugin = (opts = {}) => {
             }
           });
 
-          // カスタムプロパティの処理
-          insertNode.walkRules(":root", (rule) => {
-            if (rule.parent.type !== "atrule" || rule.parent.name !== "media") {
-              rule.walkDecls(/^--/, (decl) => {
-                const prop = decl.prop.slice(config.prefix.length + 3);
+          if (isOlayoutRoot) {
+            // カスタムプロパティの処理
+            insertNode.walkRules(":root", (rule) => {
+              if (rule.parent.type !== "atrule" || rule.parent.name !== "media") {
+                rule.walkDecls(/^--/, (decl) => {
+                  const prop = decl.prop.slice(config.prefix.length + 3);
 
-                categories.forEach((category) => {
-                  if (config.theme[category][prop]) {
-                    decl.value = String(config.theme[category][prop]);
-                  }
+                  categories.forEach((category) => {
+                    if (config.theme[category][prop]) {
+                      decl.value = String(config.theme[category][prop]);
+                    }
+                  });
                 });
-              });
+              }
+            });
+
+            // @charsetやWebフォントを一旦避ける
+
+            const prependNodes = [];
+            root.walkAtRules((atrule) => {
+              if (atrule.name === "charset" || (atrule.name === "import" && atrule.params.includes("//")) || atrule.name === "font-face") {
+                // @charset、フォント関連のルールを prependNodes に追加
+
+                prependNodes.push(atrule);
+                atrule.remove();
+              }
+            });
+
+            // 先頭に追加
+            root.prepend(insertNode);
+
+            // prependNodes 配列の要素を root の先頭に順番に挿入
+            prependNodes.reverse().forEach((node) => {
+              root.prepend(node);
+            });
+          }
+
+          // 既存のCSSファイルを含むカスタムメディアをメディアクエリに置き換え
+          root.walkAtRules("media", (atrule) => {
+            const screenKey = atrule.params.trim().replace(/[()]/g, "");
+
+            if (mediaQueries.has(screenKey)) {
+              atrule.params = mediaQueries.get(screenKey);
+            }
+          });
+
+          // 既存のCSSファイルに含むオリジナル関数の処理
+          root.walkDecls((decl) => {
+            // fluid関数
+            const fluidMatch = /fluid\(([^)]+)\)/.exec(decl.value);
+            if (fluidMatch) {
+              const [minSize, maxSize, minViewPort, maxViewPort] = fluidMatch[1]
+                .replace(/\s/g, "")
+                .split(",")
+                .map((value) => {
+                  if (value === "") {
+                    return undefined; // 空文字列があれば undefined とする
+                  }
+
+                  const numericValue = parseFloat(value);
+
+                  if (isNaN(numericValue)) {
+                    throw new Error(`Invalid argument '${value}' in fluid() function.`);
+                  }
+
+                  return numericValue;
+                }); // () の中の文字列
+
+              decl.value = getFluid(minSize, maxSize, minViewPort ? minViewPort : config.theme.layout["sm-design-width"], maxViewPort ? maxViewPort : config.theme.layout["lg-design-width"]);
+            }
+
+            // em関数
+            const emMatch = /em\(([^)]+)\)/.exec(decl.value);
+            if (emMatch) {
+              const [px, basePx] = emMatch[1]
+                .replace(/\s/g, "")
+                .split(",")
+                .map((value) => {
+                  if (value === "") {
+                    return undefined; // 空文字列があれば undefined とする
+                  }
+
+                  const numericValue = parseFloat(value);
+
+                  if (isNaN(numericValue)) {
+                    throw new Error(`Invalid argument '${value}' in em() function.`);
+                  }
+
+                  return numericValue;
+                }); // () の中の文字列;
+
+              decl.value = getEm(px, basePx ? basePx : 16);
+            }
+
+            // rem関数
+            const remMatch = /rem\(([^)]+)\)/.exec(decl.value);
+            if (remMatch) {
+              const px = parseFloat(remMatch[1]);
+              if (isNaN(px)) {
+                throw new Error(`Invalid argument '${remMatch[1]}' in rem() function.`);
+              }
+
+              decl.value = getRem(px);
+            }
+
+            // vw関数
+            const vwMatch = /vw\(([^)]+)\)/.exec(decl.value);
+            if (vwMatch) {
+              const [px, viewPort] = vwMatch[1]
+                .replace(/\s/g, "")
+                .split(",")
+                .map((value) => {
+                  if (value === "") {
+                    return undefined; // 空文字列があれば undefined とする
+                  }
+
+                  const numericValue = parseFloat(value);
+
+                  if (isNaN(numericValue)) {
+                    throw new Error(`Invalid argument '${value}' in vw() function.`);
+                  }
+
+                  return numericValue;
+                }); // () の中の文字列;
+
+              decl.value = `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vw)`;
+            }
+
+            // vh関数
+            const vhMatch = /vh\(([^)]+)\)/.exec(decl.value);
+            if (vhMatch) {
+              const [px, viewPort] = vhMatch[1]
+                .replace(/\s/g, "")
+                .split(",")
+                .map((value) => {
+                  if (value === "") {
+                    return undefined; // 空文字列があれば undefined とする
+                  }
+
+                  const numericValue = parseFloat(value);
+
+                  if (isNaN(numericValue)) {
+                    throw new Error(`Invalid argument '${value}' in vh() function.`);
+                  }
+
+                  return numericValue;
+                }); // () の中の文字列;
+
+              decl.value = `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vh)`;
             }
           });
         } catch (e) {
           console.error(e.message);
         }
-
-        const prependNodes = [];
-
-        // @charsetやWebフォントを一旦避ける
-
-        root.walkAtRules((atrule) => {
-          if (atrule.name === "charset" || (atrule.name === "import" && atrule.params.includes("//")) || atrule.name === "font-face") {
-            // @charset、フォント関連のルールを prependNodes に追加
-
-            prependNodes.push(atrule);
-            atrule.remove();
-          }
-        });
-
-        // 先頭に追加
-        root.prepend(insertNode);
-
-        // prependNodes 配列の要素を root の先頭に順番に挿入
-        prependNodes.reverse().forEach((node) => {
-          root.prepend(node);
-        });
-
-        // 既存のCSSファイルを含むカスタムメディアをメディアクエリに置き換え
-        root.walkAtRules("media", (atrule) => {
-          const screenKey = atrule.params.trim().replace(/[()]/g, "");
-
-          if (mediaQueries.has(screenKey)) {
-            atrule.params = mediaQueries.get(screenKey);
-          }
-        });
-
-        // 既存のCSSファイルに含むオリジナル関数の処理
-        root.walkDecls((decl) => {
-          // fluid関数
-          const fluidMatch = /fluid\(([^)]+)\)/.exec(decl.value);
-          if (fluidMatch) {
-            const [minSize, maxSize, minViewPort, maxViewPort] = fluidMatch[1]
-              .replace(/\s/g, "")
-              .split(",")
-              .map((value) => {
-                if (value === "") {
-                  return undefined; // 空文字列があれば undefined とする
-                }
-
-                const numericValue = parseFloat(value);
-
-                if (isNaN(numericValue)) {
-                  throw new Error(`Invalid argument '${value}' in fluid() function.`);
-                }
-
-                return numericValue;
-              }); // () の中の文字列
-
-            decl.value = getFluid(minSize, maxSize, minViewPort ? minViewPort : config.theme.layout["sm-design-width"], maxViewPort ? maxViewPort : config.theme.layout["lg-design-width"]);
-          }
-
-          // em関数
-          const emMatch = /em\(([^)]+)\)/.exec(decl.value);
-          if (emMatch) {
-            const [px, basePx] = emMatch[1]
-              .replace(/\s/g, "")
-              .split(",")
-              .map((value) => {
-                if (value === "") {
-                  return undefined; // 空文字列があれば undefined とする
-                }
-
-                const numericValue = parseFloat(value);
-
-                if (isNaN(numericValue)) {
-                  throw new Error(`Invalid argument '${value}' in em() function.`);
-                }
-
-                return numericValue;
-              }); // () の中の文字列;
-
-            decl.value = getEm(px, basePx ? basePx : 16);
-          }
-
-          // rem関数
-          const remMatch = /rem\(([^)]+)\)/.exec(decl.value);
-          if (remMatch) {
-            const px = parseFloat(remMatch[1]);
-            if (isNaN(px)) {
-              throw new Error(`Invalid argument '${remMatch[1]}' in rem() function.`);
-            }
-
-            decl.value = getRem(px);
-          }
-
-          // vw関数
-          const vwMatch = /vw\(([^)]+)\)/.exec(decl.value);
-          if (vwMatch) {
-            const [px, viewPort] = vwMatch[1]
-              .replace(/\s/g, "")
-              .split(",")
-              .map((value) => {
-                if (value === "") {
-                  return undefined; // 空文字列があれば undefined とする
-                }
-
-                const numericValue = parseFloat(value);
-
-                if (isNaN(numericValue)) {
-                  throw new Error(`Invalid argument '${value}' in vw() function.`);
-                }
-
-                return numericValue;
-              }); // () の中の文字列;
-
-            decl.value = `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vw)`;
-          }
-
-          // vh関数
-          const vhMatch = /vh\(([^)]+)\)/.exec(decl.value);
-          if (vhMatch) {
-            const [px, viewPort] = vhMatch[1]
-              .replace(/\s/g, "")
-              .split(",")
-              .map((value) => {
-                if (value === "") {
-                  return undefined; // 空文字列があれば undefined とする
-                }
-
-                const numericValue = parseFloat(value);
-
-                if (isNaN(numericValue)) {
-                  throw new Error(`Invalid argument '${value}' in vh() function.`);
-                }
-
-                return numericValue;
-              }); // () の中の文字列;
-
-            decl.value = `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vh)`;
-          }
-        });
       } catch (e) {
         console.error(e.message);
         return;

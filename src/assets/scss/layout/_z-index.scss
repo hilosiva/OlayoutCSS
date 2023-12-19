@@ -6,8 +6,7 @@
 // ====================================
 
 [data-z-index] {
-  --#{$prefix}-z-index: 0;
-  z-index: var(--#{$prefix}-z-index);
+  z-index: var(--#{$prefix}-z-index, 0);
 }
 
 [data-z-index~="auto"] {

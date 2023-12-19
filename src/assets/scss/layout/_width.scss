@@ -9,7 +9,7 @@
 }
 
 [data-width~="auto"] {
-  --#{$prefix}-width: 100%;
+  --#{$prefix}-width: auto;
 }
 
 @for $i from 1 through $column {
