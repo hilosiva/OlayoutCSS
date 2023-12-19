@@ -26,7 +26,7 @@
   --#{$prefix}-object-position-y: top;
 }
 [data-object~="bottom"] {
-  --#{$prefix}-object-positio-y: bottom;
+  --#{$prefix}-object-position-y: bottom;
 }
 [data-object~="left"] {
   --#{$prefix}-object-position-x: left;
@@ -59,7 +59,7 @@
       --#{$prefix}-object-position-y: top;
     }
     [data-object~="#{$device}:bottom"] {
-      --#{$prefix}-object-positio-y: bottom;
+      --#{$prefix}-object-position-y: bottom;
     }
     [data-object~="#{$device}:left"] {
       --#{$prefix}-object-position-x: left;

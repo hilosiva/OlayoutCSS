@@ -7,164 +7,301 @@
 // ====================================
 
 [data-grid] {
-  --#{$prefix}-grid-columns: #{$column};
   display: grid;
+  grid-template-columns: var(--#{$prefix}-grid-cols, unset);
+  grid-template-rows: var(--#{$prefix}-grid-rows, unset);
+  grid-auto-flow: var(--#{$prefix}-grid-flow, unset);
+  grid-auto-columns: var(--#{$prefix}-grid-auto-cols, unset);
+  grid-auto-rows: var(--#{$prefix}-grid-auto-rows, unset);
+}
+
+// Display
+// ----------------------------
+
+[data-grid~="unset"] {
+  display: revert;
+}
+
+[data-grid~="block"] {
+  display: grid;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-grid~="#{$device}:unset"] {
+      display: revert;
+    }
+
+    [data-grid~="#{$device}:block"] {
+      display: grid;
+    }
+  }
+}
+
+// Flow
+// ----------------------------
+[data-grid~="col"] {
+  --#{$prefix}-grid-flow: column;
+}
+[data-grid~="row"] {
+  --#{$prefix}-grid-flow: row;
+}
+[data-grid~="dense"] {
+  --#{$prefix}-grid-flow: dense;
+}
+[data-grid~="row-dense"] {
+  --#{$prefix}-grid-flow: row dense;
+}
+[data-grid~="col-dense"] {
+  --#{$prefix}-grid-flow: column dense;
+}
+@each $device, $breakpoint in $breakpoints {
+  [data-grid~="#{$device}:col"] {
+    --#{$prefix}-grid-flow: column;
+  }
+  [data-grid~="#{$device}:row"] {
+    --#{$prefix}-grid-flow: row;
+  }
+  [data-grid~="#{$device}:dense"] {
+    --#{$prefix}-grid-flow: dense;
+  }
+  [data-grid~="#{$device}:row-dense"] {
+    --#{$prefix}-grid-flow: row dense;
+  }
+  [data-grid~="#{$device}:col-dense"] {
+    --#{$prefix}-grid-flow: column dense;
+  }
 }
 
 // Columns
 // ----------------------------
-[data-cols] {
-  --#{$prefix}-grid-template-colmns: repeat(var(--#{$prefix}-grid-columns, 1), minmax(0, 1fr));
-  grid-template-columns: var(--#{$prefix}-grid-template-colmns);
+
+// template
+[data-grid~="cols-0"] {
+  --#{$prefix}-grid-cols: none;
 }
 
 @for $i from 1 through $column {
-  [data-cols~="#{$i}"] {
-    --#{$prefix}-grid-columns: #{$i};
+  [data-grid~="cols-#{$i}"] {
+    --#{$prefix}-grid-cols: repeat(#{$i}, minmax(0, 1fr));
   }
 }
 
 @each $device, $breakpoint in $breakpoints {
+  [data-grid~="#{$device}:cols-0"] {
+    --#{$prefix}-grid-cols: none;
+  }
+
   @include mq($device) {
     @for $i from 1 through $column {
-      [data-cols~="#{$device}:#{$i}"] {
-        --#{$prefix}-grid-columns: #{$i};
+      [data-grid~="#{$device}:cols-#{$i}"] {
+        --#{$prefix}-grid-cols: repeat(#{$i}, minmax(0, 1fr));
       }
     }
   }
 }
+
+// auto
+
+// [data-grid~="cols-auto"] {
+//   --#{$prefix}-grid-auto-cols: auto;
+// }
+// [data-grid~="cols-fr"] {
+//   --#{$prefix}-grid-auto-cols: minmax(0, 1fr);
+// }
+// [data-grid~="cols-min"] {
+//   --#{$prefix}-grid-auto-cols: min-content;
+// }
+// [data-grid~="cols-max"] {
+//   --#{$prefix}-grid-auto-cols: max-content;
+// }
+
+// @each $device, $breakpoint in $breakpoints {
+//   [data-grid~="#{$device}:cols-auto"] {
+//     --#{$prefix}-grid-auto-cols: auto;
+//   }
+//   [data-grid~="#{$device}:cols-fr"] {
+//     --#{$prefix}-grid-auto-cols: minmax(0, 1fr);
+//   }
+//   [data-grid~="#{$device}:cols-min"] {
+//     --#{$prefix}-grid-auto-cols: min-content;
+//   }
+//   [data-grid~="#{$device}:cols-max"] {
+//     --#{$prefix}-grid-auto-cols: max-content;
+//   }
+// }
 
 // Rows
 // ----------------------------
-[data-rows] {
-  --#{$prefix}-grid-rows: #{$row};
-  --#{$prefix}-grid-template-rows: repeat(var(--#{$prefix}-grid-rows), minmax(0, 1fr));
-
-  grid-template-rows: var(--#{$prefix}-grid-template-rows);
+[data-grid~="rows-0"] {
+  --#{$prefix}-grid-rows: none;
 }
 
 @for $i from 1 through $row {
-  [data-rows~="#{$i}"] {
-    --#{$prefix}-grid-rows: #{$i};
+  [data-grid~="rows-#{$i}"] {
+    --#{$prefix}-grid-rows: repeat(#{$i}, minmax(0, 1fr));
   }
 }
 
 @each $device, $breakpoint in $breakpoints {
+  [data-grid~="#{$device}:rows-0"] {
+    --#{$prefix}-grid-rows: none;
+  }
+
   @include mq($device) {
     @for $i from 1 through $row {
-      [data-rows~="#{$device}:#{$i}"] {
-        --#{$prefix}-grid-rows: #{$i};
+      [data-grid~="#{$device}:rows-#{$i}"] {
+        --#{$prefix}-grid-rows: repeat(#{$i}, minmax(0, 1fr));
       }
     }
   }
 }
 
-// Offset
+// auto
+
+// [data-grid~="rows-auto"] {
+//   --#{$prefix}-grid-auto-rows: auto;
+// }
+// [data-grid~="rows-fr"] {
+//   --#{$prefix}-grid-auto-rows: minmax(0, 1fr);
+// }
+// [data-grid~="rows-min"] {
+//   --#{$prefix}-grid-auto-rows: min-content;
+// }
+// [data-grid~="rows-max"] {
+//   --#{$prefix}-grid-auto-rows: max-content;
+// }
+
+// @each $device, $breakpoint in $breakpoints {
+//   [data-grid~="#{$device}:rows-auto"] {
+//     --#{$prefix}-grid-auto-rows: auto;
+//   }
+//   [data-grid~="#{$device}:rows-fr"] {
+//     --#{$prefix}-grid-auto-rows: minmax(0, 1fr);
+//   }
+//   [data-grid~="#{$device}:rows-min"] {
+//     --#{$prefix}-grid-auto-rows: min-content;
+//   }
+//   [data-grid~="#{$device}:rows-max"] {
+//     --#{$prefix}-grid-auto-rows: max-content;
+//   }
+// }
+
+// // Offset
+// // ----------------------------
+
+// [data-grid-offset~="small"] {
+//   --#{$prefix}-grid-template-colmns: var(--#{$prefix}-sm-offset) repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr)) var(--#{$prefix}-sm-offset);
+// }
+// [data-grid-offset~="medium"] {
+//   --#{$prefix}-grid-template-colmns: var(--#{$prefix}-md-offset) repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr)) var(--#{$prefix}-md-offset);
+// }
+// [data-grid-offset~="large"] {
+//   --#{$prefix}-grid-template-colmns: var(--#{$prefix}-lg-offset) repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr)) var(--#{$prefix}-lg-offset);
+// }
+// [data-grid-offset~="xlarge"] {
+//   --#{$prefix}-grid-template-colmns: var(--#{$prefix}-xl-offset) repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr)) var(--#{$prefix}-xl-offset);
+// }
+// [data-grid-offset~="none"] {
+//   --#{$prefix}-grid-template-colmns: repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr));
+// }
+
+// @each $device, $breakpoint in $breakpoints {
+//   @include mq($device) {
+//     [data-grid-offset~="#{$device}:small"] {
+//       --#{$prefix}-grid-template-colmns: var(--#{$prefix}-sm-offset) repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr)) var(--#{$prefix}-sm-offset);
+//     }
+//     [data-grid-offset~="#{$device}:medium"] {
+//       --#{$prefix}-grid-template-colmns: var(--#{$prefix}-md-offset) repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr)) var(--#{$prefix}-md-offset);
+//     }
+//     [data-grid-offset~="#{$device}:large"] {
+//       --#{$prefix}-grid-template-colmns: var(--#{$prefix}-lg-offset) repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr)) var(--#{$prefix}-lg-offset);
+//     }
+//     [data-grid-offset~="#{$device}:xlarge"] {
+//       --#{$prefix}-grid-template-colmns: var(--#{$prefix}-xl-offset) repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr)) var(--#{$prefix}-xl-offset);
+//     }
+//     [data-grid-offset~="#{$device}:none"] {
+//       --#{$prefix}-grid-template-colmns: repeat(var(--#{$prefix}-grid-cols), minmax(0, 1fr));
+//     }
+//   }
+// }
+
+// Grid Item
 // ----------------------------
 
-[data-grid-offset~="small"] {
-  --#{$prefix}-grid-template-colmns: var(--#{$prefix}-sm-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-sm-offset);
-}
-[data-grid-offset~="medium"] {
-  --#{$prefix}-grid-template-colmns: var(--#{$prefix}-md-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-md-offset);
-}
-[data-grid-offset~="large"] {
-  --#{$prefix}-grid-template-colmns: var(--#{$prefix}-lg-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-lg-offset);
-}
-[data-grid-offset~="xlarge"] {
-  --#{$prefix}-grid-template-colmns: var(--#{$prefix}-xl-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-xl-offset);
-}
-[data-grid-offset~="none"] {
-  --#{$prefix}-grid-template-colmns: repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr));
-}
-
-@each $device, $breakpoint in $breakpoints {
-  @include mq($device) {
-    [data-grid-offset~="#{$device}:small"] {
-      --#{$prefix}-grid-template-colmns: var(--#{$prefix}-sm-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-sm-offset);
-    }
-    [data-grid-offset~="#{$device}:medium"] {
-      --#{$prefix}-grid-template-colmns: var(--#{$prefix}-md-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-md-offset);
-    }
-    [data-grid-offset~="#{$device}:large"] {
-      --#{$prefix}-grid-template-colmns: var(--#{$prefix}-lg-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-lg-offset);
-    }
-    [data-grid-offset~="#{$device}:xlarge"] {
-      --#{$prefix}-grid-template-colmns: var(--#{$prefix}-xl-offset) repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr)) var(--#{$prefix}-xl-offset);
-    }
-    [data-grid-offset~="#{$device}:none"] {
-      --#{$prefix}-grid-template-colmns: repeat(var(--#{$prefix}-grid-columns), minmax(0, 1fr));
-    }
-  }
-}
-
 [data-grid-item] {
-  display: flex;
-  flex-direction: column;
+  grid-column: var(--#{$prefix}-grid-col-start, auto) / var(--#{$prefix}-grid-col-end, auto);
+  grid-row: var(--#{$prefix}-grid-row-start, auto) / var(--#{$prefix}-grid-row-end, auto);
 }
 
 // Column
 // ----------------------------
 @for $i from 1 through $column {
-  [data-col~="#{$i}"] {
-    grid-column: span $i / span $i;
+  [data-grid-item~="col-#{$i}"] {
+    --#{$prefix}-grid-col-start: span #{$i};
+    --#{$prefix}-grid-col-end: span #{$i};
   }
 
-  [data-col-start~="#{$i}"] {
-    grid-column-start: $i;
+  [data-grid-item~="col-start-#{$i}"] {
+    --#{$prefix}-grid-col-start: #{$i};
   }
 
-  [data-col-end~="#{$i}"] {
-    grid-column-end: $i;
+  [data-grid-item~="col-end-#{$i}"] {
+    --#{$prefix}-grid-col-end: #{$i};
   }
 }
 
-[data-col~="full"] {
-  grid-column: 1 / -1;
+[data-grid-item~="col-full"] {
+  --#{$prefix}-grid-col-start: 1;
+  --#{$prefix}-grid-col-end: -1;
 }
 
-[data-col~="auto"] {
-  grid-column: auto;
+[data-grid-item~="col-auto"] {
+  --#{$prefix}-grid-col-start: auto;
+  --#{$prefix}-grid-col-end: auto;
 }
 
-[data-col-start~="auto"] {
-  grid-column-start: auto;
+[data-grid-item~="col-start-auto"] {
+  --#{$prefix}-grid-col-start: auto;
 }
 
-[data-col-end~="auto"] {
-  grid-column-end: auto;
+[data-grid-item~="col-end-auto"] {
+  --#{$prefix}-grid-col-end: auto;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     @for $i from 1 through $column {
-      [data-col~="#{$device}:#{$i}"] {
-        grid-column: span $i / span $i;
+      [data-grid-item~="#{$device}:col-#{$i}"] {
+        --#{$prefix}-grid-col-start: span #{$i};
+        --#{$prefix}-grid-col-end: span #{$i};
       }
 
-      [data-col-start~="#{$device}:#{$i}"] {
-        grid-column-start: $i;
+      [data-grid-item~="#{$device}:col-start-#{$i}"] {
+        --#{$prefix}-grid-col-start: #{$i};
       }
 
-      [data-col-end~="#{$device}:#{$i}"] {
-        grid-column-end: $i;
+      [data-grid-item~="#{$device}:col-end#{$i}"] {
+        --#{$prefix}-grid-col-end: #{$i};
       }
     }
 
-    [data-col~="#{$device}:full"] {
-      grid-column: 1 / -1;
+    [data-grid-item~="#{$device}:col-full"] {
+      --#{$prefix}-grid-col-start: 1;
+      --#{$prefix}-grid-col-end: -1;
     }
 
-    [data-col~="#{$device}:auto"] {
-      grid-column: auto;
+    [data-grid-item~="#{$device}:col-auto"] {
+      --#{$prefix}-grid-col-start: auto;
+      --#{$prefix}-grid-col-end: auto;
     }
 
-    [data-col-start~="#{$device}:auto"] {
-      grid-column-start: auto;
+    [data-grid-item~="#{$device}:col-start-auto"] {
+      --#{$prefix}-grid-col-start: auto;
     }
 
-    [data-col-end~="#{$device}:auto"] {
-      grid-column-end: auto;
+    [data-grid-item~="#{$device}:col-end-auto"] {
+      --#{$prefix}-grid-col-end: auto;
     }
   }
 }
@@ -173,65 +310,71 @@
 // ----------------------------
 
 @for $i from 1 through $row {
-  [data-row~="#{$i}"] {
-    grid-row: span $i / span $i;
+  [data-grid-item~="row-#{$i}"] {
+    --#{$prefix}-grid-row-start: span #{$i};
+    --#{$prefix}-grid-row-end: span #{$i};
   }
 
-  [data-row-start~="#{$i}"] {
-    grid-row-start: $i;
+  [data-grid-item~="row-start-#{$i}"] {
+    --#{$prefix}-grid-row-start: #{$i};
   }
 
-  [data-row-end~="#{$i}"] {
-    grid-row-end: $i;
+  [data-grid-item~="row-end-#{$i}"] {
+    --#{$prefix}-grid-row-end: #{$i};
   }
 }
 
-[data-row~="full"] {
-  grid-row: 1 / -1;
+[data-grid-item~="row-full"] {
+  --#{$prefix}-grid-row-start: 1;
+  --#{$prefix}-grid-row-end: -1;
 }
 
-[data-row~="auto"] {
-  grid-row: auto;
+[data-grid-item~="row-auto"] {
+  --#{$prefix}-grid-row-start: auto;
+  --#{$prefix}-grid-row-end: auto;
 }
 
-[data-row-start~="auto"] {
-  grid-row-start: auto;
+[data-grid-item~="row-start-auto"] {
+  --#{$prefix}-grid-row-start: auto;
 }
 
-[data-row-end~="auto"] {
-  grid-row-end: auto;
+[data-grid-item~="row-end-auto"] {
+  --#{$prefix}-grid-row-end: auto;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     @for $i from 1 through $row {
-      [data-row~="#{$device}:#{$i}"] {
-        grid-row: span $i / span $i;
+      [data-grid-item~="#{$device}:row-#{$i}"] {
+        --#{$prefix}-grid-row-start: span #{$i};
+        --#{$prefix}-grid-row-end: span #{$i};
       }
 
-      [data-row-start~="#{$device}:#{$i}"] {
-        grid-row-start: $i;
+      [data-grid-item~="#{$device}:row-start-#{$i}"] {
+        --#{$prefix}-grid-row-start: #{$i};
       }
 
-      [data-row-end~="#{$device}:#{$i}"] {
-        grid-row-end: $i;
+      [data-grid-item~="#{$device}:row-end-#{$i}"] {
+        --#{$prefix}-grid-row-end: #{$i};
       }
     }
 
-    [data-row~="#{$device}:full"] {
-      grid-row: 1 / -1;
+    [data-grid-item~="#{$device}:row-full"] {
+      --#{$prefix}-grid-row-start: 1;
+      --#{$prefix}-grid-row-end: -1;
     }
 
-    [data-row~="#{$device}:auto"] {
-      grid-row: auto;
+    [data-grid-item~="#{$device}:row-auto"] {
+      --#{$prefix}-grid-row-start: auto;
+      --#{$prefix}-grid-row-end: auto;
     }
 
-    [data-row-start~="#{$device}:auto"] {
-      grid-row-start: auto;
+    [data-grid-item~="#{$device}:row-start-auto"] {
+      --#{$prefix}-grid-row-start: auto;
     }
 
-    [data-row-end~="#{$device}:auto"] {
-      grid-row-end: auto;
+    [data-grid-item~="#{$device}:row-end-auto"] {
+      --#{$prefix}-grid-row-end: auto;
     }
   }
 }

@@ -4,276 +4,315 @@
 /*
   Spacer
 -----------------------------------------------------*/
+// Padding
+// ----------------------------
+[data-p] {
+  padding: var(--#{$prefix}-pt, 0) var(--#{$prefix}-pr, 0) var(--#{$prefix}-pb, 0) var(--#{$prefix}-pl, 0);
+}
+[data-m] {
+  margin: var(--#{$prefix}-mt, 0) var(--#{$prefix}-mr, 0) var(--#{$prefix}-mb, 0) var(--#{$prefix}-ml, 0);
+}
+
+[data-m~="auto"] {
+  --#{$prefix}-mt: auto;
+  --#{$prefix}-mr: auto;
+  --#{$prefix}-mb: auto;
+  --#{$prefix}-ml: auto;
+}
+
+[data-m~="y-auto"] {
+  --#{$prefix}-mt: auto;
+  --#{$prefix}-mb: auto;
+}
+[data-m~="x-auto"] {
+  --#{$prefix}-ml: auto;
+  --#{$prefix}-mr: auto;
+}
+[data-m~="t-auto"] {
+  --#{$prefix}-mt: auto;
+}
+[data-m~="b-auto"] {
+  --#{$prefix}-mb: auto;
+}
+[data-m~="l-auto"] {
+  --#{$prefix}-ml: auto;
+}
+[data-m~="r-auto"] {
+  --#{$prefix}-mr: auto;
+}
+
 @for $i from 0 through $space-range {
-  // Padding
-  // ----------------------------
-  [data-pa~="#{$i}"] {
-    padding: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-p~="#{$i}"] {
+    --#{$prefix}-pt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-pr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-pb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-pl: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
-  [data-py~="#{$i}"] {
-    padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-    padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-p~="y-#{$i}"] {
+    --#{$prefix}-pt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-pb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
-  [data-pt~="#{$i}"] {
-    padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-p~="t-#{$i}"] {
+    --#{$prefix}-pt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
-  [data-pb~="#{$i}"] {
-    padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-p~="b-#{$i}"] {
+    --#{$prefix}-pb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
-  [data-px~="#{$i}"] {
-    padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-    padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-p~="x-#{$i}"] {
+    --#{$prefix}-pl: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-pr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
-  [data-pl~="#{$i}"] {
-    padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-p~="l-#{$i}"] {
+    --#{$prefix}-pl: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
-  [data-pr~="#{$i}"] {
-    padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-p~="r-#{$i}"] {
+    --#{$prefix}-pr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
   // Margin
   // ----------------------------
 
-  [data-ma~="auto"] {
-    margin: auto;
+  [data-m~="#{$i}"] {
+    --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
-  [data-ma~="#{$i}"] {
-    margin: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-  }
-
-  [data-my~="auto"] {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
-  [data-my~="#{$i}"] {
-    margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-    margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-m~="y-#{$i}"] {
+    --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
   @if $i != 0 {
-    [data-my~="-#{$i}"] {
-      margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-      margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    [data-m~="y--#{$i}"] {
+      --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+      --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
     }
   }
 
-  [data-mt~="#{$i}"] {
-    margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-m~="t-#{$i}"] {
+    --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
   @if $i != 0 {
-    [data-mt~="-#{$i}"] {
-      margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    [data-m~="t--#{$i}"] {
+      --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
     }
   }
 
-  [data-mb~="#{$i}"] {
-    margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-m~="b-#{$i}"] {
+    --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
   @if $i != 0 {
-    [data-mb~="-#{$i}"] {
-      margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    [data-m~="b--#{$i}"] {
+      --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
     }
   }
 
-  [data-mx~="auto"] {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  [data-mx~="#{$i}"] {
-    margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-    margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-m~="x-#{$i}"] {
+    --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
   @if $i != 0 {
-    [data-mx~="-#{$i}"] {
-      margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-      margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    [data-m~="x--#{$i}"] {
+      --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+      --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
     }
   }
 
-  [data-ml~="auto"] {
-    margin-left: auto;
-  }
-
-  [data-ml~="#{$i}"] {
-    margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-m~="l-#{$i}"] {
+    --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
   @if $i != 0 {
-    [data-ml~="-#{$i}"] {
-      margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+    [data-m~="l--#{$i}"] {
+      --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
     }
   }
 
-  [data-mr~="auto"] {
-    margin-right: auto;
-  }
-
-  [data-mr~="#{$i}"] {
-    margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-m~="r-#{$i}"] {
+    --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 
   @if $i != 0 {
-    [data-mr~="-#{$i}"] {
-      margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    [data-m~="r--#{$i}"] {
+      --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
     }
   }
 
   // space
   // ----------------------------
-  [data-space-x~="#{$i}"] > * + * {
-    margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  [data-space] > * + * {
+    margin-top: var(--#{$prefix}-space-y, 0);
+    margin-left: var(--#{$prefix}-space-x, 0);
   }
-  [data-space-y~="#{$i}"] > * + * {
-    margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+
+  [data-space~="x-#{$i}"] > * + * {
+    --#{$prefix}-space-x: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+  }
+  [data-space~="y-#{$i}"] > * + * {
+    --#{$prefix}-space-y: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
+    // Margin
+    // ----------------------------
+    [data-m~="#{$device}:auto"] {
+      --#{$prefix}-mt: auto;
+      --#{$prefix}-mr: auto;
+      --#{$prefix}-mb: auto;
+      --#{$prefix}-ml: auto;
+    }
+
+    [data-m~="#{$device}:y-auto"] {
+      --#{$prefix}-mt: auto;
+      --#{$prefix}-mb: auto;
+    }
+
+    [data-m~="#{$device}:x-auto"] {
+      --#{$prefix}-ml: auto;
+      --#{$prefix}-mr: auto;
+    }
+
+    [data-m~="#{$device}:t-auto"] {
+      --#{$prefix}-mt: auto;
+    }
+    [data-m~="#{$device}:b-auto"] {
+      --#{$prefix}-mb: auto;
+    }
+    [data-m~="#{$device}:l-auto"] {
+      --#{$prefix}-ml: auto;
+    }
+
+    [data-m~="#{$device}:r-auto"] {
+      --#{$prefix}-mr: auto;
+    }
+
     @for $i from 0 through $space-range {
       // Padding
       // ----------------------------
-      [data-pa~="#{$device}:#{$i}"] {
-        padding: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-p~="#{$device}:#{$i}"] {
+        --#{$prefix}-pt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-pr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-pb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-pl: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
-      [data-py~="#{$device}:#{$i}"] {
-        padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-p~="#{$device}:y-#{$i}"] {
+        --#{$prefix}-pt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-pb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
-      [data-pt~="#{$device}:#{$i}"] {
-        padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-p~="#{$device}:t-#{$i}"] {
+        --#{$prefix}-pt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
-      [data-pb~="#{$device}:#{$i}"] {
-        padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-p~="#{$device}:b-#{$i}"] {
+        --#{$prefix}-pb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
-      [data-px~="#{$device}:#{$i}"] {
-        padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-p~="#{$device}:x-#{$i}"] {
+        --#{$prefix}-pl: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-pr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
-      [data-pl~="#{$device}:#{$i}"] {
-        padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-p~="#{$device}:l-#{$i}"] {
+        --#{$prefix}-pl: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
-      [data-pr~="#{$device}:#{$i}"] {
-        padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-p~="#{$device}:r-#{$i}"] {
+        --#{$prefix}-pr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
-      // Margin
-      // ----------------------------
-      [data-ma~="#{$device}:auto"] {
-        margin: auto;
+      [data-m~="#{$device}:#{$i}"] {
+        --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
-      [data-ma~="#{$device}:#{$i}"] {
-        margin: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-      }
-
-      [data-my~="#{$device}:auto"] {
-        margin-top: auto;
-        margin-bottom: auto;
-      }
-
-      [data-my~="#{$device}:#{$i}"] {
-        margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-m~="#{$device}:y-#{$i}"] {
+        --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
       @if $i != 0 {
-        [data-my~="#{$device}:-#{$i}"] {
-          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-          margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        [data-m~="#{$device}:y--#{$i}"] {
+          --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+          --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
         }
       }
 
-      [data-mt~="#{$device}:#{$i}"] {
-        margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-m~="#{$device}:t-#{$i}"] {
+        --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
       @if $i != 0 {
-        [data-mt~="#{$device}:-#{$i}"] {
-          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        [data-m~="#{$device}:t--#{$i}"] {
+          --#{$prefix}-mt: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
         }
       }
 
-      [data-mb~="#{$device}:#{$i}"] {
-        margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-m~="#{$device}:b-#{$i}"] {
+        --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
       @if $i != 0 {
-        [data-mb~="#{$device}:-#{$i}"] {
-          margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        [data-m~="#{$device}:b--#{$i}"] {
+          --#{$prefix}-mb: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
         }
       }
 
-      [data-mx~="#{$device}:auto"] {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      [data-mx~="#{$device}:#{$i}"] {
-        margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
-        margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-m~="#{$device}:x-#{$i}"] {
+        --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
       @if $i != 0 {
-        [data-mx~="#{$device}:-#{$i}"] {
-          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
-          margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        [data-m~="#{$device}:x--#{$i}"] {
+          --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+          --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
         }
       }
 
-      [data-ml~="#{$device}:auto"] {
-        margin-left: auto;
-      }
-
-      [data-ml~="#{$device}:#{$i}"] {
-        margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-m~="#{$device}:l-#{$i}"] {
+        --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
       @if $i != 0 {
-        [data-ml~="#{$device}:-#{$i}"] {
-          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
+        [data-m~="#{$device}:l--#{$i}"] {
+          --#{$prefix}-ml: calc(var(--#{$prefix}-space) * #{$i} / 16 * -1rem);
         }
       }
 
-      [data-mr~="#{$device}:auto"] {
-        margin-right: auto;
-      }
-
-      [data-mr~="#{$device}:#{$i}"] {
-        margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-m~="#{$device}:r-#{$i}"] {
+        --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
 
       @if $i != 0 {
-        [data-mr~="#{$device}:-#{$i}"] {
-          margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        [data-m~="#{$device}:r--#{$i}"] {
+          --#{$prefix}-mr: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
         }
       }
 
       // space
       // ----------------------------
-      [data-space-x~="#{$device}:#{$i}"] > * + * {
-        margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-space~="#{$device}:x-#{$i}"] > * + * {
+        --#{$prefix}-space-x: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
-      [data-space-y~="#{$device}:#{$i}"] > * + * {
-        margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+      [data-space~="#{$device}:y-#{$i}"] > * + * {
+        --#{$prefix}-space-y: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
     }
   }

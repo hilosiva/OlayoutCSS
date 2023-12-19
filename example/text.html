@@ -1,36 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olayout CSS</title>
-  <link rel="stylesheet" href="assets/css/test.css">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-</head>
-<body>
-  <header data-container data-my="1 lg:2">
-    <div data-flex data-align="lg:justify lg:middle">
-      <h1>Olayoutは進化した</h1>
-      <ul data-flex data-gap="1 md:2">
-        <li><a href="#">リンク</a></li>
-        <li><a href="#">リンク</a></li>
-        <li><a href="#">リンク</a></li>
-      </ul>
-    </div>
-  </header>
-  <main>
-    <div data-container>
-      <div data-grid data-cols="4" data-gap="2">
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
-        <div>Item</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Olayout CSS</title>
+    <link rel="stylesheet" href="assets/css/test.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      p {
+        font-size: 1rem;
+      }
+
+      @media (--ol-lg) {
+        h1 {
+          font-size: fluid(10, 40);
+        }
+      }
+    </style>
+    <style>
+      p {
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header data-container data-m="y-1 lg:y-2">
+      <div data-flex data-place="between middle">
+        <h1>Olayoutは進化した</h1>
+        <ul data-flex data-gap="1 md:2">
+          <li><a href="#">リンク</a></li>
+          <li><a href="#">リンク</a></li>
+          <li><a href="#">リンク</a></li>
+        </ul>
       </div>
-    </div>
-  </main>
-</body>
+    </header>
+    <main>
+      <div data-container>
+        <div data-flex="nowrap" data-gap="4" data-m="y-4">
+          <div data-flex-item="s-0 g-0" style="width: 50vw" data-bg="light">test</div>
+          <div data-flex-item="s-1" style="width: 50vw" data-bg="light">test</div>
+          <div data-flex-item="s-0" style="width: 50vw" data-bg="light">test</div>
+        </div>
+        <div data-grid="cols-2 " data-gap="1" data-m="b-5">
+          <div data-bg="light">1</div>
+          <div data-bg="light">2<br />2.5</div>
+          <div data-bg="light">3</div>
+          <div data-bg="light">4</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+          <div data-bg="light">5</div>
+        </div>
+
+        <div data-grid="cols-4" data-gap="2" data-m="y-6">
+          <div data-grid-item>
+            <div data-card data-bg="main">
+              <h3>test Card</h3>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+            </div>
+          </div>
+          <div data-grid-item>
+            <div data-card data-bg="main">
+              <h3>test Card</h3>
+              <p>teststtt.tett.tt adf ad</p>
+              <p data-m="t-auto">teststtt.tett.tt adf ad</p>
+            </div>
+          </div>
+          <div data-grid-item>
+            <div data-card data-bg="main">
+              <h3>test Card</h3>
+              <p>teststtt.tett.tt adf ad</p>
+              <p>teststtt.tett.tt adf ad</p>
+            </div>
+          </div>
+          <div data-card data-bg="main">
+            <h3>test Card</h3>
+            <p>teststtt.tett.tt adf ad</p>
+            <p data-m="t-auto">teststtt.tett.tt adf ad</p>
+          </div>
+        </div>
+        <div data-grid="cols-1 lg:cols-12" data-gap="2 lg:4">
+          <div data-grid-item="col-6 row-2" data-bg="light">
+            <div data-flex-item style="height: 100%">
+              <h2>01Card<br />Card</h2>
+              <p>test</p>
+              <p style="margin-top: auto">¥500</p>
+            </div>
+          </div>
+          <div data-grid-item="col-6" data-bg="light" style="height: 100%">
+            <h2>02Card</h2>
+            <p>test testtest<br />testtest.<br />testtest.testtes</p>
+            <p style="margin-top: auto">¥500</p>
+          </div>
+          <div data-grid-item="col-6" data-bg="light">
+            <div>
+              <h2>03Card</h2>
+              <p>test</p>
+              <p style="margin-top: auto">¥500</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-grid="cols-2" data-gap="3" data-place="middle">
+          <div data-grid-item>
+            <div data-position="sticky" data-inset="t-10">Stop</div>
+          </div>
+          <div data-grid-item>
+            <div data-space="y-10">
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+              <p data-p="4" data-bg="main">Text</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

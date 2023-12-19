@@ -4,107 +4,128 @@
 // ====================================
 //   Inset & Top, Left, Right , Bottom
 // ====================================
+[data-inset] {
+  inset: var(--#{$prefix}-top, auto) var(--#{$prefix}-right, auto) var(--#{$prefix}-bottom, auto) var(--#{$prefix}-left, auto);
+}
 
 [data-inset~="0"] {
-  inset: 0;
+  --#{$prefix}-top: 0;
+  --#{$prefix}-right: 0;
+  --#{$prefix}-bottom: 0;
+  --#{$prefix}-left: 0;
 }
 [data-inset~="auto"] {
-  inset: auto;
+  --#{$prefix}-top: auto;
+  --#{$prefix}-right: auto;
+  --#{$prefix}-bottom: auto;
+  --#{$prefix}-left: auto;
 }
 
-[data-top~="0"] {
-  top: 0;
+[data-inset~="t-0"] {
+  --#{$prefix}-top: 0;
 }
-[data-top~="auto"] {
-  top: auto;
-}
-
-[data-right~="auto"] {
-  right: auto;
-}
-[data-right~="0"] {
-  right: 0;
+[data-inset~="t-auto"] {
+  --#{$prefix}-top: auto;
 }
 
-[data-bottom~="auto"] {
-  bottom: auto;
+[data-inset~="r-auto"] {
+  --#{$prefix}-right: auto;
 }
-[data-bottom~="0"] {
-  bottom: 0;
+[data-inset~="r-0"] {
+  --#{$prefix}-right: 0;
 }
 
-[data-left~="auto"] {
-  left: auto;
+[data-inset~="b-auto"] {
+  --#{$prefix}-bottom: auto;
 }
-[data-left~="0"] {
-  left: 0;
+[data-inset~="b-0"] {
+  --#{$prefix}-bottom: 0;
+}
+
+[data-inset~="l-auto"] {
+  --#{$prefix}-left: auto;
+}
+[data-inset~="l-0"] {
+  --#{$prefix}-left: 0;
 }
 
 @for $i from 0 through $space-range {
   [data-inset~="#{$i}"] {
-    inset: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+    --#{$prefix}-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+    --#{$prefix}-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
-  [data-top~="#{$i}"] {
-    top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+  [data-inset~="t-#{$i}"] {
+    --#{$prefix}-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
-  [data-right~="#{$i}"] {
-    right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+  [data-inset~="r-#{$i}"] {
+    --#{$prefix}-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
-  [data-bottom~="#{$i}"] {
-    bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+  [data-inset~="b-#{$i}"] {
+    --#{$prefix}-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
-  [data-left~="#{$i}"] {
-    left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+  [data-inset~="l-#{$i}"] {
+    --#{$prefix}-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
   }
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-inset~="#{$device}:0"] {
-      inset: 0;
+      --#{$prefix}-top: 0;
+      --#{$prefix}-right: 0;
+      --#{$prefix}-bottom: 0;
+      --#{$prefix}-left: 0;
     }
     [data-inset~="#{$device}:auto"] {
-      inset: auto;
+      --#{$prefix}-top: auto;
+      --#{$prefix}-right: auto;
+      --#{$prefix}-bottom: auto;
+      --#{$prefix}-left: auto;
     }
-    [data-top~="#{$device}:0"] {
-      top: 0;
+    [data-inset~="#{$device}:t-0"] {
+      --#{$prefix}-top: 0;
     }
-    [data-top~="#{$device}:auto"] {
-      top: auto;
+    [data-inset~="#{$device}:t-auto"] {
+      --#{$prefix}-top: auto;
     }
-    [data-right~="#{$device}:auto"] {
-      right: auto;
+    [data-inset~="#{$device}:r-auto"] {
+      --#{$prefix}-right: auto;
     }
-    [data-right~="#{$device}:0"] {
-      right: 0;
+    [data-inset~="#{$device}:r-0"] {
+      --#{$prefix}-right: 0;
     }
-    [data-bottom~="#{$device}:auto"] {
-      bottom: auto;
+    [data-inset~="#{$device}:b-auto"] {
+      --#{$prefix}-bottom: auto;
     }
-    [data-bottom~="#{$device}:0"] {
-      bottom: 0;
+    [data-inset~="#{$device}:b-0"] {
+      --#{$prefix}-bottom: 0;
     }
-    [data-left~="#{$device}:auto"] {
-      left: auto;
+    [data-inset~="#{$device}:l-auto"] {
+      --#{$prefix}-left: auto;
     }
-    [data-left~="#{$device}:0"] {
-      left: 0;
+    [data-inset~="#{$device}:l-0"] {
+      --#{$prefix}-left: 0;
     }
     @for $i from 0 through $space-range {
       [data-inset~="#{$device}:#{$i}"] {
-        inset: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+        --#{$prefix}-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        --#{$prefix}-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
-      [data-top~="#{$device}:#{$i}"] {
-        top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+      [data-inset~="#{$device}:t-#{$i}"] {
+        --#{$prefix}-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
-      [data-right~="#{$device}:#{$i}"] {
-        right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+      [data-inset~="#{$device}:r-#{$i}"] {
+        --#{$prefix}-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
-      [data-bottom~="#{$device}:#{$i}"] {
-        bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+      [data-inset~="#{$device}:b-#{$i}"] {
+        --#{$prefix}-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
-      [data-left~="#{$device}:#{$i}"] {
-        left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem) 0;
+      [data-inset~="#{$device}:l-#{$i}"] {
+        --#{$prefix}-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
       }
     }
   }

@@ -7,23 +7,50 @@
 // ====================================
 [data-flex] {
   display: flex;
+  flex-wrap: wrap;
+}
+
+// Display
+
+[data-flex~="unset"] {
+  display: revert;
+}
+[data-flex~="block"] {
+  display: flex;
+}
+[data-flex~="inline"] {
+  display: inline-flex;
+}
+
+@each $device, $breakpoint in $breakpoints {
+  @include mq($device) {
+    [data-flex~="#{$device}:unset"] {
+      display: revert;
+    }
+    [data-flex~="#{$device}:block"] {
+      display: flex;
+    }
+    [data-flex~="#{$device}:inline"] {
+      display: inline-flex;
+    }
+  }
 }
 
 // Wrap
 // ----------------------------
-[data-flow~="nowrap"] {
+[data-flex~="nowrap"] {
   flex-wrap: nowrap;
 }
-[data-flow~="wrap"] {
+[data-flex~="wrap"] {
   flex-wrap: wrap;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-flow~="#{$device}:nowrap"] {
+    [data-flex~="#{$device}:nowrap"] {
       flex-wrap: nowrap;
     }
-    [data-flow~="#{$device}:wrap"] {
+    [data-flex~="#{$device}:wrap"] {
       flex-wrap: wrap;
     }
   }
@@ -32,85 +59,61 @@
 // Direction
 // ----------------------------
 
-[data-flow~="row"] {
+[data-flex~="row"] {
   flex-direction: row;
 }
-[data-flow~="reverse"] {
+[data-flex~="row-reverse"] {
   flex-direction: row-reverse;
 }
-[data-flow~="column"] {
+[data-flex~="col"] {
   flex-direction: column;
+}
+[data-flex~="col-reverse"] {
+  flex-direction: column-reverse;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-flow~="#{$device}:row"] {
+    [data-flex~="#{$device}:row"] {
       flex-direction: row;
     }
-    [data-flow~="#{$device}:reverse"] {
+    [data-flex~="#{$device}:row-reverse"] {
       flex-direction: row-reverse;
     }
-    [data-flow~="#{$device}:column"] {
+    [data-flex~="#{$device}:col"] {
       flex-direction: column;
     }
+    [data-flex~="#{$device}:col-reverse"] {
+      flex-direction: column-reverse;
+    }
   }
-}
-
-[data-flex-item] {
-  display: flex;
-  flex-direction: column;
 }
 
 // Grow & Shrink
 // ----------------------------
 
+[data-flex-item] {
+  flex: var(--ol-grow, 0) var(--ol-shrink, 1) auto;
+}
+
 @for $i from 0 through 3 {
-  [data-grow~="#{$i}"] {
-    flex-grow: $i;
+  [data-flex-item~="g-#{$i}"] {
+    --ol-grow: #{$i};
   }
-  [data-shrink~="#{$i}"] {
-    flex-shrink: $i;
+  [data-flex-item~="s-#{$i}"] {
+    --ol-shrink: #{$i};
   }
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     @for $i from 0 through 3 {
-      [data-grow~="#{$device}:#{$i}"] {
-        flex-grow: $i;
+      [data-flex-item~="#{$device}:g-#{$i}"] {
+        --ol-grow: #{$i};
       }
-      [data-shrink~="#{$device}:#{$i}"] {
-        flex-shrink: $i;
+      [data-flex-item~="#{$device}:s-#{$i}"] {
+        --ol-shrink: #{$i};
       }
-    }
-  }
-}
-
-// Over Container
-// ----------------------------
-
-[data-over~="left"],
-[data-over~="right"],
-[data-over~="both"] {
-  flex-grow: 1;
-}
-
-[data-over~="clearLeft"][data-over~="clearRight"],
-[data-over~="clearBoth"] {
-  flex-grow: 0;
-}
-
-@each $device, $breakpoint in $breakpoints {
-  @include mq($device) {
-    [data-over~="#{$device}:left"],
-    [data-over~="#{$device}:right"],
-    [data-over~="#{$device}:both"] {
-      flex-grow: 1;
-    }
-
-    [data-over~="#{$device}:clearLeft"][data-over~="#{$device}:clearRight"],
-    [data-over~="#{$device}:clearBoth"] {
-      flex-grow: 0;
     }
   }
 }

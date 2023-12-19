@@ -6,18 +6,13 @@
   Container
 ----------------------------------------------------- */
 [data-container] {
-  --#{$prefix}-container-offset-ratio: 2;
-  --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
-  --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
-  --#{$prefix}-left-offset: var(--#{$prefix}-container-left-offset);
-  --#{$prefix}-right-offset: var(--#{$prefix}-container-right-offset);
-  --#{$prefix}-left-margin: auto;
-  --#{$prefix}-right-margin: auto;
+  --#{$prefix}-offset-left: var(--#{$prefix}-md-offset);
+  --#{$prefix}-offset-right: var(--#{$prefix}-md-offset);
 
-  padding-right: var(--#{$prefix}-right-offset);
-  padding-left: var(--#{$prefix}-left-offset);
-  margin-right: var(--#{$prefix}-right-margin);
-  margin-left: var(--#{$prefix}-left-margin);
+  padding-left: var(--#{$prefix}-offset-left);
+  padding-right: var(--#{$prefix}-offset-right);
+  margin-right: var(--#{$prefix}-margin-right, auto);
+  margin-left: var(--#{$prefix}-margin-left, auto);
   box-sizing: content-box;
 }
 
@@ -25,31 +20,31 @@
 // ----------------------------
 
 [data-container~="left"] {
-  --#{$prefix}-left-margin: 0;
-  --#{$prefix}-right-margin: auto;
+  --#{$prefix}-margin-left: 0;
+  --#{$prefix}-margin-right: auto;
 }
 [data-container~="right"] {
-  --#{$prefix}-left-margin: auto;
-  --#{$prefix}-right-margin: 0;
+  --#{$prefix}-margin-left: auto;
+  --#{$prefix}-margin-right: 0;
 }
 [data-container~="center"] {
-  --#{$prefix}-left-margin: 0;
-  --#{$prefix}-right-margin: auto;
+  --#{$prefix}-margin-left: auto;
+  --#{$prefix}-margin-right: auto;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-container~="#{$device}:left"] {
-      --#{$prefix}-left-margin: 0;
-      --#{$prefix}-right-margin: auto;
+      --#{$prefix}-margin-left: 0;
+      --#{$prefix}-margin-right: auto;
     }
     [data-container~="#{$device}:right"] {
-      --#{$prefix}-left-margin: auto;
-      --#{$prefix}-right-margin: 0;
+      --#{$prefix}-margin-left: auto;
+      --#{$prefix}-margin-right: 0;
     }
     [data-container~="#{$device}:center"] {
-      --#{$prefix}-left-margin: 0;
-      --#{$prefix}-right-margin: auto;
+      --#{$prefix}-margin-left: auto;
+      --#{$prefix}-margin-right: auto;
     }
   }
 }
@@ -57,108 +52,108 @@
 // Offset
 // ----------------------------
 
-[data-offset~="small"] {
-  --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
-  --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
+[data-container~="small"] {
+  --#{$prefix}-offset-left: var(--#{$prefix}-sm-offset);
+  --#{$prefix}-offset-right: var(--#{$prefix}-sm-offset);
 }
-[data-offset~="medium"] {
-  --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
-  --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
+[data-container~="medium"] {
+  --#{$prefix}-offset-left: var(--#{$prefix}-md-offset);
+  --#{$prefix}-offset-right: var(--#{$prefix}-md-offset);
 }
-[data-offset~="large"] {
-  --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
-  --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
+[data-container~="large"] {
+  --#{$prefix}-offset-left: var(--#{$prefix}-lg-offset);
+  --#{$prefix}-offset-right: var(--#{$prefix}-lg-offset);
 }
-[data-offset~="xlarge"] {
-  --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
-  --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
+[data-container~="xlarge"] {
+  --#{$prefix}-offset-left: var(--#{$prefix}-xl-offset);
+  --#{$prefix}-offset-right: var(--#{$prefix}-xl-offset);
 }
-[data-offset~="none"] {
-  --#{$prefix}-container-left-offset: 0;
-  --#{$prefix}-container-right-offset: 0;
+[data-container~="none"] {
+  --#{$prefix}-offset-left: 0;
+  --#{$prefix}-offset-right: 0;
 }
-[data-offset-left~="small"] {
-  --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
+[data-container~="l-small"] {
+  --#{$prefix}-offset-left: var(--#{$prefix}-sm-offset);
 }
-[data-offset-left~="medium"] {
-  --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
+[data-container~="l-medium"] {
+  --#{$prefix}-offset-left: var(--#{$prefix}-md-offset);
 }
-[data-offset-left~="large"] {
-  --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
+[data-container~="l-large"] {
+  --#{$prefix}-offset-left: var(--#{$prefix}-lg-offset);
 }
-[data-offset-left~="xlarge"] {
-  --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
+[data-container~="l-xlarge"] {
+  --#{$prefix}-offset-left: var(--#{$prefix}-xl-offset);
 }
-[data-offset-left~="none"] {
-  --#{$prefix}-container-left-offset: 0;
+[data-container~="l-none"] {
+  --#{$prefix}-offset-left: 0;
 }
-[data-offset-right~="small"] {
-  --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
+[data-container~="r-small"] {
+  --#{$prefix}-offset-right: var(--#{$prefix}-sm-offset);
 }
-[data-offset-right~="medium"] {
-  --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
+[data-container~="r-medium"] {
+  --#{$prefix}-offset-right: var(--#{$prefix}-md-offset);
 }
-[data-offset-right~="large"] {
-  --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
+[data-container~="r-large"] {
+  --#{$prefix}-offset-right: var(--#{$prefix}-lg-offset);
 }
-[data-offset-right~="xlarge"] {
-  --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
+[data-container~="r-xlarge"] {
+  --#{$prefix}-offset-right: var(--#{$prefix}-xl-offset);
 }
-[data-offset-right~="none"] {
-  --#{$prefix}-container-right-offset: 0;
+[data-container~="r-none"] {
+  --#{$prefix}-offset-right: 0;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
-    [data-offset~="#{$device}:small"] {
-      --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
-      --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
+    [data-container~="#{$device}:small"] {
+      --#{$prefix}-offset-left: var(--#{$prefix}-sm-offset);
+      --#{$prefix}-offset-right: var(--#{$prefix}-sm-offset);
     }
-    [data-offset~="#{$device}:medium"] {
-      --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
-      --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
+    [data-container~="#{$device}:medium"] {
+      --#{$prefix}-offset-left: var(--#{$prefix}-md-offset);
+      --#{$prefix}-offset-right: var(--#{$prefix}-md-offset);
     }
-    [data-offset~="#{$device}:large"] {
-      --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
-      --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
+    [data-container~="#{$device}:large"] {
+      --#{$prefix}-offset-left: var(--#{$prefix}-lg-offset);
+      --#{$prefix}-offset-right: var(--#{$prefix}-lg-offset);
     }
-    [data-offset~="#{$device}:xlarge"] {
-      --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
-      --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
+    [data-container~="#{$device}:xlarge"] {
+      --#{$prefix}-offset-left: var(--#{$prefix}-xl-offset);
+      --#{$prefix}-offset-right: var(--#{$prefix}-xl-offset);
     }
-    [data-offset~="#{$device}:none"] {
-      --#{$prefix}-container-left-offset: 0;
-      --#{$prefix}-container-right-offset: 0;
+    [data-container~="#{$device}:none"] {
+      --#{$prefix}-offset-left: 0;
+      --#{$prefix}-offset-right: 0;
     }
-    [data-offset-left~="#{$device}:small"] {
-      --#{$prefix}-container-left-offset: var(--#{$prefix}-sm-offset);
+    [data-container~="#{$device}:l-small"] {
+      --#{$prefix}-offset-left: var(--#{$prefix}-sm-offset);
     }
-    [data-offset-left~="#{$device}:medium"] {
-      --#{$prefix}-container-left-offset: var(--#{$prefix}-md-offset);
+    [data-container~="#{$device}:l-medium"] {
+      --#{$prefix}-offset-left: var(--#{$prefix}-md-offset);
     }
-    [data-offset-left~="#{$device}:large"] {
-      --#{$prefix}-container-left-offset: var(--#{$prefix}-lg-offset);
+    [data-container~="#{$device}:l-large"] {
+      --#{$prefix}-offset-left: var(--#{$prefix}-lg-offset);
     }
-    [data-offset-left~="#{$device}:xlarge"] {
-      --#{$prefix}-container-left-offset: var(--#{$prefix}-xl-offset);
+    [data-container~="#{$device}:l-xlarge"] {
+      --#{$prefix}-offset-left: var(--#{$prefix}-xl-offset);
     }
-    [data-offset-left~="#{$device}:none"] {
-      --#{$prefix}-container-left-offset: 0;
+    [data-container~="#{$device}:l-none"] {
+      --#{$prefix}-offset-left: 0;
     }
-    [data-offset-right~="#{$device}:small"] {
-      --#{$prefix}-container-right-offset: var(--#{$prefix}-sm-offset);
+    [data-container~="#{$device}:r-small"] {
+      --#{$prefix}-offset-right: var(--#{$prefix}-sm-offset);
     }
-    [data-offset-right~="#{$device}:medium"] {
-      --#{$prefix}-container-right-offset: var(--#{$prefix}-md-offset);
+    [data-container~="#{$device}:r-medium"] {
+      --#{$prefix}-offset-right: var(--#{$prefix}-md-offset);
     }
-    [data-offset-right~="#{$device}:large"] {
-      --#{$prefix}-container-right-offset: var(--#{$prefix}-lg-offset);
+    [data-container~="#{$device}:r-large"] {
+      --#{$prefix}-offset-right: var(--#{$prefix}-lg-offset);
     }
-    [data-offset-right~="#{$device}:xlarge"] {
-      --#{$prefix}-container-right-offset: var(--#{$prefix}-xl-offset);
+    [data-container~="#{$device}:r-xlarge"] {
+      --#{$prefix}-offset-right: var(--#{$prefix}-xl-offset);
     }
-    [data-offset-right~="#{$device}:none"] {
-      --#{$prefix}-container-right-offset: 0;
+    [data-container~="#{$device}:r-none"] {
+      --#{$prefix}-offset-right: 0;
     }
   }
 }
@@ -166,66 +161,52 @@
 // Over Container
 // ----------------------------
 [data-over] {
-  --#{$prefix}-left-over: calc(-1 * var(--#{$prefix}-left-offset, 0));
-  --#{$prefix}-right-over: calc(-1 * var(--#{$prefix}-right-offset, 0));
+  --#{$prefix}-over-left: calc(-1 * var(--#{$prefix}-offset-left, 0));
+  --#{$prefix}-over-right: calc(-1 * var(--#{$prefix}-offset-right, 0));
 
-  margin-right: var(--#{$prefix}-right-margin, 0);
-  margin-left: var(--#{$prefix}-left-margin, 0);
+  margin-right: var(--#{$prefix}-margin-right, 0);
+  margin-left: var(--#{$prefix}-margin-left, 0);
 }
 
 [data-over~="left"] {
-  --#{$prefix}-left-margin: var(--#{$prefix}-left-over);
-  --#{$prefix}-right-margin: 0;
+  --#{$prefix}-margin-left: var(--#{$prefix}-over-left);
+  --#{$prefix}-margin-right: 0;
 }
 
 [data-over~="right"] {
-  --#{$prefix}-left-margin: 0;
-  --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
+  --#{$prefix}-margin-left: 0;
+  --#{$prefix}-margin-right: var(--#{$prefix}-over-right);
 }
 
 [data-over~="both"] {
-  --#{$prefix}-left-margin: var(--#{$prefix}-left-over);
-  --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
+  --#{$prefix}-margin-left: var(--#{$prefix}-over-left);
+  --#{$prefix}-margin-right: var(--#{$prefix}-over-right);
 }
 
-[data-over~="clearLeft"] {
-  --#{$prefix}-left-margin: 0;
-}
-
-[data-over~="clearRight"] {
-  --#{$prefix}-right-margin: 0;
-}
-
-[data-over~="clearBoth"] {
-  --#{$prefix}-left-margin: 0;
-  --#{$prefix}-right-margin: 0;
+[data-over~="clear"] {
+  --#{$prefix}-margin-left: 0;
+  --#{$prefix}-margin-right: 0;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-over~="#{$device}:left"] {
-      --#{$prefix}-left-margin: var(--#{$prefix}-left-over);
-      --#{$prefix}-right-margin: 0;
+      --#{$prefix}-margin-left: var(--#{$prefix}-over-left);
+      --#{$prefix}-margin-right: 0;
     }
     [data-over~="#{$device}:right"] {
-      --#{$prefix}-left-margin: 0;
-      --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
+      --#{$prefix}-margin-left: 0;
+      --#{$prefix}-margin-right: var(--#{$prefix}-over-right);
     }
 
     [data-over~="#{$device}:both"] {
-      --#{$prefix}-left-margin: var(--#{$prefix}-left-over);
-      --#{$prefix}-right-margin: var(--#{$prefix}-right-over);
+      --#{$prefix}-margin-left: var(--#{$prefix}-over-left);
+      --#{$prefix}-margin-right: var(--#{$prefix}-over-right);
     }
 
-    [data-over~="#{$device}:clearLeft"] {
-      --#{$prefix}-left-margin: 0;
-    }
-    [data-over~="#{$device}:clearRight"] {
-      --#{$prefix}-right-margin: 0;
-    }
-    [data-over~="#{$device}:clearBoth"] {
-      --#{$prefix}-left-margin: 0;
-      --#{$prefix}-right-margin: 0;
+    [data-over~="#{$device}:clear"] {
+      --#{$prefix}-margin-left: 0;
+      --#{$prefix}-margin-right: 0;
     }
   }
 }
