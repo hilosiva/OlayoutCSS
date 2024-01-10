@@ -250,7 +250,22 @@ const plugin = (opts = {}) => {
                   return numericValue;
                 }); // () の中の文字列
 
-              decl.value = getFluid(minSize, maxSize, minViewPort ? minViewPort : config.theme.layout["sm-design-width"], maxViewPort ? maxViewPort : config.theme.layout["lg-design-width"]);
+              decl.value = decl.value.replace(
+                fluidMatch[0],
+                getFluid(minSize, maxSize, minViewPort ? minViewPort : config.theme.layout["sm-design-width"], maxViewPort ? maxViewPort : config.theme.layout["lg-design-width"])
+              );
+            }
+
+            // rem関数
+            const remMatch = /rem\(([^)]+)\)/.exec(decl.value);
+
+            if (remMatch) {
+              const px = parseFloat(remMatch[1]);
+              if (isNaN(px)) {
+                throw new Error(`Invalid argument '${remMatch[1]}' in rem() function.`);
+              }
+
+              decl.value = decl.value.replace(remMatch[0], getRem(px));
             }
 
             // em関数
@@ -273,18 +288,7 @@ const plugin = (opts = {}) => {
                   return numericValue;
                 }); // () の中の文字列;
 
-              decl.value = getEm(px, basePx ? basePx : 16);
-            }
-
-            // rem関数
-            const remMatch = /rem\(([^)]+)\)/.exec(decl.value);
-            if (remMatch) {
-              const px = parseFloat(remMatch[1]);
-              if (isNaN(px)) {
-                throw new Error(`Invalid argument '${remMatch[1]}' in rem() function.`);
-              }
-
-              decl.value = getRem(px);
+              decl.value = decl.value.replace(emMatch[0], getEm(px, basePx ? basePx : 16));
             }
 
             // vw関数
@@ -306,8 +310,7 @@ const plugin = (opts = {}) => {
 
                   return numericValue;
                 }); // () の中の文字列;
-
-              decl.value = `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vw)`;
+              decl.value = decl.value.replace(vwMatch[0], `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vw)`);
             }
 
             // vh関数
@@ -330,7 +333,7 @@ const plugin = (opts = {}) => {
                   return numericValue;
                 }); // () の中の文字列;
 
-              decl.value = `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vh)`;
+              decl.value = decl.value.replace(vhMatch[0], `calc(${px} / ${viewPort ? viewPort : `var(--${config.prefix}-view-point)`} * 100vh)`);
             }
           });
         } catch (e) {
