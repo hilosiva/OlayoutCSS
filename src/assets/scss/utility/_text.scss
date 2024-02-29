@@ -442,7 +442,7 @@
 // ----------------------------
 @for $i from 1 through 9 {
   [data-font~="#{$i * 100}"] {
-    --#{$prefix}-font-weight: $i * 100;
+    --#{$prefix}-font-weight: #{$i} * 100;
   }
 }
 
@@ -450,7 +450,7 @@
   @include mq($device) {
     @for $i from 1 through 9 {
       [data-font~="#{$device}:#{$i * 100}"] {
-        --#{$prefix}-font-weight: $i * 100;
+        --#{$prefix}-font-weight: #{$i} * 100;
       }
     }
   }
