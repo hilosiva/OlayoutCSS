@@ -231,8 +231,8 @@ const plugin = (opts = {}) => {
           // 既存のCSSファイルに含むオリジナル関数の処理
           root.walkDecls((decl) => {
             // fluid関数
-            const fluidMatch = /fluid\(([^)]+)\)/.exec(decl.value);
-            if (fluidMatch) {
+            let fluidMatch;
+            while ((fluidMatch = /fluid\(([^)]+)\)/.exec(decl.value)) !== null) {
               const [minSize, maxSize, minViewPort, maxViewPort] = fluidMatch[1]
                 .replace(/\s/g, "")
                 .split(",")
@@ -257,9 +257,9 @@ const plugin = (opts = {}) => {
             }
 
             // rem関数
-            const remMatch = /rem\(([^)]+)\)/.exec(decl.value);
 
-            if (remMatch) {
+            let remMatch;
+            while ((remMatch = /rem\(([^)]+)\)/.exec(decl.value)) !== null) {
               const px = parseFloat(remMatch[1]);
               if (isNaN(px)) {
                 throw new Error(`Invalid argument '${remMatch[1]}' in rem() function.`);
@@ -269,8 +269,9 @@ const plugin = (opts = {}) => {
             }
 
             // em関数
-            const emMatch = /em\(([^)]+)\)/.exec(decl.value);
-            if (emMatch) {
+
+            let emMatch;
+            while ((emMatch = /em\(([^)]+)\)/.exec(decl.value)) !== null) {
               const [px, basePx] = emMatch[1]
                 .replace(/\s/g, "")
                 .split(",")
@@ -292,8 +293,9 @@ const plugin = (opts = {}) => {
             }
 
             // vw関数
-            const vwMatch = /vw\(([^)]+)\)/.exec(decl.value);
-            if (vwMatch) {
+
+            let vwMatch;
+            while ((vwMatch = /vw\(([^)]+)\)/.exec(decl.value)) !== null) {
               const [px, viewPort] = vwMatch[1]
                 .replace(/\s/g, "")
                 .split(",")
@@ -314,8 +316,9 @@ const plugin = (opts = {}) => {
             }
 
             // vh関数
-            const vhMatch = /vh\(([^)]+)\)/.exec(decl.value);
-            if (vhMatch) {
+
+            let vhMatch;
+            while ((vhMatch = /vh\(([^)]+)\)/.exec(decl.value)) !== null) {
               const [px, viewPort] = vhMatch[1]
                 .replace(/\s/g, "")
                 .split(",")
