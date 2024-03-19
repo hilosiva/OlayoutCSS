@@ -6894,7 +6894,7 @@ form button:not([type]):after {
   --ol-grid-rows: unset;
   --ol-grid-flow: unset;
   --ol-grid-auto-cols: unset;
-  --ol-grid-auto-rows: unset
+  --ol-grid-auto-rows: unset;
   display: grid;
   grid-template-columns: var(--ol-grid-cols);
   grid-template-rows: var(--ol-grid-rows);

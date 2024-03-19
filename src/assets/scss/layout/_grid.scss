@@ -11,7 +11,7 @@
   --#{$prefix}-grid-rows: unset;
   --#{$prefix}-grid-flow: unset;
   --#{$prefix}-grid-auto-cols: unset;
-  --#{$prefix}-grid-auto-rows: unset
+  --#{$prefix}-grid-auto-rows: unset;
 
   display: grid;
   grid-template-columns: var(--#{$prefix}-grid-cols);
