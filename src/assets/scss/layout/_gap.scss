@@ -6,7 +6,10 @@
 //  Gap
 // ====================================
 [data-gap] {
-  gap: var(--#{$prefix}-gap-row, normal) var(--#{$prefix}-gap-col, normal);
+  --#{$prefix}-gap-row: normal;
+  --#{$prefix}-gap-col: normal;
+
+  gap: var(--#{$prefix}-gap-row) var(--#{$prefix}-gap-col);
 }
 
 @for $i from 0 through $space-range {

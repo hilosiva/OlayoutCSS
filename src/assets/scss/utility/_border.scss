@@ -6,7 +6,11 @@
   Border
 -----------------------------------------------------*/
 [data-border] {
-  border: var(--#{$prefix}-border-width, 0) var(--#{$prefix}-border-style, solid) var(--#{$prefix}-border-color, var(--#{$prefix}-border-color-1));
+  --#{$prefix}-border-width: 0;
+  --#{$prefix}-border-style: solid;
+  --#{$prefix}-border-color: var(--#{$prefix}-border-color-1);
+
+  border: var(--#{$prefix}-border-width) var(--#{$prefix}-border-style) var(--#{$prefix}-border-color);
 }
 
 [data-border~="0"] {
@@ -71,7 +75,11 @@
 
 // Top
 [data-border-top] {
-  border-top: var(--#{$prefix}-border-top-width, 0) var(--#{$prefix}-border-top-style, solid) var(--#{$prefix}-border-top-color, var(--#{$prefix}-border-color-1));
+  --#{$prefix}-border-top-width: 0;
+  --#{$prefix}-border-top-style: solid;
+  --#{$prefix}-border-top-color: var(--#{$prefix}-border-color-1);
+
+  border-top: var(--#{$prefix}-border-top-width) var(--#{$prefix}-border-top-style) var(--#{$prefix}-border-top-color);
 }
 
 [data-border-top~="0"] {
@@ -136,7 +144,11 @@
 
 // right
 [data-border-right] {
-  border-right: var(--#{$prefix}-border-right-width, 0) var(--#{$prefix}-border-right-style, solid) var(--#{$prefix}-border-right-color, var(--#{$prefix}-border-color-1));
+  --#{$prefix}-border-right-width: 0;
+  --#{$prefix}-border-right-style: solid;
+  --#{$prefix}-border-right-color: var(--#{$prefix}-border-color-1);
+
+  border-right: var(--#{$prefix}-border-right-width) var(--#{$prefix}-border-right-style) var(--#{$prefix}-border-right-color);
 }
 
 [data-border-right~="0"] {
@@ -200,7 +212,11 @@
 }
 
 [data-border-bottom] {
-  border-bottom: var(--#{$prefix}-border-bottom-width, 0) var(--#{$prefix}-border-bottom-style, solid) var(--#{$prefix}-border-bottom-color, var(--#{$prefix}-border-color-1));
+  --#{$prefix}-border-bottom-width: 0;
+  --#{$prefix}-border-bottom-style: solid;
+  --#{$prefix}-border-bottom-color: var(--#{$prefix}-border-color-1);
+
+  border-bottom: var(--#{$prefix}-border-bottom-width) var(--#{$prefix}-border-bottom-style) var(--#{$prefix}-border-bottom-color);
 }
 
 [data-border-bottom~="0"] {
@@ -265,7 +281,11 @@
 }
 
 [data-border-left] {
-  border-left: var(--#{$prefix}-border-left-width, 0) var(--#{$prefix}-border-left-style, solid) var(--#{$prefix}-border-left-color, var(--#{$prefix}-border-color-1));
+  --#{$prefix}-border-left-width: 0;
+  --#{$prefix}-border-left-style: solid;
+  --#{$prefix}-border-left-color: var(--#{$prefix}-border-color-1);
+
+  border-left: var(--#{$prefix}-border-left-width) var(--#{$prefix}-border-left-style) var(--#{$prefix}-border-left-color);
 }
 
 [data-border-left~="0"] {

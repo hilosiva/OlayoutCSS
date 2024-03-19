@@ -6,8 +6,13 @@
 //  Place Items
 // ====================================
 [data-place] {
-  place-content: var(--ol-align-content, normal) var(--ol-justify-content, normal);
-  place-items: var(--ol-align-items, normal) var(--ol-justify-items, legacy);
+  --ol-align-content: normal;
+  --ol-justify-content: normal;
+  --ol-align-items: normal;
+  --ol-justify-items: legacy;
+
+  place-content: var(--ol-align-content) var(--ol-justify-content);
+  place-items: var(--ol-align-items) var(--ol-justify-items);
 }
 
 // Justify-content

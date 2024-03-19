@@ -7,13 +7,21 @@
 -----------------------------------------------------*/
 
 [data-text] {
-  text-align: var(--#{$prefix}-text-align, unset);
-  text-transform: var(--#{$prefix}-text-transform, unset);
-  word-break: var(--#{$prefix}-word-break, unset);
-  overflow-wrap: var(--#{$prefix}-overflow-wrap, unset);
-  white-space: var(--#{$prefix}-white-space, unset);
-  letter-spacing: var(--#{$prefix}-letter-spacing, unset);
-  writing-mode: var(--#{$prefix}-writing-mode, unset);
+  --#{$prefix}-text-align: unset;
+  --#{$prefix}-text-transform: unset;
+  --#{$prefix}-word-break: unset;
+  --#{$prefix}-overflow-wrap: unset;
+  --#{$prefix}-white-space: unset;
+  --#{$prefix}-letter-spacing: unset;
+  --#{$prefix}-writing-mode: unset;
+
+  text-align: var(--#{$prefix}-text-align);
+  text-transform: var(--#{$prefix}-text-transform);
+  word-break: var(--#{$prefix}-word-break);
+  overflow-wrap: var(--#{$prefix}-overflow-wrap);
+  white-space: var(--#{$prefix}-white-space);
+  letter-spacing: var(--#{$prefix}-letter-spacing);
+  writing-mode: var(--#{$prefix}-writing-mode);
 }
 
 // Align
@@ -224,7 +232,9 @@
 // ----------------------------
 
 [data-line] {
-  line-height: var(--#{$prefix}-line-height, unset);
+  --#{$prefix}-line-height: unset;
+
+  line-height: var(--#{$prefix}-line-height);
 }
 
 [data-line~="-2"] {
@@ -290,11 +300,17 @@
 // kerning
 // ----------------------------
 [data-font] {
-  font-feature-settings: var(--#{$prefix}-font-settings, unset);
-  font-size: var(--#{$prefix}-font-size, unset);
-  font-family: var(--#{$prefix}-font-family, unset);
-  font-weight: var(--#{$prefix}-font-weight, unset);
-  font-style: var(--#{$prefix}-font-style, unset);
+  --#{$prefix}-font-settings: unset;
+  --#{$prefix}-font-size: unset;
+  --#{$prefix}-font-family: unset;
+  --#{$prefix}-font-weight: unset;
+  --#{$prefix}-font-style: unset;
+
+  font-feature-settings: var(--#{$prefix}-font-settings);
+  font-size: var(--#{$prefix}-font-size);
+  font-family: var(--#{$prefix}-font-family);
+  font-weight: var(--#{$prefix}-font-weight);
+  font-style: var(--#{$prefix}-font-style);
 }
 
 [data-font~="default-setting"] {

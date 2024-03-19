@@ -6,7 +6,9 @@
   Height
 ----------------------------------------------------- */
 [data-height] {
-  height: var(--#{$prefix}-height, auto);
+  --#{$prefix}-height: auto;
+
+  height: var(--#{$prefix}-height);
 }
 
 [data-height~="auto"] {
@@ -41,7 +43,9 @@
   Max Height
 ----------------------------------------------------- */
 [data-max-height] {
-  height: var(--#{$prefix}-max-height, none);
+  --#{$prefix}-max-height: none;
+
+  height: var(--#{$prefix}-max-height);
 }
 
 [data-max-height~="none"] {
@@ -76,7 +80,9 @@
   Min Height
 ----------------------------------------------------- */
 [data-min-height] {
-  height: var(--#{$prefix}-min-height, auto);
+  --#{$prefix}-min-height: auto;
+
+  height: var(--#{$prefix}-min-height);
 }
 
 [data-min-height~="auto"] {

@@ -8,11 +8,13 @@
 [data-container] {
   --#{$prefix}-offset-left: var(--#{$prefix}-md-offset);
   --#{$prefix}-offset-right: var(--#{$prefix}-md-offset);
+  --#{$prefix}-margin-right: auto;
+  --#{$prefix}-margin-left: auto;
 
   padding-left: var(--#{$prefix}-offset-left);
   padding-right: var(--#{$prefix}-offset-right);
-  margin-right: var(--#{$prefix}-margin-right, auto);
-  margin-left: var(--#{$prefix}-margin-left, auto);
+  margin-right: var(--#{$prefix}-margin-right);
+  margin-left: var(--#{$prefix}-margin-left);
   box-sizing: content-box;
 }
 

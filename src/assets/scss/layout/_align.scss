@@ -7,8 +7,11 @@
 // ====================================
 
 [data-align] {
-  justify-content: var(--ol-justify, normal);
-  align-items: var(--ol-align, normal);
+  --ol-justify: normal;
+  --ol-align: normal;
+
+  justify-content: var(--ol-justify);
+  align-items: var(--ol-align);
 }
 
 [data-align~="normal"] {

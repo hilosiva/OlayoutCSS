@@ -6,7 +6,9 @@
 //  Order
 // ====================================
 [data-order] {
-  order: var(--ol-order, 0);
+  --ol-order: 0;
+
+  order: var(--ol-order);
 }
 
 [data-order~="0"] {

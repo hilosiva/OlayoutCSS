@@ -5,7 +5,12 @@
 //   Inset & Top, Left, Right , Bottom
 // ====================================
 [data-inset] {
-  inset: var(--#{$prefix}-top, auto) var(--#{$prefix}-right, auto) var(--#{$prefix}-bottom, auto) var(--#{$prefix}-left, auto);
+  --#{$prefix}-top: auto;
+  --#{$prefix}-right: auto;
+  --#{$prefix}-bottom: auto;
+  --#{$prefix}-left: auto;
+
+  inset: var(--#{$prefix}-top) var(--#{$prefix}-right) var(--#{$prefix}-bottom) var(--#{$prefix}-left);
 }
 
 [data-inset~="0"] {
