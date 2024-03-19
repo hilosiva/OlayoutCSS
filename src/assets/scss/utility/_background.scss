@@ -6,7 +6,9 @@
   Background
 -----------------------------------------------------*/
 [data-bg] {
-  background: var(--#{$prefix}-bg, transparent);
+  --#{$prefix}-bg: transparent;
+
+  background: var(--#{$prefix}-bg);
 }
 [data-bg~="base"] {
   --#{$prefix}-bg: var(--#{$prefix}-base-color);
@@ -28,6 +30,9 @@
 }
 [data-bg~="block"] {
   --#{$prefix}-bg: #000;
+}
+[data-bg~="none"] {
+  --#{$prefix}-bg: transparent;
 }
 
 @each $device, $breakpoint in $breakpoints {
@@ -52,6 +57,9 @@
     }
     [data-bg~="#{$device}:block"] {
       --#{$prefix}-bg: #000;
+    }
+    [data-bg~="#{$device}:none"] {
+      --#{$prefix}-bg: transparent;
     }
   }
 }
