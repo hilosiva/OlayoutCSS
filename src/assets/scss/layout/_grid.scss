@@ -7,12 +7,18 @@
 // ====================================
 
 [data-grid] {
+  --#{$prefix}-grid-cols: unset;
+  --#{$prefix}-grid-rows: unset;
+  --#{$prefix}-grid-flow: unset;
+  --#{$prefix}-grid-auto-cols: unset;
+  --#{$prefix}-grid-auto-rows: unset
+
   display: grid;
-  grid-template-columns: var(--#{$prefix}-grid-cols, unset);
-  grid-template-rows: var(--#{$prefix}-grid-rows, unset);
-  grid-auto-flow: var(--#{$prefix}-grid-flow, unset);
-  grid-auto-columns: var(--#{$prefix}-grid-auto-cols, unset);
-  grid-auto-rows: var(--#{$prefix}-grid-auto-rows, unset);
+  grid-template-columns: var(--#{$prefix}-grid-cols);
+  grid-template-rows: var(--#{$prefix}-grid-rows);
+  grid-auto-flow: var(--#{$prefix}-grid-flow);
+  grid-auto-columns: var(--#{$prefix}-grid-auto-cols);
+  grid-auto-rows: var(--#{$prefix}-grid-auto-rows);
 }
 
 // Display
@@ -230,8 +236,13 @@
 // ----------------------------
 
 [data-grid-item] {
-  grid-column: var(--#{$prefix}-grid-col-start, auto) / var(--#{$prefix}-grid-col-end, auto);
-  grid-row: var(--#{$prefix}-grid-row-start, auto) / var(--#{$prefix}-grid-row-end, auto);
+  --#{$prefix}-grid-col-start: auto;
+  --#{$prefix}-grid-col-end: auto;
+  --#{$prefix}-grid-row-start: auto;
+  --#{$prefix}-grid-row-end: auto;
+
+  grid-column: var(--#{$prefix}-grid-col-start) / var(--#{$prefix}-grid-col-end);
+  grid-row: var(--#{$prefix}-grid-row-start) / var(--#{$prefix}-grid-row-end);
 }
 
 // Column

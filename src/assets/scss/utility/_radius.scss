@@ -6,7 +6,9 @@
 // ====================================
 
 [data-radius] {
-  border-radius: var(--#{$prefix}-radius, 0);
+  --#{$prefix}-radius: 0;
+
+  border-radius: var(--#{$prefix}-radius);
 }
 
 [data-radius~="none"] {

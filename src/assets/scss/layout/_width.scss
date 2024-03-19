@@ -5,7 +5,9 @@
   Width
 ----------------------------------------------------- */
 [data-width] {
-  width: var(--#{$prefix}-width, auto);
+  --#{$prefix}-width: auto;
+
+  width: var(--#{$prefix}-width);
 }
 
 [data-width~="auto"] {
@@ -53,73 +55,75 @@
 ----------------------------------------------------- */
 
 [data-max-width] {
-  max-width: var(--#{$prefix}-max--width, none);
+  --#{$prefix}-max-width: none;
+
+  max-width: var(--#{$prefix}-max-width);
 }
 
 [data-max-width~="small"] {
-  --#{$prefix}-max--width: calc(var(--#{$prefix}-sm-content-width) * 1px);
+  --#{$prefix}-max-width: calc(var(--#{$prefix}-sm-content-width) * 1px);
 }
 
 [data-max-width~="medium"] {
-  --#{$prefix}-max--width: calc(var(--#{$prefix}-md-content-width) * 1px);
+  --#{$prefix}-max-width: calc(var(--#{$prefix}-md-content-width) * 1px);
 }
 
 [data-max-width~="large"] {
-  --#{$prefix}-max--width: calc(var(--#{$prefix}-lg-content-width) * 1px);
+  --#{$prefix}-max-width: calc(var(--#{$prefix}-lg-content-width) * 1px);
 }
 
 [data-max-width~="xlarge"] {
-  --#{$prefix}-max--width: calc(var(--#{$prefix}-xl-content-width) * 1px);
+  --#{$prefix}-max-width: calc(var(--#{$prefix}-xl-content-width) * 1px);
 }
 
 [data-max-width~="xxlarge"] {
-  --#{$prefix}-max--width: calc(var(--#{$prefix}-xxl-content-width) * 1px);
+  --#{$prefix}-max-width: calc(var(--#{$prefix}-xxl-content-width) * 1px);
 }
 
 [data-max-width~="none"] {
-  --#{$prefix}-max--width: none;
+  --#{$prefix}-max-width: none;
 }
 
 [data-max-width~="max-content"] {
-  --#{$prefix}-max--width: max-content;
+  --#{$prefix}-max-width: max-content;
 }
 
 [data-max-width~="min-content"] {
-  --#{$prefix}-max--width: min-content;
+  --#{$prefix}-max-width: min-content;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-max-width~="#{$device}:small"] {
-      --#{$prefix}-max--width: calc(var(--#{$prefix}-sm-content-width) * 1px);
+      --#{$prefix}-max-width: calc(var(--#{$prefix}-sm-content-width) * 1px);
     }
 
     [data-max-width~="#{$device}:medium"] {
-      --#{$prefix}-max--width: calc(var(--#{$prefix}-md-content-width) * 1px);
+      --#{$prefix}-max-width: calc(var(--#{$prefix}-md-content-width) * 1px);
     }
 
     [data-max-width~="#{$device}:large"] {
-      --#{$prefix}-max--width: calc(var(--#{$prefix}-lg-content-width) * 1px);
+      --#{$prefix}-max-width: calc(var(--#{$prefix}-lg-content-width) * 1px);
     }
 
     [data-max-width~="#{$device}:xlarge"] {
-      --#{$prefix}-max--width: calc(var(--#{$prefix}-xl-content-width) * 1px);
+      --#{$prefix}-max-width: calc(var(--#{$prefix}-xl-content-width) * 1px);
     }
 
     [data-max-width~="#{$device}:xxlarge"] {
-      --#{$prefix}-max--width: calc(var(--#{$prefix}-xxl-content-width) * 1px);
+      --#{$prefix}-max-width: calc(var(--#{$prefix}-xxl-content-width) * 1px);
     }
 
     [data-max-width~="#{$device}:none"] {
-      --#{$prefix}-max--width: none;
+      --#{$prefix}-max-width: none;
     }
 
     [data-max-width~="#{$device}:max-content"] {
-      --#{$prefix}-max--width: max-content;
+      --#{$prefix}-max-width: max-content;
     }
 
     [data-max-width~="#{$device}:min-content"] {
-      --#{$prefix}-max--width: min-content;
+      --#{$prefix}-max-width: min-content;
     }
   }
 }
@@ -128,33 +132,35 @@
   Min Width
 ----------------------------------------------------- */
 [data-min-width] {
-  min-width: var(--#{$prefix}-min--width, auto);
+  --#{$prefix}-min-width: auto;
+
+  min-width: var(--#{$prefix}-min-width);
 }
 
 [data-min-width~="auto"] {
-  --#{$prefix}-min--width: auto;
+  --#{$prefix}-min-width: auto;
 }
 
 [data-min-width~="max-content"] {
-  --#{$prefix}-min--width: max-content;
+  --#{$prefix}-min-width: max-content;
 }
 
 [data-min-width~="min-content"] {
-  --#{$prefix}-min--width: min-content;
+  --#{$prefix}-min-width: min-content;
 }
 
 @each $device, $breakpoint in $breakpoints {
   @include mq($device) {
     [data-min-width~="#{$device}:auto"] {
-      --#{$prefix}-min--width: auto;
+      --#{$prefix}-min-width: auto;
     }
 
     [data-min-width~="#{$device}:max-content"] {
-      --#{$prefix}-min--width: max-content;
+      --#{$prefix}-min-width: max-content;
     }
 
     [data-min-width~="#{$device}:min-content"] {
-      --#{$prefix}-min--width: min-content;
+      --#{$prefix}-min-width: min-content;
     }
   }
 }

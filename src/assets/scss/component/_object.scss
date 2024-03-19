@@ -6,9 +6,12 @@
   Object
 */
 [data-object] {
+  --#{$prefix}-object-position-x: 50%;
+  --#{$prefix}-object-position-y: 50%;
+
   width: 100%;
   height: 100%;
-  object-position: var(--#{$prefix}-object-position-x, 50%) var(--#{$prefix}-object-position-y, 50%);
+  object-position: var(--#{$prefix}-object-position-x) var(--#{$prefix}-object-position-y);
 }
 [data-object~="cover"] {
   object-fit: cover;

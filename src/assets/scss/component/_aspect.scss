@@ -6,7 +6,9 @@
   Aspect Ratio
 */
 [data-aspect] {
-  aspect-ratio: var(--#{$prefix}-aspect, auto);
+  --#{$prefix}-aspect: auto;
+
+  aspect-ratio: var(--#{$prefix}-aspect);
 }
 
 [data-aspect~="squere"],
