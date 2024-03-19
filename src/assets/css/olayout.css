@@ -40603,7 +40603,8 @@ form button:not([type]):after {
   Background
 -----------------------------------------------------*/
 [data-bg] {
-  background: var(--ol-bg, transparent);
+  --ol-bg: transparent;
+  background: var(--ol-bg);
 }
 
 [data-bg~=base] {
@@ -40634,6 +40635,10 @@ form button:not([type]):after {
   --ol-bg: #000;
 }
 
+[data-bg~=none] {
+  --ol-bg: transparent;
+}
+
 @media (--ol-xxs) {
   [data-bg~="xxs:base"] {
     --ol-bg: var(--ol-base-color);
@@ -40655,6 +40660,9 @@ form button:not([type]):after {
   }
   [data-bg~="xxs:block"] {
     --ol-bg: #000;
+  }
+  [data-bg~="xxs:none"] {
+    --ol-bg: transparent;
   }
 }
 @media (--ol-xs) {
@@ -40679,6 +40687,9 @@ form button:not([type]):after {
   [data-bg~="xs:block"] {
     --ol-bg: #000;
   }
+  [data-bg~="xs:none"] {
+    --ol-bg: transparent;
+  }
 }
 @media (--ol-sm) {
   [data-bg~="sm:base"] {
@@ -40701,6 +40712,9 @@ form button:not([type]):after {
   }
   [data-bg~="sm:block"] {
     --ol-bg: #000;
+  }
+  [data-bg~="sm:none"] {
+    --ol-bg: transparent;
   }
 }
 @media (--ol-md) {
@@ -40725,6 +40739,9 @@ form button:not([type]):after {
   [data-bg~="md:block"] {
     --ol-bg: #000;
   }
+  [data-bg~="md:none"] {
+    --ol-bg: transparent;
+  }
 }
 @media (--ol-lg) {
   [data-bg~="lg:base"] {
@@ -40747,6 +40764,9 @@ form button:not([type]):after {
   }
   [data-bg~="lg:block"] {
     --ol-bg: #000;
+  }
+  [data-bg~="lg:none"] {
+    --ol-bg: transparent;
   }
 }
 @media (--ol-xl) {
@@ -40771,6 +40791,9 @@ form button:not([type]):after {
   [data-bg~="xl:block"] {
     --ol-bg: #000;
   }
+  [data-bg~="xl:none"] {
+    --ol-bg: transparent;
+  }
 }
 @media (--ol-xxl) {
   [data-bg~="xxl:base"] {
@@ -40793,6 +40816,9 @@ form button:not([type]):after {
   }
   [data-bg~="xxl:block"] {
     --ol-bg: #000;
+  }
+  [data-bg~="xxl:none"] {
+    --ol-bg: transparent;
   }
 }
 [data-blend-mode] {
